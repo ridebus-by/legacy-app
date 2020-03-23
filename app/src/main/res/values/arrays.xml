@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="app_languages">
+        <item>@string/automatic</item>
+        <item>English</item>
+        <item>Русский</item>
+    </string-array>
+    <string-array name="app_languages_values">
+        <item />
+        <item>en</item>
+        <item>ru</item>
+        <item>tr</item>
+        <item>uk</item>
+    </string-array>
+    <string-array name="themes">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+    </string-array>
+    <string-array name="themes_names">
+        <item>Default</item>
+        <item>Red</item>
+        <item>Orange</item>
+        <item>Light Green</item>
+        <item>Green</item>
+        <item>Teal</item>
+        <item>Cyan</item>
+        <item>Light Blue</item>
+        <item>Blue</item>
+        <item>Indigo</item>
+        <item>Deep Purple</item>
+        <item>Purple</item>
+        <item>Pink</item>
+        <item>Black</item>
+        <item>Dark</item>
+        <item>AMOLED</item>
+    </string-array>
+    <string name="automatic">Auto</string>
+    <string-array name="route_tabs">
+        <item>@string/route_tab_title_buses</item>
+        <item>@string/route_tab_title_minibuses</item>
+        <item>@string/route_tab_title_express</item>
+    </string-array>
+    <string-array name="timeline_tabs">
+        <item>Информация</item>
+        <item>Остановки</item>
+    </string-array>
+</resources>

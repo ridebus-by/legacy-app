@@ -14,4 +14,9 @@
     <string name="about_github">Source code</string>
     <string name="about_email">Feedback by E-mail</string>
     <string name="more_apps">More apps</string>
+    <string name="route_tab_title_buses">Buses</string>
+    <string name="route_tab_title_minibuses">Route taxis</string>
+    <string name="route_tab_title_express">Express</string>
+    <string name="hours">h</string>
+    <string name="minutes">m</string>
 </resources>
