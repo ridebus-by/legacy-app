@@ -2,11 +2,91 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
         <item name="colorLine">#CCCCCC</item>
+    </style>
+
+    <style name="AppTheme.Default">
+        <item name="colorPrimary">#01579b</item>
+        <item name="colorPrimaryDark">#002f6c</item>
+        <item name="colorAccent">#f57e1e</item>
+    </style>
+
+    <style name="AppTheme.Red">
+        <item name="colorPrimary">#F44336</item>
+        <item name="colorPrimaryDark">#ba000d</item>
+        <item name="colorAccent">#11c1ce</item>
+    </style>
+
+    <style name="AppTheme.Orange">
+        <item name="colorPrimary">#ff9800</item>
+        <item name="colorPrimaryDark">#c66900</item>
+        <item name="colorAccent">#0068ff</item>
+    </style>
+
+    <style name="AppTheme.LightGreen">
+        <item name="colorPrimary">#5181b8</item>
+        <item name="colorPrimaryDark">#38618f</item>
+        <item name="colorAccent">#5181b8</item>
+    </style>
+
+    <style name="AppTheme.Green">
+        <item name="colorPrimary">#af504c</item>
+        <item name="colorPrimaryDark">#6B2D2B</item>
+        <item name="colorAccent">#af504c</item>
+    </style>
+
+    <style name="AppTheme.Teal">
+        <item name="colorPrimary">#009688</item>
+        <item name="colorPrimaryDark">#00675b</item>
+        <item name="colorAccent">#0480d5</item>
+    </style>
+
+    <style name="AppTheme.Cyan">
+        <item name="colorPrimary">#00bcd4</item>
+        <item name="colorPrimaryDark">#008ba3</item>
+        <item name="colorAccent">#c8e105</item>
+    </style>
+
+    <style name="AppTheme.LightBlue">
+        <item name="colorPrimary">#03a9f4</item>
+        <item name="colorPrimaryDark">#007ac1</item>
+        <item name="colorAccent">#fa5509</item>
+    </style>
+
+    <style name="AppTheme.Blue">
+        <item name="colorPrimary">#2196f3</item>
+        <item name="colorPrimaryDark">#0069c0</item>
+        <item name="colorAccent">#cd6310</item>
+    </style>
+
+    <style name="AppTheme.Indigo">
+        <item name="colorPrimary">#3f51b5</item>
+        <item name="colorPrimaryDark">#002984</item>
+        <item name="colorAccent">#c9384f</item>
+    </style>
+
+    <style name="AppTheme.DeepPurple">
+        <item name="colorPrimary">#673ab7</item>
+        <item name="colorPrimaryDark">#320b86</item>
+        <item name="colorAccent">#2fad5c</item>
+    </style>
+
+    <style name="AppTheme.Purple">
+        <item name="colorPrimary">#673ab7</item>
+        <item name="colorPrimaryDark">#512da8</item>
+        <item name="colorAccent">#ff4081</item>
+    </style>
+
+    <style name="AppTheme.Pink">
+        <item name="colorPrimary">#e91e63</item>
+        <item name="colorPrimaryDark">#b0003a</item>
+        <item name="colorAccent">#1b5cd9</item>
+    </style>
+
+    <style name="AppTheme.Black">
+        <item name="colorPrimary">#212121</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#212121</item>
     </style>
 
 </resources>
