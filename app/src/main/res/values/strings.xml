@@ -19,4 +19,17 @@
     <string name="route_tab_title_express">Express</string>
     <string name="hours">h</string>
     <string name="minutes">m</string>
+    <string name="search_query_hint">Stops, routes</string>
+    <string name="bookmarks_context_menu_item_change">Change</string>
+    <string name="bookmarks_context_menu_item_delete">Delete</string>
+    <string name="desc_bookmark">route</string>
+    <string name="star_desc">What does this icon mean?</string>
+    <string name="star_desc_full">It means today is a holiday. Probably, the transport runs on a weekend schedule. Try in the application to change the day of the week to Saturday or Sunday to get a weekend schedule.</string>
+    <string name="ok">OK</string>
+    <string name="number_route">Route №</string>
+    <string name="about_report_intent">Report: RideBus</string>
+    <string name="about_not_found_email">Not found email app :(</string>
+    <string name="change_day">Change day of the week</string>
+    <string name="string_mapError">There is no schedule for this day.</string>
+    <string name="search">Search</string>
 </resources>

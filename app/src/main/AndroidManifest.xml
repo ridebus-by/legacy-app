@@ -13,6 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.StopsActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activity.ScheduleActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activity.StopsTimeLineActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activity.BookmarkActivity"
+            android:theme="@style/AppTheme"/>
         <activity android:name=".activity.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>

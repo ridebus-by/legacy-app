@@ -24,17 +24,12 @@ public abstract class ScheduleDatabase extends RoomDatabase {
     public static void copyDatabase(Context context, String databaseName) {
         final File dbPath = context.getDatabasePath(databaseName);
 
-        //If the database already exists, return // Проверка стала не нужна, после реализации
-        if (dbPath.exists()) {                // метода checkDatabaseExist()
+        if (dbPath.exists()) {
             context.deleteDatabase(DATABASE_NAME);
-            //Log.d("Activity", "db Path Exists");
-            //return;
         }
 
-        // Make sure we have a path to the file
         boolean s = dbPath.getParentFile().mkdirs();
 
-        // Try to copy database file
         try {
             final InputStream inputStream = context.getAssets().open(databaseName);
             final OutputStream output = new FileOutputStream(dbPath);
@@ -50,7 +45,6 @@ public abstract class ScheduleDatabase extends RoomDatabase {
             output.close();
             inputStream.close();
         } catch (IOException e) {
-            //Log.d("Activity", "Failed to open file", e);
             e.printStackTrace();
         }
     }

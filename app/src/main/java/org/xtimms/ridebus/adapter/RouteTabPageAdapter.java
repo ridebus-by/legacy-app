@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import org.xtimms.ridebus.Constant;
+import org.xtimms.ridebus.fragment.ExpressFragment;
+import org.xtimms.ridebus.fragment.MinibusFragment;
 import org.xtimms.ridebus.fragment.RouteFragment;
 import org.xtimms.ridebus.fragment.TabRouteFragment;
 
@@ -23,6 +25,10 @@ public class RouteTabPageAdapter extends FragmentPagerAdapter {
         switch (i) {
             case 0:
                 return RouteFragment.newInstance();
+            case 1:
+                return MinibusFragment.newInstance();
+            case 2:
+                return ExpressFragment.newInstance();
         }
         return TabRouteFragment.newInstance(i + 1);
     }

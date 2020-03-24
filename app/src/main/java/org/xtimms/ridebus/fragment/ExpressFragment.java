@@ -14,25 +14,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.xtimms.ridebus.R;
 import org.xtimms.ridebus.activity.StopsTimeLineActivity;
-import org.xtimms.ridebus.adapter.RouteAdapter;
+import org.xtimms.ridebus.adapter.ExpressAdapter;
 import org.xtimms.ridebus.model.Route;
-import org.xtimms.ridebus.presenter.RouteFragmentPresenter;
+import org.xtimms.ridebus.presenter.ExpressFragmentPresenter;
 
 import java.util.List;
 
-public class RouteFragment extends Fragment implements RouteFragmentPresenter.View {
+public class ExpressFragment extends Fragment implements ExpressFragmentPresenter.View {
 
     private RecyclerView mRecyclerView;
 
-    public static RouteFragment newInstance() {
-        return new RouteFragment();
+    public static ExpressFragment newInstance() {
+        return new ExpressFragment();
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_express, container, false);
     }
 
     @Override
     public void setAdapter(List<Route> routeList) {
-        RouteAdapter mRouteAdapter = new RouteAdapter(routeList);
-        mRecyclerView.setAdapter(mRouteAdapter);
-        mRouteAdapter.setOnItemClickListener((parent, v, position, id) -> {
+        ExpressAdapter mExpressAdapter = new ExpressAdapter(routeList);
+        mRecyclerView.setAdapter(mExpressAdapter);
+        mExpressAdapter.setOnItemClickListener((parent, view, position, id) -> {
             Intent intent = StopsTimeLineActivity.newIntent(getActivity(), routeList.get(position));
             startActivity(intent);
         });
@@ -43,20 +48,13 @@ public class RouteFragment extends Fragment implements RouteFragmentPresenter.Vi
         super.onCreate(savedInstanceState);
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_route, container, false);
-    }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = view.findViewById(R.id.recyclerView_routes);
+        mRecyclerView = view.findViewById(R.id.recyclerView_express);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
-        RouteFragmentPresenter presenter = new RouteFragmentPresenter(this);
+        ExpressFragmentPresenter presenter = new ExpressFragmentPresenter(this);
         presenter.setAdapter();
     }
-
 }

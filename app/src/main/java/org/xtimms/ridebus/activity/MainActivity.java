@@ -3,6 +3,7 @@ package org.xtimms.ridebus.activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -21,6 +22,8 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.xtimms.ridebus.App;
 import org.xtimms.ridebus.R;
+import org.xtimms.ridebus.fragment.BookmarkFragment;
+import org.xtimms.ridebus.fragment.StopFragment;
 import org.xtimms.ridebus.fragment.TabRouteFragment;
 
 import java.util.Objects;
@@ -81,6 +84,30 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mToggle != null && mToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        Intent intent = new Intent();
+        switch (item.getItemId()) {
+            case R.id.action_about:
+                //TODO
+                return true;
+            case R.id.action_settings:
+                //TODO
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mToggle.syncState();
@@ -113,17 +140,25 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
         Fragment selectedFragment = null;
         switch (menuItem.getItemId()) {
             case R.id.menu_item_1:
-                selectedFragment = TabRouteFragment.newInstance(0);
                 Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.menu_item_1));
+                selectedFragment = TabRouteFragment.newInstance(0);
                 mTabLayout.setVisibility(View.VISIBLE);
                 break;
             case R.id.menu_item_2:
+                Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.menu_item_2));
+                selectedFragment = StopFragment.newInstance();
+                mTabLayout.setVisibility(View.GONE);
                 break;
             case R.id.menu_item_3:
+                Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.menu_item_3));
+                selectedFragment = BookmarkFragment.newInstance();
+                mTabLayout.setVisibility(View.GONE);
                 break;
             case R.id.nav_action_about:
+                //TODO
                 break;
             case R.id.nav_action_settings:
+                //TODO
                 break;
             default:
                 return false;

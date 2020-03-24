@@ -14,25 +14,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.xtimms.ridebus.R;
 import org.xtimms.ridebus.activity.StopsTimeLineActivity;
-import org.xtimms.ridebus.adapter.RouteAdapter;
+import org.xtimms.ridebus.adapter.TramsAdapter;
 import org.xtimms.ridebus.model.Route;
-import org.xtimms.ridebus.presenter.RouteFragmentPresenter;
+import org.xtimms.ridebus.presenter.TramsFragmentPresenter;
 
 import java.util.List;
 
-public class RouteFragment extends Fragment implements RouteFragmentPresenter.View {
+public class TramsFragment extends Fragment implements TramsFragmentPresenter.View {
 
+    private TramsAdapter mTramsAdapter;
     private RecyclerView mRecyclerView;
 
-    public static RouteFragment newInstance() {
-        return new RouteFragment();
+    public static TramsFragment newInstance() {
+        return new TramsFragment();
     }
 
     @Override
     public void setAdapter(List<Route> routeList) {
-        RouteAdapter mRouteAdapter = new RouteAdapter(routeList);
-        mRecyclerView.setAdapter(mRouteAdapter);
-        mRouteAdapter.setOnItemClickListener((parent, v, position, id) -> {
+        mTramsAdapter = new TramsAdapter(routeList);
+        mRecyclerView.setAdapter(mTramsAdapter);
+        mTramsAdapter.setOnItemClickListener((parent, v, position, id) -> {
             Intent intent = StopsTimeLineActivity.newIntent(getActivity(), routeList.get(position));
             startActivity(intent);
         });
@@ -46,17 +47,16 @@ public class RouteFragment extends Fragment implements RouteFragmentPresenter.Vi
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_route, container, false);
+        return inflater.inflate(R.layout.fragment_trams, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = view.findViewById(R.id.recyclerView_routes);
+        mRecyclerView = view.findViewById(R.id.recyclerView_trams);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
-        RouteFragmentPresenter presenter = new RouteFragmentPresenter(this);
+        TramsFragmentPresenter presenter = new TramsFragmentPresenter(this);
         presenter.setAdapter();
     }
-
 }

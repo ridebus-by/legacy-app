@@ -25,6 +25,12 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:29.0.0'
@@ -33,7 +39,11 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'
     implementation 'com.android.support:recyclerview-v7:29.0.0'
     implementation 'com.android.support:cardview-v7:29.0.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.github.ivbaranov:materiallettericon:0.2.3'
+    implementation 'com.lucasurbas:listitemview:1.1.1'
+    implementation 'com.github.alorma:timelineview:2.3.0'
+    implementation 'com.github.kabouzeid:RecyclerView-FastScroll:1.0.16-kmod'
     implementation "android.arch.persistence.room:runtime:1.1.1"
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout_schedule_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?colorPrimary"
+            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            app:toolbarId="@+id/toolbar_bookmarks_activity">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_bookmarks_activity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?colorPrimary"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_view_bookmarks_aktivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:iconifiedByDefault="false"
+                    app:searchIcon="@null" />
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/content_bookmarks" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
