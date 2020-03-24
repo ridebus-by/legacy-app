@@ -21,8 +21,8 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/circle"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
@@ -48,8 +48,8 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_image_bookmark"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="24dp"
