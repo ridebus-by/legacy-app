@@ -22,7 +22,6 @@ import java.util.List;
 
 public class TramsFragment extends Fragment implements TramsFragmentPresenter.View {
 
-    private TramsAdapter mTramsAdapter;
     private RecyclerView mRecyclerView;
 
     public static TramsFragment newInstance() {
@@ -31,7 +30,7 @@ public class TramsFragment extends Fragment implements TramsFragmentPresenter.Vi
 
     @Override
     public void setAdapter(List<Route> routeList) {
-        mTramsAdapter = new TramsAdapter(routeList);
+        TramsAdapter mTramsAdapter = new TramsAdapter(routeList);
         mRecyclerView.setAdapter(mTramsAdapter);
         mTramsAdapter.setOnItemClickListener((parent, v, position, id) -> {
             Intent intent = StopsTimeLineActivity.newIntent(getActivity(), routeList.get(position));

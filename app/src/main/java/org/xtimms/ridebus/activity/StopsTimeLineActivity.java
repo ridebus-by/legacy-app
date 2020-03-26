@@ -1,6 +1,5 @@
 package org.xtimms.ridebus.activity;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,10 +7,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +32,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
 public class StopsTimeLineActivity extends AppBaseActivity implements TimeLineActivityPresenter.View {
 
@@ -43,7 +39,6 @@ public class StopsTimeLineActivity extends AppBaseActivity implements TimeLineAc
     private RecyclerView mRecyclerView;
     private ListItemView mWeekDay;
     private Route mRoute;
-    private Toolbar toolbar;
     private boolean mAdapterIsSet = false;
     private TimeLineAdapter mTimeLineAdapter;
     private BroadcastReceiver mBroadcastReceiver;
@@ -70,7 +65,7 @@ public class StopsTimeLineActivity extends AppBaseActivity implements TimeLineAc
 
         getRecyclerViewData();
 
-        toolbar = findViewById(R.id.toolbar_timeline_activity);
+        Toolbar toolbar = findViewById(R.id.toolbar_timeline_activity);
         toolbar.inflateMenu(R.menu.activity_stops_menu);
         setSupportActionBar(toolbar);
 

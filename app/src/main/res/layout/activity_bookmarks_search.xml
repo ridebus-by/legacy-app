@@ -28,7 +28,7 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
                 <androidx.appcompat.widget.SearchView
-                    android:id="@+id/search_view_bookmarks_aktivity"
+                    android:id="@+id/search_view_bookmarks_activity"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:iconifiedByDefault="false"

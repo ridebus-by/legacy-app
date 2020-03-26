@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.LayoutAnimationController;
@@ -42,7 +41,6 @@ public class StopsActivity extends AppBaseActivity implements StopActivityPresen
     private boolean mAdapterIsSet = false;
     private StopsActivityAdapter mStopsActivityAdapter;
     private BroadcastReceiver mBroadcastReceiver;
-    private FloatingActionButton floatingActionButton;
 
     public static Intent newIntent(Context context, Stop stop) {
         Intent intent = new Intent(context, StopsActivity.class);
@@ -68,7 +66,7 @@ public class StopsActivity extends AppBaseActivity implements StopActivityPresen
         mRecyclerView.setLayoutAnimation(animation);
         mRecyclerView.scheduleLayoutAnimation();
 
-        floatingActionButton = findViewById(R.id.fab);
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
 
         getRecyclerViewData();
 

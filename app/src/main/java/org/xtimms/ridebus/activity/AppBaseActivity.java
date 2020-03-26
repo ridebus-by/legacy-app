@@ -17,7 +17,6 @@ import org.xtimms.ridebus.util.ThemeUtils;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
 
-    private boolean mActionBarVisible = false;
     private boolean mHomeAsUpEnabled = false;
     private int mTheme = 0;
 
@@ -43,7 +42,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
     @Override
     public void setSupportActionBar(@Nullable Toolbar toolbar) {
         super.setSupportActionBar(toolbar);
-        mActionBarVisible = toolbar != null;
+        boolean mActionBarVisible = toolbar != null;
     }
 
     public void setSupportActionBar(@IdRes int toolbarId) {

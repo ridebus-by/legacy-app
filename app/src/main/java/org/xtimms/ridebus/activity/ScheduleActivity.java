@@ -65,11 +65,11 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        TextView routeNumber = findViewById(R.id.text_routenumber_scheduleactivity);
-        TextView routeTitle = findViewById(R.id.text_routetitle_scheduleactivity);
-        TextView stopTitle = findViewById(R.id.text_stoptitle_scheduleactivity);
-        TextView stopMark = findViewById(R.id.text_stopmark_scheduleactivity);
-        mTextDate = findViewById(R.id.text_date_scheduleactivity);
+        TextView routeNumber = findViewById(R.id.text_route_number_schedule_activity);
+        TextView routeTitle = findViewById(R.id.text_route_title_schedule_activity);
+        TextView stopTitle = findViewById(R.id.text_stop_title_schedule_activity);
+        TextView stopMark = findViewById(R.id.text_stop_mark_schedule_activity);
+        mTextDate = findViewById(R.id.text_date_schedule_activity);
 
         routeNumber.setText(mRoute.getRouteNumber());
         routeTitle.setText(mRoute.getRouteTitle());

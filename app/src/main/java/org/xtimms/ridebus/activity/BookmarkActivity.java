@@ -77,7 +77,7 @@ public class BookmarkActivity extends AppBaseActivity implements BookmarkActivit
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        SearchView searchView = findViewById(R.id.search_view_bookmarks_aktivity);
+        SearchView searchView = findViewById(R.id.search_view_bookmarks_activity);
         searchView.setQueryHint(getString(R.string.search_query_hint));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

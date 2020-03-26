@@ -1,6 +1,5 @@
 package org.xtimms.ridebus.adapter;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

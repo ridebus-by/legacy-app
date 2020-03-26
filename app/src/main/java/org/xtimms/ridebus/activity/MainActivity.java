@@ -22,6 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.xtimms.ridebus.App;
 import org.xtimms.ridebus.R;
+import org.xtimms.ridebus.activity.settings.SettingsHeadersActivity;
 import org.xtimms.ridebus.fragment.BookmarkFragment;
 import org.xtimms.ridebus.fragment.StopFragment;
 import org.xtimms.ridebus.fragment.TabRouteFragment;
@@ -33,8 +34,6 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
     private boolean mInstanceState = false;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
-    private Toolbar mToolbar;
-    private FloatingActionButton mFloatingActionButton;
     private TabLayout mTabLayout;
     private NavigationView mNavigationView;
 
@@ -45,10 +44,10 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
 
         enableTransparentStatusBar(android.R.color.transparent);
 
-        mToolbar = findViewById(R.id.toolbar_main);
+        Toolbar mToolbar = findViewById(R.id.toolbar_main);
         mToolbar.inflateMenu(R.menu.main);
         mTabLayout = findViewById(R.id.tab_invisible);
-        mFloatingActionButton = findViewById(R.id.fab);
+        FloatingActionButton mFloatingActionButton = findViewById(R.id.fab);
         setSupportActionBar(mToolbar);
 
         mToolbar.setNavigationOnClickListener(v -> mDrawerLayout.openDrawer(GravityCompat.START));
@@ -158,7 +157,8 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
                 //TODO
                 break;
             case R.id.nav_action_settings:
-                //TODO
+                intent.setClass(MainActivity.this, SettingsHeadersActivity.class);
+                startActivity(intent);
                 break;
             default:
                 return false;
