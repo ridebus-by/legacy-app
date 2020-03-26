@@ -17,4 +17,4 @@ android:
     - android-sdk-preview-license-.+
 
 script:
-   - ./gradlew build connectedCheck
+    - chmod +x ./gradlew build connectedCheck
