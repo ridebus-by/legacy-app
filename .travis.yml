@@ -1,0 +1,20 @@
+language: android
+
+jdk:
+  - oraclejdk8
+
+android:
+  components:
+    - platform-tools
+    - tools
+    - tools
+    - build-tools-29.0.2
+    - android-29
+    - extra-android-m2repository
+
+  licenses:
+    - android-sdk-license-.+
+    - android-sdk-preview-license-.+
+
+script:
+   - ./gradlew build connectedCheck
