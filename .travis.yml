@@ -1,23 +1,15 @@
 language: android
-
+dist: trusty
 jdk:
   - oraclejdk8
-
 android:
   components:
-    - platform-tools
     - tools
-    - tools
-    - build-tools-29.0.2
+    - platform-tools-29.0.6
+    - build-tools-29.0.3
     - android-29
-    - extra-android-m2repository
-
   licenses:
-    - android-sdk-license-.+
     - android-sdk-preview-license-.+
-    
-before_install:
-    - chmod +x gradlew
-
-script:
-    - chmod +x ./gradlew build connectedCheck
+    - android-sdk-license-.+
+    - google-gdk-license-.+
+script: ./gradlew -Dorg.gradle.jvmargs=-Xmx1536m assembleDebug lintDebug
