@@ -8,6 +8,7 @@ import android.view.Window;
 import androidx.annotation.ColorRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -17,6 +18,7 @@ import org.xtimms.ridebus.util.ThemeUtils;
 public abstract class AppBaseActivity extends AppCompatActivity {
 
     private boolean mActionBarVisible = false;
+    private boolean mHomeAsUpEnabled = false;
     private int mTheme = 0;
 
     @Override
@@ -28,6 +30,14 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
     public int getActivityTheme() {
         return mTheme;
+    }
+
+    public void enableHomeAsUp() {
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null && !mHomeAsUpEnabled) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            mHomeAsUpEnabled = true;
+        }
     }
 
     @Override

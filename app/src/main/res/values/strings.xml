@@ -32,4 +32,14 @@
     <string name="change_day">Change day of the week</string>
     <string name="string_mapError">There is no schedule for this day.</string>
     <string name="search">Search</string>
+    <string name="theme">Theme</string>
+    <string name="need_restart">Please, restart app to apply changes</string>
+    <string name="postpone">Postpone</string>
+    <string name="general">General</string>
+    <string name="nothing_selected">Nothing selected</string>
+    <string name="all">All</string>
+    <string name="appearance">Appearance</string>
+    <string name="restart">Restart</string>
+    <string name="__empty__" translatable="false"></string>
+    <string name="app_language">Application language</string>
 </resources>

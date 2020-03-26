@@ -3,12 +3,18 @@ package org.xtimms.ridebus;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
 
 import androidx.annotation.NonNull;
 import androidx.room.Room;
 
 import org.xtimms.ridebus.model.ScheduleDatabase;
+
+import java.util.Locale;
 
 public class App extends Application {
 
@@ -37,12 +43,27 @@ public class App extends Application {
         ScheduleDatabase.setDbVersion(getApplicationContext(), Constant.DB_VERSION);
     }
 
+    public static void setLanguage(Resources res, String lang) {
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.locale = TextUtils.isEmpty(lang) ? Locale.getDefault() : new Locale(lang);
+        res.updateConfiguration(conf, dm);
+    }
+
     public ScheduleDatabase getDatabase() {
         return mDatabase;
     }
 
     public Context getAppContext() {
         return getApplicationContext();
+    }
+
+    public void restart() {
+        final Intent intent = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage(getBaseContext().getPackageName());
+        assert intent != null;
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
 }
