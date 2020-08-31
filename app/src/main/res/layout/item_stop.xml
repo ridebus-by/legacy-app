@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="8dp"
-    android:background="?android:selectableItemBackground">
+    android:background="?android:selectableItemBackground"
+    tools:ignore="Overdraw">
 
     <TextView
         android:id="@+id/stop_title"
@@ -14,7 +14,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_marginStart="8dp"
         tools:text="Швейная фабрика"
-        android:layout_marginLeft="8dp" />
+        tools:ignore="RelativeOverlap" />
 
     <TextView
         android:id="@+id/stop_description"
@@ -22,8 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/stop_title"
         android:layout_marginStart="8dp"
-        tools:text="На Гоголя"
-        android:layout_marginLeft="8dp" />
+        tools:text="На Гоголя" />
 
     <ImageView
         android:id="@+id/item_tram"
@@ -33,6 +32,6 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_margin="8dp"
-        android:layout_alignParentRight="true" />
+        android:contentDescription="TODO" />
 
 </RelativeLayout>

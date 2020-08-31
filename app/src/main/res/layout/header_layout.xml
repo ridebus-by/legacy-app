@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="164dp"
     android:gravity="bottom"
@@ -10,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/nav_header"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:contentDescription="TODO" />
 
     <View
         android:id="@+id/gradient"
@@ -24,8 +26,9 @@
         android:scaleType="centerCrop"
         android:src="@drawable/logo"
         android:layout_gravity="bottom"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="54dp"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="54dp"
+        android:contentDescription="TODO" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +57,8 @@
             android:gravity="center_vertical"
             android:text="26.07.2019"
             android:textColor="@android:color/white"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 

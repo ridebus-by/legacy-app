@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="72dp"
-    android:background="?android:selectableItemBackground">
+    android:background="?android:selectableItemBackground"
+    tools:ignore="Overdraw">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,12 +12,9 @@
         android:orientation="horizontal">
 
         <FrameLayout
-            android:id="@+id/image_container"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:paddingEnd="0dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="0dp"
             android:paddingStart="16dp">
 
             <TextView
@@ -27,7 +24,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="@android:color/white"
-                android:background="@drawable/circle"
+                android:background="@drawable/circle_bus"
                 android:textSize="18sp"
                 tools:ignore="ContentDescription" />
 
@@ -40,8 +37,6 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:paddingEnd="0dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="0dp"
             android:paddingStart="16dp">
 
             <TextView
@@ -50,8 +45,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:singleLine="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                tools:text="@tools:sample/lorem/random"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <TextView
                 android:id="@+id/text_mark_bookmarks_cardview"
@@ -60,8 +54,7 @@
                 android:fontFamily="sans-serif"
                 android:singleLine="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="?android:textColorSecondary"
-                tools:text="@tools:sample/lorem/random"/>
+                android:textColor="?android:textColorSecondary" />
         </LinearLayout>
 
         <ImageView
@@ -69,15 +62,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:layout_gravity="center_vertical"
-            android:tint="?android:textColorSecondary"
-            android:src="@drawable/ic_tram_black_24dp" />
+            android:tint="#757575"
+            android:src="@drawable/ic_tram_black_24dp"
+            android:contentDescription="TODO" />
 
     </LinearLayout>
 
     <View
-        android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_gravity="bottom"
@@ -87,7 +79,6 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_gravity="bottom"
-        android:layout_marginLeft="72dp"
         android:layout_marginStart="72dp"
         android:background="?colorLine"/>
 

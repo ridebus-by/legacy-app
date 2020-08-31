@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.xtimms.ridebus">
+    package="org.xtimms.trackbus">
 
     <application
         android:name=".App"
@@ -12,15 +12,8 @@
         android:hardwareAccelerated="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.StopsActivity"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".activity.ScheduleActivity"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".activity.StopsTimeLineActivity"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".activity.BookmarkActivity"
-            android:theme="@style/AppTheme"/>
+        tools:ignore="GoogleAppIndexingWarning"
+        android:fullBackupContent="@xml/backup_descriptor">
         <activity android:name=".activity.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -29,9 +22,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.settings.SettingsHeadersActivity"
+        <activity android:name=".activity.StopsActivity"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".activity.settings.SettingsActivity"
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+        <activity android:name=".activity.ScheduleActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activity.StopsTimeLineActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activity.BookmarksActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activity.MyAppsActivity"
+            android:label="@string/more_apps"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activity.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activity.settings.SettingsHeadersActivity"
+            android:label="@string/nav_action_settings"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".activity.settings.SettingsActivity"
+            android:label="@string/action_settings"/>
+        <activity
+            android:name=".onboarding.Intro"
+            android:label="@string/app_name"
+            android:theme="@style/FullscreenTheme"/>
+        <activity android:name=".activity.TestActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activity.TestDialog"
+            android:theme="@style/Theme.AppCompat.Light.Dialog"
+            android:excludeFromRecents="true"
+            tools:ignore="Instantiatable" />
+        <activity android:name=".timeline.TimelineActivity"
             android:theme="@style/AppTheme"/>
     </application>
 

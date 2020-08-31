@@ -1,61 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/item_timeline"
     android:layout_width="match_parent"
     android:layout_height="56dp"
     android:background="?android:selectableItemBackground"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    tools:ignore="Overdraw">
 
     <com.alorma.timeline.RoundTimelineView
-        android:id="@+id/timeline1"
         android:layout_width="56dp"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:timeline_indicatorColor="@color/colorAccent"
-        app:timeline_lineColor="@color/colorAccent" />
+        app:timeline_indicatorColor="?colorAccent"
+        app:timeline_lineColor="?colorAccent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_stoptitle_timeline"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center|start"
-        app:layout_constraintEnd_toStartOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/timeline1"
-        app:layout_constraintTop_toTopOf="parent"
         tools:text="пл. Ленина" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="0.5dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
-        android:background="?colorLine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="56dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="8dp"
+        android:layout_weight="3"
         android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_remainingtime_timeline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:textColor="?android:textColorPrimary"
+            android:gravity="center"
             tools:text="12h 12m" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -67,11 +46,4 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="?colorLine"
-        android:layout_marginLeft="56dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

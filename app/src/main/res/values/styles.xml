@@ -1,92 +1,155 @@
 <resources>
 
     <!-- Base application theme. -->
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorTranslucent">#d2414141</item>
+        <item name="windowBackground">#FFFFFF</item>
         <item name="colorLine">#CCCCCC</item>
+        <item name="textColor">#000000</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorTranslucent">#d2ffffff</item>
+        <item name="colorLine">#666666</item>
+        <item name="windowBackground">?android:windowBackground</item>
+        <item name="textColor">#FFFFFF</item>
+        <item name="colorPrimaryLight">#484848</item>
+    </style>
+
+    <style name="AMOLED" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorTranslucent">#d2ffffff</item>
+        <item name="colorLine">#666666</item>
+        <item name="windowBackground">#000000</item>
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="textColor">#FFFFFF</item>
+        <item name="colorPrimaryLight">#000000</item>
     </style>
 
     <style name="AppTheme.Default">
-        <item name="colorPrimary">#01579b</item>
-        <item name="colorPrimaryDark">#002f6c</item>
-        <item name="colorAccent">#f57e1e</item>
+        <item name="colorPrimary">#1565C0</item>
+        <item name="colorPrimaryDark">#283593</item>
+        <item name="colorAccent">#1565C0</item>
+        <item name="colorPrimaryLight">#3387E2</item>
     </style>
 
     <style name="AppTheme.Red">
         <item name="colorPrimary">#F44336</item>
         <item name="colorPrimaryDark">#ba000d</item>
         <item name="colorAccent">#11c1ce</item>
+        <item name="colorPrimaryLight">#ff7961</item>
     </style>
 
     <style name="AppTheme.Orange">
         <item name="colorPrimary">#ff9800</item>
         <item name="colorPrimaryDark">#c66900</item>
         <item name="colorAccent">#0068ff</item>
+        <item name="colorPrimaryLight">#ffc947</item>
     </style>
 
     <style name="AppTheme.LightGreen">
         <item name="colorPrimary">#5181b8</item>
         <item name="colorPrimaryDark">#38618f</item>
         <item name="colorAccent">#5181b8</item>
+        <item name="colorPrimaryLight">#83b0eb</item>
     </style>
 
     <style name="AppTheme.Green">
         <item name="colorPrimary">#af504c</item>
         <item name="colorPrimaryDark">#6B2D2B</item>
         <item name="colorAccent">#af504c</item>
+        <item name="colorPrimaryLight">#e47f78</item>
     </style>
 
     <style name="AppTheme.Teal">
         <item name="colorPrimary">#009688</item>
         <item name="colorPrimaryDark">#00675b</item>
         <item name="colorAccent">#0480d5</item>
+        <item name="colorPrimaryLight">#52c7b8</item>
     </style>
 
     <style name="AppTheme.Cyan">
         <item name="colorPrimary">#00bcd4</item>
         <item name="colorPrimaryDark">#008ba3</item>
         <item name="colorAccent">#c8e105</item>
+        <item name="colorPrimaryLight">#62efff</item>
     </style>
 
     <style name="AppTheme.LightBlue">
         <item name="colorPrimary">#03a9f4</item>
         <item name="colorPrimaryDark">#007ac1</item>
         <item name="colorAccent">#fa5509</item>
+        <item name="colorPrimaryLight">#67daff</item>
     </style>
 
     <style name="AppTheme.Blue">
         <item name="colorPrimary">#2196f3</item>
         <item name="colorPrimaryDark">#0069c0</item>
         <item name="colorAccent">#cd6310</item>
+        <item name="colorPrimaryLight">#6ec6ff</item>
     </style>
 
     <style name="AppTheme.Indigo">
         <item name="colorPrimary">#3f51b5</item>
         <item name="colorPrimaryDark">#002984</item>
         <item name="colorAccent">#c9384f</item>
+        <item name="colorPrimaryLight">#757de8</item>
     </style>
 
     <style name="AppTheme.DeepPurple">
         <item name="colorPrimary">#673ab7</item>
         <item name="colorPrimaryDark">#320b86</item>
         <item name="colorAccent">#2fad5c</item>
+        <item name="colorPrimaryLight">#9a67ea</item>
     </style>
 
     <style name="AppTheme.Purple">
-        <item name="colorPrimary">#673ab7</item>
-        <item name="colorPrimaryDark">#512da8</item>
-        <item name="colorAccent">#ff4081</item>
+        <item name="colorPrimary">#9c27b0</item>
+        <item name="colorPrimaryDark">#6a0080</item>
+        <item name="colorAccent">#8f1427</item>
+        <item name="colorPrimaryLight">#d05ce3</item>
     </style>
 
     <style name="AppTheme.Pink">
         <item name="colorPrimary">#e91e63</item>
         <item name="colorPrimaryDark">#b0003a</item>
         <item name="colorAccent">#1b5cd9</item>
+        <item name="colorPrimaryLight">#ff6090</item>
     </style>
 
     <style name="AppTheme.Black">
         <item name="colorPrimary">#212121</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">#212121</item>
+        <item name="colorPrimaryLight">#484848</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="behavior_peekHeight">@dimen/bottomsheet_peek_height</item>
+    </style>
+
+    <style name="AppDialogLight" parent="Theme.Design.Light.BottomSheetDialog">
+
+    </style>
+
+    <style name="AppDialogDark" parent="Theme.Design.BottomSheetDialog">
+
     </style>
 
 </resources>

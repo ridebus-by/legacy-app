@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:scrollbars="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_schedule">
+    tools:showIn="@layout/activity_schedule"
+    android:background="?windowBackground"
+    tools:ignore="Overdraw">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_schedule_activity"

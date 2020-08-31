@@ -2,7 +2,6 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/id_coordinatorLayout_schedule_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -15,7 +14,6 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout_schedule_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
@@ -28,10 +26,11 @@
                 android:id="@+id/toolbar_schedule_activity"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="parallax"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_date_schedule_activity"
+                android:id="@+id/text_date_scheduleactivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -70,18 +69,19 @@
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/text_route_number_schedule_activity"
+                            android:id="@+id/text_routenumber_scheduleactivity"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:padding="8dp"
                             android:textStyle="bold"
                             android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textColor="?android:attr/textColorPrimary"
                             tools:text="100" />
                     </LinearLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/text_route_title_schedule_activity"
+                        android:id="@+id/text_routetitle_scheduleactivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -90,6 +90,7 @@
                         android:textSize="16sp"
                         android:textStyle="normal"
                         android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textColor="?android:attr/textColorPrimary"
                         tools:text="пл. Примостовая - по кольцу" />
                 </LinearLayout>
 
@@ -109,7 +110,8 @@
                         android:layout_gravity="center"
                         android:padding="8dp"
                         android:src="@drawable/ic_store_mall_directory_black_24dp"
-                        app:tint="?android:attr/textColorPrimary"/>
+                        app:tint="?android:attr/textColorPrimary"
+                        android:contentDescription="TODO" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -118,7 +120,7 @@
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/text_stop_title_schedule_activity"
+                            android:id="@+id/text_stoptitle_scheduleactivity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
@@ -127,16 +129,18 @@
                             android:textSize="16sp"
                             android:textStyle="normal"
                             android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textColor="?android:attr/textColorPrimary"
                             tools:text="ул. Петруся Броуки" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/text_stop_mark_schedule_activity"
+                            android:id="@+id/text_stopmark_scheduleactivity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
                             android:textSize="12sp"
+                            android:textColor="?android:attr/textColorSecondary"
                             tools:text="ул. Петруся Броуки" />
                     </LinearLayout>
                 </LinearLayout>
@@ -147,7 +151,6 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ProgressBar
-        android:id="@+id/progressBar_activitySchedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

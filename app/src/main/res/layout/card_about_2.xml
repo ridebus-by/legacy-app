@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_about_2"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="32dp"
@@ -10,7 +10,8 @@
     android:layout_marginTop="4dp"
     android:background="@android:color/white"
     app:cardCornerRadius="2dp"
-    app:cardElevation="2dp">
+    app:cardElevation="2dp"
+    tools:ignore="Overdraw">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,16 +19,14 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_card_about_2_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="@string/feel_free_to_contact_me"
+            android:text="@string/text_card_2"
             android:textColor="?colorAccent"
             android:textStyle="bold"/>
 
         <View
-            android:id="@+id/view_card_about_2_line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="?colorLine"/>
@@ -47,7 +46,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="16dp"
                 app:tint="?android:attr/textColorSecondary"
-                android:src="@drawable/ic_shop_black_24dp"/>
+                android:src="@drawable/ic_shop_black_24dp"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -74,7 +74,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="16dp"
                 app:tint="?android:attr/textColorSecondary"
-                android:src="@drawable/ic_email_black_24dp"/>
+                android:src="@drawable/ic_email_24dp"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -101,7 +102,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="16dp"
                 app:tint="?android:attr/textColorSecondary"
-                android:src="@drawable/ic_report_problem_black_24dp"/>
+                android:src="@drawable/ic_report_problem_black_24dp"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -128,7 +130,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="16dp"
                 app:tint="?android:attr/textColorSecondary"
-                android:src="@drawable/ic_new_releases_black_24dp"/>
+                android:src="@drawable/ic_new_releases_black_24dp"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:layout_width="wrap_content"
