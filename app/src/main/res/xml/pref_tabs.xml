@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:title="@string/route_tab_title_buses"
+        android:icon="@drawable/ic_directions_bus_gray_24dp"
+        android:summary="@string/settings_tab_bus_summary"
+        android:key="tab_bus"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:title="@string/route_tab_title_minibuses"
+        android:icon="@drawable/ic_airport_shuttle_black_24dp"
+        android:summary="@string/settings_tab_minibuses_summary"
+        android:key="tab_minibus"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:title="@string/route_tab_title_express"
+        android:icon="@drawable/ic_flash_on_black_24dp"
+        android:summary="@string/settings_tab_express_summary"
+        android:key="tab_express"
+        android:defaultValue="true" />
+
+</PreferenceScreen>
