@@ -13,7 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 import org.xtimms.trackbus.R;
-import org.xtimms.trackbus.adapter.RouteTabPageAdapter;
+import org.xtimms.trackbus.adapter.TabPageAdapter;
 
 public class TabRouteFragment extends Fragment {
 
@@ -44,7 +44,7 @@ public class TabRouteFragment extends Fragment {
 
         ViewPager viewPager = view.findViewById(R.id.tabs_viewpager);
         TabLayout tabLayout = view.findViewById(R.id.sliding_tabs);
-        RouteTabPageAdapter pagerAdapter = new RouteTabPageAdapter(getChildFragmentManager());
+        TabPageAdapter pagerAdapter = new TabPageAdapter(getChildFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }

@@ -8,10 +8,6 @@ import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 
-/**
- * Created by koitharu on 26.12.17.
- */
-
 public class AppSettings {
 
 	@Nullable

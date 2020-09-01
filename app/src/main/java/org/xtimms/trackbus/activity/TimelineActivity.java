@@ -20,7 +20,7 @@ import com.getkeepsafe.taptargetview.TapTargetView;
 
 import org.joda.time.LocalDate;
 import org.xtimms.trackbus.R;
-import org.xtimms.trackbus.adapter.TimeLineAdapter;
+import org.xtimms.trackbus.adapter.TimelineAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.object.StopsActivityTimeLineObject;
 import org.xtimms.trackbus.presenter.TimeLineActivityPresenter;
@@ -36,20 +36,20 @@ import de.galgtonold.jollydayandroid.Holiday;
 import de.galgtonold.jollydayandroid.HolidayCalendar;
 import de.galgtonold.jollydayandroid.HolidayManager;
 
-public class StopsTimeLineActivity extends AppBaseActivity implements TimeLineActivityPresenter.View {
+public class TimelineActivity extends AppBaseActivity implements TimeLineActivityPresenter.View {
     //public static final String TAG = StopsTimeLineActivity.class.getSimpleName() + "TAG";
-    public static final String EXTRA_ROUTE = StopsTimeLineActivity.class.getSimpleName();
+    public static final String EXTRA_ROUTE = TimelineActivity.class.getSimpleName();
     private RecyclerView mRecyclerView;
     //private TextView mWeekDay;
     //private TextView mTimeText;
     private Route mRoute;
     private Toolbar toolbar;
     private boolean mAdapterIsSet = false;
-    private TimeLineAdapter mTimeLineAdapter;
+    private TimelineAdapter mTimeLineAdapter;
     private BroadcastReceiver mBroadcastReceiver;
 
     public static Intent newIntent(Context context, Route route) {
-        Intent intent = new Intent(context, StopsTimeLineActivity.class);
+        Intent intent = new Intent(context, TimelineActivity.class);
         intent.putExtra(EXTRA_ROUTE, route);
         return intent;
     }
@@ -59,7 +59,7 @@ public class StopsTimeLineActivity extends AppBaseActivity implements TimeLineAc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
 
-        mRoute = (Route) getIntent().getSerializableExtra(StopsTimeLineActivity.EXTRA_ROUTE);
+        mRoute = (Route) getIntent().getSerializableExtra(TimelineActivity.EXTRA_ROUTE);
 
         //mTimeText = findViewById(R.id.text_timeline_time_appbar);
         //mWeekDay = findViewById(R.id.text_timeline_weekday);
@@ -235,7 +235,7 @@ public class StopsTimeLineActivity extends AppBaseActivity implements TimeLineAc
                 int month = mcurrentDate.get(Calendar.MONTH);
                 int day = mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(StopsTimeLineActivity.this, (view, year1, monthOfYear, dayOfMonth) -> {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(TimelineActivity.this, (view, year1, monthOfYear, dayOfMonth) -> {
                     Calendar newDate = Calendar.getInstance();
                     newDate.set(year1, monthOfYear, dayOfMonth);
                     //SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.getDefault());
@@ -302,7 +302,7 @@ public class StopsTimeLineActivity extends AppBaseActivity implements TimeLineAc
     public void setAdapter(List<StopsActivityTimeLineObject> stopsActivityTimeLineObjects, String currentTime) {
 
         if (!mAdapterIsSet) {
-            mTimeLineAdapter = new TimeLineAdapter(stopsActivityTimeLineObjects, currentTime);
+            mTimeLineAdapter = new TimelineAdapter(stopsActivityTimeLineObjects, currentTime);
             mRecyclerView.setAdapter(mTimeLineAdapter);
             mAdapterIsSet = true;
 

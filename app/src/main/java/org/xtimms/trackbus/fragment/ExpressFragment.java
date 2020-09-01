@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.xtimms.trackbus.R;
-import org.xtimms.trackbus.activity.StopsTimeLineActivity;
+import org.xtimms.trackbus.activity.TimelineActivity;
 import org.xtimms.trackbus.adapter.ExpressAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.ExpressFragmentPresenter;
@@ -38,7 +38,7 @@ public class ExpressFragment extends Fragment implements ExpressFragmentPresente
         ExpressAdapter mExpressAdapter = new ExpressAdapter(routeList);
         mRecyclerView.setAdapter(mExpressAdapter);
         mExpressAdapter.setOnItemClickListener((parent, view, position, id) -> {
-            Intent intent = StopsTimeLineActivity.newIntent(getActivity(), routeList.get(position));
+            Intent intent = TimelineActivity.newIntent(getActivity(), routeList.get(position));
             startActivity(intent);
         });
     }

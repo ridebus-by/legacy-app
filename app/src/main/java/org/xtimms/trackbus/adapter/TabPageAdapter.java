@@ -8,14 +8,14 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import org.xtimms.trackbus.Constant;
 import org.xtimms.trackbus.fragment.ExpressFragment;
 import org.xtimms.trackbus.fragment.MinibusFragment;
-import org.xtimms.trackbus.fragment.RouteFragment;
+import org.xtimms.trackbus.fragment.BusFragment;
 import org.xtimms.trackbus.fragment.TabRouteFragment;
 
-public class RouteTabPageAdapter extends FragmentPagerAdapter {
+public class TabPageAdapter extends FragmentPagerAdapter {
 
     private final String[] tabTitles;
 
-    public RouteTabPageAdapter(FragmentManager fm) {
+    public TabPageAdapter(FragmentManager fm) {
         super(fm);
         tabTitles = Constant.ROUTE_TABS;
     }
@@ -24,7 +24,7 @@ public class RouteTabPageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int i) {
         switch (i) {
             case 0:
-                return RouteFragment.newInstance();
+                return BusFragment.newInstance();
             case 1:
                 return MinibusFragment.newInstance();
             //case 2:

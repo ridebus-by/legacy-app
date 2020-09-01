@@ -10,9 +10,7 @@ public class Constant {
     public static final String HOURS = App.getInstance().getAppContext().getString(R.string.hours); //Символ часов
 
     public static final String EMPTY_STRING = ""; // Пустая строка для очистки textView
-    public static final String DOT = " • ";
     public static final String[] ROUTE_TABS = App.getInstance().getResources().getStringArray(R.array.route_tabs);
-    public static final String[] TIMELINE_TABS = App.getInstance().getResources().getStringArray(R.array.timeline_tabs);// Массив с названиями ТАБов в RouteFragment
     public static final String TIME_DELIM = ":"; // Разделитель в строке времени
     public static final String TIME_EMPTY = "-"; // Время отсутствует
     public static final String TWO_SPACES = "  "; // Два пробела

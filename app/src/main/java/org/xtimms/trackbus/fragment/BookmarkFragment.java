@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.activity.BookmarksActivity;
 import org.xtimms.trackbus.activity.StopsActivity;
-import org.xtimms.trackbus.activity.StopsTimeLineActivity;
+import org.xtimms.trackbus.activity.TimelineActivity;
 import org.xtimms.trackbus.adapter.BookmarkAdapter;
 import org.xtimms.trackbus.model.DatabaseObject;
 import org.xtimms.trackbus.model.Route;
@@ -68,7 +68,7 @@ public class BookmarkFragment extends Fragment {
             } else {
                 if (object instanceof Route) {
                     Route route = (Route) object;
-                    Intent intent = StopsTimeLineActivity.newIntent(getActivity(), route);
+                    Intent intent = TimelineActivity.newIntent(getActivity(), route);
                     startActivity(intent);
                 }
 

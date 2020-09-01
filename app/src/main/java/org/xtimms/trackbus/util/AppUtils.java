@@ -30,14 +30,4 @@ public class AppUtils {
         }
     }
 
-    public static String getDbVersion(Context context) {
-        try {
-            String version = String.valueOf(Constant.DB_VERSION);
-            return context.getString(R.string.db_version) + " " + version;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "";
-        }
-    }
-
 }

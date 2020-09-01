@@ -8,10 +8,10 @@ import org.xtimms.trackbus.model.Route;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-public class RouteFragmentPresenter {
+public class BusFragmentPresenter {
     private final View mView;
 
-    public RouteFragmentPresenter(View view) {
+    public BusFragmentPresenter(View view) {
         mView = view;
     }
 

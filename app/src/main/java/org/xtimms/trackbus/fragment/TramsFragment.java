@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.xtimms.trackbus.R;
-import org.xtimms.trackbus.activity.StopsTimeLineActivity;
+import org.xtimms.trackbus.activity.TimelineActivity;
 import org.xtimms.trackbus.adapter.TramsAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.TramsFragmentPresenter;
@@ -33,7 +33,7 @@ public class TramsFragment extends Fragment implements TramsFragmentPresenter.Vi
         TramsAdapter mTramsAdapter = new TramsAdapter(routeList);
         mRecyclerView.setAdapter(mTramsAdapter);
         mTramsAdapter.setOnItemClickListener((parent, v, position, id) -> {
-            Intent intent = StopsTimeLineActivity.newIntent(getActivity(), routeList.get(position));
+            Intent intent = TimelineActivity.newIntent(getActivity(), routeList.get(position));
             startActivity(intent);
         });
     }

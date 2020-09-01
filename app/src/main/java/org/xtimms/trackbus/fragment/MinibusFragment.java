@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.xtimms.trackbus.R;
+import org.xtimms.trackbus.activity.TimelineActivity;
 import org.xtimms.trackbus.adapter.MinibusAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.MinibusFragmentPresenter;
-import org.xtimms.trackbus.timeline.TimelineActivity;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class MinibusFragment extends Fragment implements MinibusFragmentPresente
     public void setAdapter(List<Route> routeList) {
         MinibusAdapter mMinibusAdapter = new MinibusAdapter(routeList);
         mRecyclerView.setAdapter(mMinibusAdapter);
-        mMinibusAdapter.setOnItemClickListener((parent, v, position, id) -> {
+        mMinibusAdapter.setOnItemClickListener((parent, view, position, id) -> {
             Intent intent = TimelineActivity.newIntent(getActivity(), routeList.get(position));
             startActivity(intent);
         });

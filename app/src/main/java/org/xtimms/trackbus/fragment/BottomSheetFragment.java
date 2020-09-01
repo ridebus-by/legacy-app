@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.xtimms.trackbus.R;
-import org.xtimms.trackbus.activity.StopsTimeLineActivity;
+import org.xtimms.trackbus.activity.TimelineActivity;
 import org.xtimms.trackbus.adapter.BottomSheetAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.BottomSheetPresenter;
@@ -42,7 +42,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Bo
 
         bottomSheetAdapter.setOnItemClickListener((parent, view, position, id) -> {
             mBottomSheetFragment.dismiss();
-            Intent intent = StopsTimeLineActivity.newIntent(getActivity(), routesBottomSheet.get(position));
+            Intent intent = TimelineActivity.newIntent(getActivity(), routesBottomSheet.get(position));
             startActivity(intent);
 
         });

@@ -42,9 +42,6 @@ public class SettingsActivity extends AppBaseActivity implements SharedPreferenc
             case ACTION_SETTINGS_GENERAL:
                 mFragment = new GeneralSettingsFragment();
                 break;
-            case ACTION_SETTINGS_TABS:
-                mFragment = new TabsSettingsFragment();
-                break;
             default:
                 finish();
         }

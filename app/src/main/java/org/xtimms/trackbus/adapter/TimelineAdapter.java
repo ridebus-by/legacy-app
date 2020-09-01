@@ -21,14 +21,14 @@ import org.xtimms.trackbus.util.ThemeUtils;
 import java.text.ParseException;
 import java.util.List;
 
-public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.ViewHolder> {
+public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHolder> {
     private AdapterView.OnItemClickListener onItemClickListener;
     private String mCurrentTime;
     private List<StopsActivityTimeLineObject> mStopsActivityTimeLineObjects;
     @ColorInt
     private int mColor;
 
-    public TimeLineAdapter(List<StopsActivityTimeLineObject> stopsActivityTimeLineObjects, String currentTime) {
+    public TimelineAdapter(List<StopsActivityTimeLineObject> stopsActivityTimeLineObjects, String currentTime) {
         this.mStopsActivityTimeLineObjects = stopsActivityTimeLineObjects;
         this.mCurrentTime = currentTime;
     }
@@ -99,13 +99,13 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final TimeLineAdapter mAdapter;
+        private final TimelineAdapter mAdapter;
         //private TimelineView mTimelineView;
         private final TextView mMainText;
         private final TextView mRemainingTimeText;
         private final TextView mClosestTime;
 
-        ViewHolder(View itemView, TimeLineAdapter adapter, int viewType) {
+        ViewHolder(View itemView, TimelineAdapter adapter, int viewType) {
             super(itemView);
             mMainText = itemView.findViewById(R.id.text_stoptitle_timeline);
             mRemainingTimeText = itemView.findViewById(R.id.text_remainingtime_timeline);

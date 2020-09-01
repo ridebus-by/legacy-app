@@ -41,7 +41,6 @@ import org.xtimms.trackbus.activity.settings.SettingsHeadersActivity;
 import org.xtimms.trackbus.fragment.BookmarkFragment;
 import org.xtimms.trackbus.fragment.StopFragment;
 import org.xtimms.trackbus.fragment.TabRouteFragment;
-import org.xtimms.trackbus.onboarding.Intro;
 import org.xtimms.trackbus.ui.DrawerHeaderImageTool;
 
 import java.util.Objects;
@@ -128,29 +127,7 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
 
         initDrawerHeaderTool();
         initOnHolidayDialog();
-        initOnboarding();
 
-    }
-
-    private void initOnboarding() {
-        Thread t = new Thread(() -> {
-            SharedPreferences getPrefs = PreferenceManager
-                    .getDefaultSharedPreferences(getBaseContext());
-
-            boolean isFirstStart = getPrefs.getBoolean("startOnboarding", true);
-
-            if (isFirstStart) {
-                Intent i = new Intent(MainActivity.this, Intro.class);
-                startActivity(i);
-
-                SharedPreferences.Editor e = getPrefs.edit();
-                e.putBoolean("startOnboarding", false);
-                e.apply();
-            }
-        });
-
-        // Start the thread
-        t.start();
     }
 
     private void initDrawerHeaderTool() {
@@ -271,9 +248,6 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
                 intent.setClass(MainActivity.this, SettingsHeadersActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.action_test:
-                TestDialog activity = new TestDialog(this);
-                activity.showSave();
         }
 
         return super.onOptionsItemSelected(item);

@@ -9,7 +9,7 @@
     tools:ignore="Overdraw">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_routes"
+        android:id="@+id/recyclerView_buses"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"

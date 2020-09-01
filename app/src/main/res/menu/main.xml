@@ -15,11 +15,4 @@
         android:title="@string/nav_action_about"
         app:showAsAction="always"/>
 
-    <item
-        android:id="@+id/action_test"
-        android:icon="@drawable/ic_new_releases_white_24dp"
-        android:title="Test"
-        app:showAsAction="always"
-        tools:ignore="HardcodedText" />
-
 </menu>

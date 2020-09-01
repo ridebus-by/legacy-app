@@ -17,25 +17,25 @@ import org.xtimms.trackbus.model.Route;
 
 import java.util.List;
 
-public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.ViewHolder> {
+public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ViewHolder> {
 
     private final List<Route> routes;
     private AdapterView.OnItemClickListener onItemClickListener;
 
-    public RouteAdapter(List<Route> routes) {
+    public BusAdapter(List<Route> routes) {
         this.routes = routes;
     }
 
     @NonNull
     @Override
-    public RouteAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BusAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ConstraintLayout constraintLayout = (ConstraintLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_route_bus, parent, false);
-        return new RouteAdapter.ViewHolder(constraintLayout, this);
+        return new BusAdapter.ViewHolder(constraintLayout, this);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RouteAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BusAdapter.ViewHolder holder, int position) {
         holder.mRouteNumber.setLetter(routes.get(position).getRouteNumber());
         holder.mRouteTitle.setText(routes.get(position).getRouteTitle());
     }
@@ -49,7 +49,7 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.ViewHolder> 
         this.onItemClickListener = onItemClickListener;
     }
 
-    private void onItemHolderClick(RouteAdapter.ViewHolder itemHolder) {
+    private void onItemHolderClick(BusAdapter.ViewHolder itemHolder) {
         if (onItemClickListener != null) {
             onItemClickListener.onItemClick(null, itemHolder.itemView,
                     itemHolder.getAdapterPosition(), itemHolder.getItemId());
@@ -59,10 +59,10 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final MaterialLetterIcon mRouteNumber;
         private final TextView mRouteTitle;
-        private final RouteAdapter adapter;
+        private final BusAdapter adapter;
 
 
-        ViewHolder(ConstraintLayout itemView, RouteAdapter adapter) {
+        ViewHolder(ConstraintLayout itemView, BusAdapter adapter) {
             super(itemView);
             mRouteNumber = itemView.findViewById(R.id.route_bus_number);
             mRouteTitle = itemView.findViewById(R.id.route_bus_title);

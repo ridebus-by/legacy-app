@@ -27,7 +27,7 @@
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
         <activity android:name=".activity.ScheduleActivity"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".activity.StopsTimeLineActivity"
+        <activity android:name=".activity.TimelineActivity"
             android:theme="@style/AppTheme"/>
         <activity android:name=".activity.BookmarksActivity"
             android:theme="@style/AppTheme"/>
@@ -43,18 +43,6 @@
         <activity
             android:name=".activity.settings.SettingsActivity"
             android:label="@string/action_settings"/>
-        <activity
-            android:name=".onboarding.Intro"
-            android:label="@string/app_name"
-            android:theme="@style/FullscreenTheme"/>
-        <activity android:name=".activity.TestActivity"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".activity.TestDialog"
-            android:theme="@style/Theme.AppCompat.Light.Dialog"
-            android:excludeFromRecents="true"
-            tools:ignore="Instantiatable" />
-        <activity android:name=".timeline.TimelineActivity"
-            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
