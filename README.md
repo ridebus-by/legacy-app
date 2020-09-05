@@ -2,7 +2,7 @@
 
 RideBus is a free and open source application to view bus schedule of Polotsk, Belarus for Android.
 
-![Android 5.0](https://img.shields.io/badge/android-5.0+-brightgreen)
+![Android 5.0](https://img.shields.io/badge/android-5.0+-brightgreen) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/88024be81238434cb543f9696da0366a)](https://app.codacy.com/manual/SketchUpper/RideBus?utm_source=github.com&utm_medium=referral&utm_content=SketchUpper/RideBus&utm_campaign=Badge_Grade_Dashboard)
 
 ### Screenshots
 
