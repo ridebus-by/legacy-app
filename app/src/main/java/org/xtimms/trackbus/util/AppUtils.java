@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-import org.xtimms.trackbus.Constant;
 import org.xtimms.trackbus.R;
 
 public class AppUtils {
