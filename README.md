@@ -2,7 +2,7 @@
 
 RideBus is a free and open source application to view bus schedule of Polotsk, Belarus for Android.
 
-![Android 5.0](https://img.shields.io/badge/android-5.0+-brightgreen)
+![Android 5.0](https://img.shields.io/badge/android-5.0+-brightgreen) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/88024be81238434cb543f9696da0366a)](https://app.codacy.com/manual/SketchUpper/RideBus?utm_source=github.com&utm_medium=referral&utm_content=SketchUpper/RideBus&utm_campaign=Badge_Grade_Dashboard)
 
 ### Screenshots
 
@@ -11,7 +11,6 @@ RideBus is a free and open source application to view bus schedule of Polotsk, B
 | ![Screenshot_1598915657.png](https://raw.githubusercontent.com/SketchUpper/RideBus/master/art/Screenshot_1598915657.png)  | ![Screenshot_1598915664.png](https://raw.githubusercontent.com/SketchUpper/RideBus/master/art/Screenshot_1598915664.png) |
 
 ### License
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/88024be81238434cb543f9696da0366a)](https://app.codacy.com/manual/SketchUpper/RideBus?utm_source=github.com&utm_medium=referral&utm_content=SketchUpper/RideBus&utm_campaign=Badge_Grade_Dashboard)
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)  
 
 RideBus is Free Software: You can use, study share and improve it at your
