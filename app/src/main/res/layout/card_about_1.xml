@@ -24,7 +24,8 @@
             android:layout_height="128dp"
             android:background="?colorLine"
             android:scaleType="centerInside"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher"
+            android:contentDescription="TODO" />
 
         <RelativeLayout
             android:layout_width="wrap_content"

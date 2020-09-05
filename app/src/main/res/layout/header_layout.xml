@@ -12,7 +12,8 @@
         android:layout_height="match_parent"
         android:src="@drawable/nav_header"
         android:scaleType="centerCrop"
-        android:contentDescription="TODO" />
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription,HardcodedText" />
 
     <View
         android:id="@+id/gradient"
@@ -28,7 +29,8 @@
         android:layout_gravity="bottom"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="54dp"
-        android:contentDescription="TODO" />
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription,HardcodedText" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +40,8 @@
         android:orientation="vertical"
         android:paddingBottom="8dp"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:paddingRight="16dp"
+        tools:ignore="RtlHardcoded">
 
         <TextView
             android:layout_width="match_parent"

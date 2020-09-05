@@ -65,7 +65,8 @@
             android:layout_gravity="center_vertical"
             android:tint="#757575"
             android:src="@drawable/ic_tram_black_24dp"
-            android:contentDescription="TODO" />
+            android:contentDescription="TODO"
+            tools:ignore="ContentDescription,HardcodedText" />
 
     </LinearLayout>
 

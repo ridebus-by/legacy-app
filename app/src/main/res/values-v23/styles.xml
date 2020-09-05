@@ -142,12 +142,4 @@
         <item name="behavior_peekHeight">@dimen/bottomsheet_peek_height</item>
     </style>
 
-    <style name="AppDialogLight" parent="Theme.Design.Light.BottomSheetDialog">
-
-    </style>
-
-    <style name="AppDialogDark" parent="Theme.Design.BottomSheetDialog">
-
-    </style>
-
 </resources>

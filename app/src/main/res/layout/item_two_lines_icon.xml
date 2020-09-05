@@ -18,7 +18,8 @@
 		android:layout_gravity="center_vertical"
 		android:background="@drawable/circle_gray"
 		android:scaleType="center"
-        android:contentDescription="TODO" />
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription,HardcodedText" />
 
 	<LinearLayout
 		android:layout_width="match_parent"

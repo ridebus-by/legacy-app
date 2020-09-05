@@ -11,10 +11,6 @@
         <item name="textColor">#000000</item>
     </style>
 
-    <style name="FullscreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-    </style>
-
     <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
         <item name="windowActionModeOverlay">true</item>
@@ -142,14 +138,6 @@
 
     <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="behavior_peekHeight">@dimen/bottomsheet_peek_height</item>
-    </style>
-
-    <style name="AppDialogLight" parent="Theme.Design.Light.BottomSheetDialog">
-
-    </style>
-
-    <style name="AppDialogDark" parent="Theme.Design.BottomSheetDialog">
-
     </style>
 
 </resources>

@@ -44,7 +44,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         LinearLayout layout = (LinearLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_timeline, parent, false);
 
-        return new ViewHolder(layout, this, viewType);
+        return new ViewHolder(layout, this);
     }
 
     @Override
@@ -105,7 +105,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         private final TextView mRemainingTimeText;
         private final TextView mClosestTime;
 
-        ViewHolder(View itemView, TimelineAdapter adapter, int viewType) {
+        ViewHolder(View itemView, TimelineAdapter adapter) {
             super(itemView);
             mMainText = itemView.findViewById(R.id.text_stoptitle_timeline);
             mRemainingTimeText = itemView.findViewById(R.id.text_remainingtime_timeline);

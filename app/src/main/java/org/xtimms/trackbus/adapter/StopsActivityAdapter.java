@@ -47,7 +47,7 @@ public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdap
         holder.setRemainingTime(mStopActivityObjectList.get(position).getRemainingTime());
 
         org.xtimms.trackbus.util.Color.setBackgroundColor(mStopActivityObjectList
-                .get(position).getRoute().getTransportId(), holder.mColor, context);
+                .get(position).getRoute().getTransportId(), holder.mColor);
 
     }
 

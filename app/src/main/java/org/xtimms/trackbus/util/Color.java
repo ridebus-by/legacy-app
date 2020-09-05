@@ -1,6 +1,5 @@
 package org.xtimms.trackbus.util;
 
-import android.content.Context;
 import android.view.View;
 
 import org.xtimms.trackbus.App;
@@ -8,7 +7,7 @@ import org.xtimms.trackbus.R;
 
 public class Color {
 
-    public static void setBackgroundColor(int transportId, View view, Context context) {
+    public static void setBackgroundColor(int transportId, View view) {
         if (transportId == TransportId.BUS.getIdInDatabase()) {
             view.setBackgroundColor(App.getInstance().getAppContext().getResources()
                     .getColor(R.color.blue_bus));
@@ -27,7 +26,7 @@ public class Color {
         }
     }
 
-    public static void setBackgroundCircle(int transportId, View view, Context context) {
+    public static void setBackgroundCircle(int transportId, View view) {
         if (transportId == TransportId.BUS.getIdInDatabase()) {
             view.setBackground(App.getInstance().getAppContext().getResources()
                     .getDrawable(R.drawable.circle_bus));

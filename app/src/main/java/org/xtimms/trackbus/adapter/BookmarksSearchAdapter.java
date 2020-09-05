@@ -84,7 +84,7 @@ public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearch
             Route route = (Route) object;
             holder.mTitleText.setText(route.getRouteTitle());
 
-            Color.setBackgroundCircle(route.getTransportId(), holder.mPictureText, context);
+            Color.setBackgroundCircle(route.getTransportId(), holder.mPictureText);
 
             holder.mPictureText.setText(route.getRouteNumber());
         }

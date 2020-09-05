@@ -44,9 +44,6 @@
     <string name="db_version">Schedule version:</string>
     <string name="error">Error</string>
     <string name="select_image">Select image</string>
-    <string name="settings_tab_bus_summary">Do you want to use the buses tab?</string>
-    <string name="settings_tab_minibuses_summary">Do you want to use the route taxis tab?</string>
-    <string name="settings_tab_express_summary">Do you want to use the express tab?</string>
     <string name="route_info">Route information</string>
 
     <!-- TODO: Remove or change this placeholder text -->

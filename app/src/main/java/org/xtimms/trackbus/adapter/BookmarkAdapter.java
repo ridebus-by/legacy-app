@@ -86,7 +86,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
             holder.mTextImageBtn.setText(route.getRouteNumber());
             holder.mTextDescriptionBtn.setVisibility(View.GONE);
 
-            Color.setBackgroundCircle(route.getTransportId(), holder.mTextImageBtn, context);
+            Color.setBackgroundCircle(route.getTransportId(), holder.mTextImageBtn);
 
             holder.mTextTitleBtn.setText(route.getRouteTitle());
             holder.mTextDescriptionBtn.setVisibility(View.GONE);

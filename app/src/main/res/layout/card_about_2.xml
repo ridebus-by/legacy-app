@@ -47,7 +47,8 @@
                 android:layout_margin="16dp"
                 app:tint="?android:attr/textColorSecondary"
                 android:src="@drawable/ic_shop_black_24dp"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                tools:ignore="ContentDescription,HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -75,7 +76,8 @@
                 android:layout_margin="16dp"
                 app:tint="?android:attr/textColorSecondary"
                 android:src="@drawable/ic_email_24dp"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                tools:ignore="ContentDescription,HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -103,7 +105,8 @@
                 android:layout_margin="16dp"
                 app:tint="?android:attr/textColorSecondary"
                 android:src="@drawable/ic_report_problem_black_24dp"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                tools:ignore="ContentDescription,HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -131,7 +134,8 @@
                 android:layout_margin="16dp"
                 app:tint="?android:attr/textColorSecondary"
                 android:src="@drawable/ic_new_releases_black_24dp"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                tools:ignore="ContentDescription,HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
