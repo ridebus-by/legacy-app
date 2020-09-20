@@ -10,12 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.ShareActionProvider;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.appbar.AppBarLayout;
 
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.adapter.ScheduleAdapter;
@@ -38,11 +35,7 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
 
     private TextView mTextDate;
     private RecyclerView mRecyclerView;
-    private ShareActionProvider mShareActionProvider;
-    private boolean mShareProvIsNull = false;
     private BroadcastReceiver mBroadcastReceiver;
-    private TextView mWeekDay;
-    //private String mCurrentPhotoPath;
 
 
     public static Intent newIntent(Context context, Route route, Stop stop) {
@@ -65,7 +58,6 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
         }
 
         setContentView(R.layout.activity_schedule);
-        AppBarLayout mAppBarLayout = findViewById(R.id.app_bar_schedule_activity);
         Toolbar toolbar = findViewById(R.id.toolbar_schedule_activity);
         setSupportActionBar(toolbar);
 

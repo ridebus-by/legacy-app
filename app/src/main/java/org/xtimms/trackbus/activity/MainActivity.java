@@ -288,7 +288,8 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
             return true;
         }
         Intent intent = new Intent();
-        switch (item.getItemId()) {
+        int x = item.getItemId();
+        switch (x) {
             case R.id.action_about:
                 intent.setClass(MainActivity.this, AboutActivity.class);
                 startActivity(intent);

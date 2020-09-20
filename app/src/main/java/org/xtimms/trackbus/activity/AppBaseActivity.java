@@ -1,32 +1,21 @@
 package org.xtimms.trackbus.activity;
 
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.IdRes;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import org.xtimms.trackbus.util.ThemeUtils;
-
-import java.util.ArrayList;
-
-/**
- * Created by koitharu on 21.12.17.
- */
 
 public abstract class AppBaseActivity extends AppCompatActivity {
 

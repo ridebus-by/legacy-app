@@ -1,6 +1,5 @@
 package org.xtimms.trackbus.adapter;
 
-import android.content.Context;
 import android.os.Build;
 import android.view.ContextMenu;
 import android.view.Gravity;
@@ -26,7 +25,6 @@ import java.util.List;
 
 public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHolder> {
 
-    private Context context;
     private final List<DatabaseObject> mBookmarks;
     private AdapterView.OnItemClickListener onItemClickListener;
     private int mPosition;
