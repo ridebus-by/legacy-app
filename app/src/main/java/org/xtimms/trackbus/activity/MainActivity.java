@@ -61,6 +61,14 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
     private DrawerHeaderImageTool mDrawerHeaderTool;
     private FloatingActionButton floatingActionButton;
 
+    private TabRouteFragment tabRouteFragment;
+    private StopFragment stopFragment;
+    private BookmarkFragment bookmarkFragment;
+
+    private static final String KEY_NAV_ITEM = "CURRENT_NAV_ITEM";
+
+    private int selectedNavItem = 0;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,12 +106,57 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
         }
         mNavigationView = findViewById(R.id.navigation_view);
         mNavigationView.setNavigationItemSelectedListener(this);
-        mNavigationView.setCheckedItem(R.id.menu_item_1);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.menu_item_1));
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, TabRouteFragment.newInstance(0));
-        transaction.commit();
+        // Init the fragments.
+        if (savedInstanceState != null) {
+            tabRouteFragment = (TabRouteFragment) getSupportFragmentManager().getFragment(savedInstanceState, "TabRouteFragment");
+            stopFragment = (StopFragment) getSupportFragmentManager().getFragment(savedInstanceState, "StopFragment");
+            bookmarkFragment = (BookmarkFragment) getSupportFragmentManager().getFragment(savedInstanceState, "BookmarkFragment");
+            selectedNavItem = savedInstanceState.getInt(KEY_NAV_ITEM);
+        } else {
+            tabRouteFragment = (TabRouteFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout);
+            if (tabRouteFragment == null) {
+                tabRouteFragment = TabRouteFragment.newInstance(0);
+            }
+
+            stopFragment = (StopFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout);
+            if (stopFragment == null) {
+                stopFragment = StopFragment.newInstance();
+            }
+
+            bookmarkFragment = (BookmarkFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout);
+            if (bookmarkFragment == null) {
+                bookmarkFragment = BookmarkFragment.newInstance();
+            }
+        }
+
+        // Add the fragments.
+        if (!tabRouteFragment.isAdded()) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.frame_layout, tabRouteFragment, "TabRouteFragment")
+                    .commit();
+        }
+
+        if (!stopFragment.isAdded()) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.frame_layout, stopFragment, "StopFragment")
+                    .commit();
+        }
+
+        if (!bookmarkFragment.isAdded()) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.frame_layout, bookmarkFragment, "BookmarkFragment")
+                    .commit();
+        }
+
+        // Show the default fragment.
+        if (selectedNavItem == 0) {
+            showRoutesFragment();
+        } else if (selectedNavItem == 1) {
+            showStopsFragment();
+        } else if (selectedNavItem == 2) {
+            showBookmarksFragment();
+        }
 
         final View headerView = mNavigationView.getHeaderView(0);
         TextView mDbVersion = headerView.findViewById(R.id.db_version);
@@ -277,6 +330,16 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
         //Log.d(TAG, "onSaveInstanceState()");
         mInstanceState = true;
         //outState.putSerializable(DATABASE_INSTANCE_STATE, App.getInstance().getDatabase());
+        // Store the fragments' states.
+        if (tabRouteFragment.isAdded()) {
+            getSupportFragmentManager().putFragment(outState, "TabRouteFragment", tabRouteFragment);
+        }
+        if (stopFragment.isAdded()) {
+            getSupportFragmentManager().putFragment(outState, "StopFragment", stopFragment);
+        }
+        if (bookmarkFragment.isAdded()) {
+            getSupportFragmentManager().putFragment(outState, "BookmarkFragment", bookmarkFragment);
+        }
     }
 
     @Override
@@ -294,55 +357,77 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Intent intent = new Intent();
+        int id = menuItem.getItemId();
         Fragment selectedFragment = null;
-        switch (menuItem.getItemId()) {
-            case R.id.menu_item_1:
-                selectedFragment = TabRouteFragment.newInstance(0);
-                Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.menu_item_1));
-                tabLayout.setVisibility(View.VISIBLE);
-                break;
-            case R.id.menu_item_2:
-                Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.menu_item_2));
-                selectedFragment = StopFragment.newInstance();
-                tabLayout.setVisibility(View.GONE);
-                break;
-            case R.id.menu_item_3:
-                Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.menu_item_3));
-                selectedFragment = BookmarkFragment.newInstance();
-                tabLayout.setVisibility(View.GONE);
-                break;
-            case R.id.nav_action_about:
-                intent.setClass(MainActivity.this, AboutActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.nav_action_settings:
-                intent.setClass(MainActivity.this, SettingsHeadersActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                return false;
+        if (id == R.id.menu_item_1) {
+            showRoutesFragment();
+        } else if (id == R.id.menu_item_2) {
+            showStopsFragment();
+        } else if (id == R.id.menu_item_3) {
+            showBookmarksFragment();
+        } else if (id == R.id.nav_action_about) {
+            intent.setClass(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_action_settings) {
+            intent.setClass(MainActivity.this, SettingsHeadersActivity.class);
+            startActivity(intent);
         }
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
-
-        if (selectedFragment != null) {
-            transaction.replace(R.id.frame_layout, selectedFragment);
-            transaction.commit();
-        }
-        closeDrawer();
+        mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    private void closeDrawer() {
-        if (mDrawerLayout != null){
-            mDrawerLayout.closeDrawer(mNavigationView);
-        }
     }
 
     private void openDrawer() {
         if (mDrawerLayout != null) {
             mDrawerLayout.openDrawer(mNavigationView);
         }
+    }
+
+    /**
+     * Show the routes list fragment.
+     */
+    private void showRoutesFragment() {
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.show(tabRouteFragment);
+        fragmentTransaction.hide(stopFragment);
+        fragmentTransaction.hide(bookmarkFragment);
+        fragmentTransaction.commit();
+
+        toolbar.setTitle(getResources().getString(R.string.menu_item_1));
+        mNavigationView.setCheckedItem(R.id.menu_item_1);
+
+    }
+
+    /**
+     * Show the companies list fragment.
+     */
+    private void showStopsFragment() {
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.show(stopFragment);
+        fragmentTransaction.hide(tabRouteFragment);
+        fragmentTransaction.hide(bookmarkFragment);
+        fragmentTransaction.commit();
+
+        toolbar.setTitle(getResources().getString(R.string.menu_item_2));
+        mNavigationView.setCheckedItem(R.id.menu_item_2);
+
+    }
+
+    /**
+     * Show the bookmarks list fragment.
+     */
+    private void showBookmarksFragment() {
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.show(bookmarkFragment);
+        fragmentTransaction.hide(tabRouteFragment);
+        fragmentTransaction.hide(stopFragment);
+        fragmentTransaction.commit();
+
+        toolbar.setTitle(getResources().getString(R.string.menu_item_3));
+        mNavigationView.setCheckedItem(R.id.menu_item_3);
+
     }
 
 }

@@ -27,7 +27,7 @@
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
         <activity android:name=".activity.ScheduleActivity"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".activity.TimelineActivity"
+        <activity android:name=".timeline.TimelineActivity"
             android:theme="@style/AppTheme"/>
         <activity android:name=".activity.BookmarksActivity"
             android:theme="@style/AppTheme"/>

@@ -57,7 +57,7 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timeline);
+        setContentView(R.layout.activity_timeline_legacy);
 
         mRoute = (Route) getIntent().getSerializableExtra(TimelineActivity.EXTRA_ROUTE);
 
