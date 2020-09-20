@@ -19,7 +19,6 @@ public class SettingsActivity extends AppBaseActivity implements SharedPreferenc
 
     public static final String ACTION_SETTINGS_APPEARANCE = "org.xtimms.trackbus.ACTION_SETTINGS_APPEARANCE";
     public static final String ACTION_SETTINGS_GENERAL = "org.xtimms.trackbus.ACTION_SETTINGS_GENERAL";
-    public static final String ACTION_SETTINGS_TABS = "org.xtimms.trackbus.ACTION_SETTINGS_TABS";
 
     public static final int RESULT_RESTART = Activity.RESULT_FIRST_USER + 1;
 
@@ -32,7 +31,6 @@ public class SettingsActivity extends AppBaseActivity implements SharedPreferenc
         setContentView(R.layout.activity_settings);
         setSupportActionBar(R.id.toolbar);
         enableHomeAsUp();
-        View mContent = findViewById(R.id.content);
         mDefaultPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final String action = TextUtils.notNull(getIntent().getAction());
         switch (action) {

@@ -103,7 +103,7 @@ public abstract class PreferencesUtils {
             return true;
         }
 
-        void initSummary(Preference preference) {
+        private void initSummary(Preference preference) {
             if (preference instanceof EditTextPreference) {
                 preference.setSummary(formatSummary(((EditTextPreference) preference).getText()));
             } else if (preference instanceof ListPreference) {

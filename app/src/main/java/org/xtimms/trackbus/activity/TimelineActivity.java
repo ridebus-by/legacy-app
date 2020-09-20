@@ -89,13 +89,6 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
         textTitle.setText(getResources().getString(R.string.number) + mRoute.getRouteNumber());
         textSubtitle.setText(mRoute.getRouteTitle());
 
-        HolidayManager m = HolidayManager.getInstance(HolidayCalendar.BELARUS);
-        Set<Holiday> holidays = m.getHolidays(Calendar.YEAR);
-
-        for (Holiday holiday : holidays) {
-            LocalDate.now();//holidayStar.setVisibility(View.VISIBLE);
-        }
-
         boolean firstLoad = getSharedPreferences("PREFERENCE_TIMELINE", MODE_PRIVATE)
                 .getBoolean("firstLoad", true);
 
@@ -134,7 +127,8 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //Menu
-        switch (item.getItemId()) {
+        int x = item.getItemId();
+        switch (x) {
             //When home is clicked
             case android.R.id.home:
                 onBackPressed();

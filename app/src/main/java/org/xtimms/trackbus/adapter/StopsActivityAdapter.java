@@ -1,6 +1,5 @@
 package org.xtimms.trackbus.adapter;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.xtimms.trackbus.Constant;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.object.StopActivityObject;
+import org.xtimms.trackbus.util.ColorUtils;
 import org.xtimms.trackbus.util.DateTime;
 import org.xtimms.trackbus.util.ThemeUtils;
 
@@ -23,7 +23,6 @@ import java.util.List;
 
 public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdapter.ViewHolder> {
 
-    private Context context;
     private List<StopActivityObject> mStopActivityObjectList;
     private AdapterView.OnItemClickListener onItemClickListener;
 
@@ -46,7 +45,7 @@ public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdap
         holder.mClosestTime.setText(mStopActivityObjectList.get(position).getClosestTime());
         holder.setRemainingTime(mStopActivityObjectList.get(position).getRemainingTime());
 
-        org.xtimms.trackbus.util.Color.setBackgroundColor(mStopActivityObjectList
+        ColorUtils.setBackgroundColor(mStopActivityObjectList
                 .get(position).getRoute().getTransportId(), holder.mColor);
 
     }

@@ -25,11 +25,6 @@ import static org.xtimms.trackbus.Constant.MINUTES;
 public class DateTime {
     private static final StringBuilder mTempString = new StringBuilder();
 
-    public static void getHolidays() {
-        HolidayManager m = HolidayManager.getInstance(HolidayCalendar.BELARUS);
-        Set<Holiday> holidays = m.getHolidays(2019);
-    }
-
     public static String getCurrentTime() {
         return new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
     }

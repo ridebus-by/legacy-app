@@ -176,7 +176,8 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //Menu
-        switch (item.getItemId()) {
+        int x = item.getItemId();
+        switch (x) {
             //When home is clicked
             case android.R.id.home:
                 onBackPressed();

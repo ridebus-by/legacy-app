@@ -1,11 +1,12 @@
-package org.xtimms.trackbus;
+package org.xtimms.trackbus.util;
 
+import org.xtimms.trackbus.BuildConfig;
 import org.xtimms.trackbus.model.MyApps;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Data {
+public class DataUtils {
 
     public static List<MyApps> getMyAppsData() {
         List<MyApps> lists = new ArrayList();

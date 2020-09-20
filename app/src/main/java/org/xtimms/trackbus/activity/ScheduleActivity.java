@@ -123,8 +123,8 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
+        int x = item.getItemId();
+        switch (x) {
             case android.R.id.home:
                 onBackPressed();
                 return true;

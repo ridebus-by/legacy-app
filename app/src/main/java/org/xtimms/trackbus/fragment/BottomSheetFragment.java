@@ -29,7 +29,6 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Bo
     private String mRouteNumber;
     private BottomSheetFragment mBottomSheetFragment;
     private RecyclerView mRecyclerView;
-    private Context context;
 
     public void setArguments(String routeNumber) {
         this.mRouteNumber = routeNumber;

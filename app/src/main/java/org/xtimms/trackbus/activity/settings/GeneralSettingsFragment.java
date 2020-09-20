@@ -21,7 +21,6 @@ public class GeneralSettingsFragment extends PreferenceFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Activity activity = getActivity();
 
         PreferencesUtils.bindPreferenceSummary(findPreference("lang"), (preference, newValue) -> {
             App.setLanguage(preference.getContext().getApplicationContext().getResources(), (String) newValue);

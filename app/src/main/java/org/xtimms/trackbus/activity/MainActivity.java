@@ -56,7 +56,6 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private NavigationView mNavigationView;
-    private TabLayout tabLayout;
     private Toolbar toolbar;
     private DrawerHeaderImageTool mDrawerHeaderTool;
     private FloatingActionButton floatingActionButton;
@@ -349,7 +348,6 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
         if (!mInstanceState) {
             //Log.d(TAG, "Database - close");
             App.getInstance().getDatabase().close();
-            System.exit(0);
         }
 
     }
@@ -358,7 +356,6 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Intent intent = new Intent();
         int id = menuItem.getItemId();
-        Fragment selectedFragment = null;
         if (id == R.id.menu_item_1) {
             showRoutesFragment();
         } else if (id == R.id.menu_item_2) {

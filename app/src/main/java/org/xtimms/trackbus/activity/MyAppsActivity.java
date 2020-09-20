@@ -7,7 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.xtimms.trackbus.Data;
+import org.xtimms.trackbus.util.DataUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.adapter.MyAppsAdapter;
 
@@ -25,7 +25,7 @@ public class MyAppsActivity extends AppBaseActivity {
         }
 
         RecyclerView recycler_my_apps = findViewById(R.id.recycler_my_apps);
-        MyAppsAdapter adapter = new MyAppsAdapter(this, Data.getMyAppsData());
+        MyAppsAdapter adapter = new MyAppsAdapter(this, DataUtils.getMyAppsData());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_my_apps.setLayoutManager(linearLayoutManager);
         recycler_my_apps.setAdapter(adapter);

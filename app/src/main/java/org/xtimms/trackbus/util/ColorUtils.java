@@ -5,7 +5,7 @@ import android.view.View;
 import org.xtimms.trackbus.App;
 import org.xtimms.trackbus.R;
 
-public class Color {
+public class ColorUtils {
 
     public static void setBackgroundColor(int transportId, View view) {
         if (transportId == TransportId.BUS.getIdInDatabase()) {

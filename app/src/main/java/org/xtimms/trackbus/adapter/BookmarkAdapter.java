@@ -20,7 +20,7 @@ import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.model.DatabaseObject;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.model.Stop;
-import org.xtimms.trackbus.util.Color;
+import org.xtimms.trackbus.util.ColorUtils;
 
 import java.util.List;
 
@@ -86,7 +86,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
             holder.mTextImageBtn.setText(route.getRouteNumber());
             holder.mTextDescriptionBtn.setVisibility(View.GONE);
 
-            Color.setBackgroundCircle(route.getTransportId(), holder.mTextImageBtn);
+            ColorUtils.setBackgroundCircle(route.getTransportId(), holder.mTextImageBtn);
 
             holder.mTextTitleBtn.setText(route.getRouteTitle());
             holder.mTextDescriptionBtn.setVisibility(View.GONE);

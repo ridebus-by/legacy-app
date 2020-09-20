@@ -20,7 +20,7 @@ import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.model.DatabaseObject;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.model.Stop;
-import org.xtimms.trackbus.util.Color;
+import org.xtimms.trackbus.util.ColorUtils;
 import org.xtimms.trackbus.util.TransportId;
 
 import java.util.ArrayList;
@@ -84,7 +84,7 @@ public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearch
             Route route = (Route) object;
             holder.mTitleText.setText(route.getRouteTitle());
 
-            Color.setBackgroundCircle(route.getTransportId(), holder.mPictureText);
+            ColorUtils.setBackgroundCircle(route.getTransportId(), holder.mPictureText);
 
             holder.mPictureText.setText(route.getRouteNumber());
         }
@@ -120,7 +120,7 @@ public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearch
                     for (DatabaseObject row : mDatabaseObjects) {
 
                         if (row.getTitle().toLowerCase().contains(charString.toLowerCase()) ||
-                                row.getNumber().equals(charString.toLowerCase())) {
+                                row.getNumber().equalsIgnoreCase(charString.toLowerCase())) {
                             filteredList.add(row);
                         }
                     }
