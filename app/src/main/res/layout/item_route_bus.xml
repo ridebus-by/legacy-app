@@ -15,7 +15,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.github.ivbaranov.mli.MaterialLetterIcon
+        <TextView
             android:id="@+id/route_bus_number"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -23,8 +23,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:gravity="center"
-            app:mli_shape_color="@color/blue_bus"
-            app:mli_letters_number="2"
+            android:textColor="@android:color/white"
+            android:background="@drawable/circle_bus"
+            android:textSize="22sp"
             cardView:layout_constraintBottom_toBottomOf="parent"
             cardView:layout_constraintStart_toStartOf="parent"
             cardView:layout_constraintTop_toTopOf="parent" />

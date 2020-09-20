@@ -35,7 +35,7 @@ public class DateTime {
     }
 
     public static String getCurrentDate() {
-        return new SimpleDateFormat("EEEE, dd MMM yyyy", Locale.getDefault()).format(new Date());
+        return new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
         //return new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
     }
 

@@ -190,8 +190,7 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
                 DatePickerDialog datePickerDialog = new DatePickerDialog(StopsActivity.this, (view, year1, monthOfYear, dayOfMonth) -> {
                     Calendar newDate = Calendar.getInstance();
                     newDate.set(year1, monthOfYear, dayOfMonth);
-                    //SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.getDefault());
-                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd MMM yyyy", Locale.getDefault());
+                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.getDefault());
                     mWeekDay.setText(sdf.format(newDate.getTime()));
                     dateTimeChange();
                 }, year, month, day);

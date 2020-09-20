@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.xtimms.trackbus.R;
+import org.xtimms.trackbus.activity.TimelineActivity;
 import org.xtimms.trackbus.adapter.BusAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.BusFragmentPresenter;
-import org.xtimms.trackbus.timeline.TimelineActivity;
 
 import java.util.List;
 

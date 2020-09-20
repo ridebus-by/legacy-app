@@ -137,7 +137,7 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
                 DatePickerDialog datePickerDialog = new DatePickerDialog(ScheduleActivity.this, (view, year1, monthOfYear, dayOfMonth) -> {
                     Calendar newDate = Calendar.getInstance();
                     newDate.set(year1, monthOfYear, dayOfMonth);
-                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd MMM yyyy", Locale.getDefault());
+                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.getDefault());
                     //SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault());
                     mTextDate.setText(sdf.format(newDate.getTime()));
 

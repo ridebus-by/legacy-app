@@ -1,7 +1,7 @@
 package org.xtimms.trackbus;
 
 public class Constant {
-    public static final int DB_VERSION = 358; //Изменить, если делались изменения в БД
+    public static final int DB_VERSION = 360; //Изменить, если делались изменения в БД
 
     public static final int MINUTES_PASS = 4; // Минут прошло после отправления автобуса
     public static final int HOURS_AFTER_MIDNIGHT = 3; //Проверка есть ли автобусы после 00:00ч.(до 3-х ночи проверяем)

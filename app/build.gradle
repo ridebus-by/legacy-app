@@ -44,9 +44,7 @@ dependencies {
     implementation 'de.galgtonold.jollydayandroid:jollyday-android:0.1.9'
     implementation 'com.getkeepsafe.taptargetview:taptargetview:1.13.0'
     implementation 'com.github.alorma:timelineview:2.3.0'
-    implementation 'com.github.paolorotolo:appintro:3.3.0'
     implementation 'com.github.kabouzeid:RecyclerView-FastScroll:1.0.16-kmod'
-    implementation 'com.github.ivbaranov:materiallettericon:0.2.3'
     implementation 'com.lucasurbas:listitemview:1.1.1'
 
     implementation "android.arch.persistence.room:runtime:1.1.1"

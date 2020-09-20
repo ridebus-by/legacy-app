@@ -16,12 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.activity.BookmarksActivity;
 import org.xtimms.trackbus.activity.StopsActivity;
+import org.xtimms.trackbus.activity.TimelineActivity;
 import org.xtimms.trackbus.adapter.BookmarkAdapter;
 import org.xtimms.trackbus.model.DatabaseObject;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.model.Stop;
 import org.xtimms.trackbus.presenter.BookmarkFragmentPresenter;
-import org.xtimms.trackbus.timeline.TimelineActivity;
 
 import java.util.List;
 

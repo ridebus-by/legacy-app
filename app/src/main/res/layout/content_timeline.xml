@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="?windowBackground"
-    tools:showIn="@layout/activity_timeline_legacy"
+    tools:showIn="@layout/activity_timeline"
     tools:ignore="Overdraw">
 
     <androidx.recyclerview.widget.RecyclerView

@@ -17,10 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.xtimms.trackbus.R;
+import org.xtimms.trackbus.activity.TimelineActivity;
 import org.xtimms.trackbus.adapter.BottomSheetAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.BottomSheetPresenter;
-import org.xtimms.trackbus.timeline.TimelineActivity;
 
 import java.util.List;
 

@@ -10,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.ivbaranov.mli.MaterialLetterIcon;
-
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.model.Route;
 
@@ -40,7 +38,7 @@ public class ExpressAdapter extends RecyclerView.Adapter<ExpressAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.mRouteNumber.setLetter(routes.get(position).getRouteNumber());
+        holder.mRouteNumber.setText(routes.get(position).getRouteNumber());
         holder.mRouteTitle.setText(routes.get(position).getRouteTitle());
     }
 
@@ -57,7 +55,7 @@ public class ExpressAdapter extends RecyclerView.Adapter<ExpressAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final MaterialLetterIcon mRouteNumber;
+        private final TextView mRouteNumber;
         private final TextView mRouteTitle;
         private final ExpressAdapter adapter;
 

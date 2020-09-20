@@ -45,6 +45,7 @@
     <string name="error">Error</string>
     <string name="select_image">Select image</string>
     <string name="route_info">Route information</string>
+    <string name="number">Route №</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

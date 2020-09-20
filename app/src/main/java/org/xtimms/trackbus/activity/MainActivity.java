@@ -79,8 +79,8 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
 
         toolbar = findViewById(R.id.toolbar_main);
         toolbar.inflateMenu(R.menu.main);
+        toolbar.setTitle(R.string.menu_item_1);
         toolbar.setNavigationOnClickListener(v -> mDrawerLayout.openDrawer(GravityCompat.START));
-        tabLayout = findViewById(R.id.tab_invisible);
         floatingActionButton = findViewById(R.id.fab);
         setSupportActionBar(toolbar);
 
