@@ -22,7 +22,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.getkeepsafe.taptargetview.TapTarget;
@@ -30,11 +29,10 @@ import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
 
 import org.joda.time.LocalDate;
 import org.xtimms.trackbus.App;
-import org.xtimms.trackbus.Constant;
+import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.activity.settings.SettingsHeadersActivity;
 import org.xtimms.trackbus.fragment.BookmarkFragment;
@@ -159,7 +157,7 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
 
         final View headerView = mNavigationView.getHeaderView(0);
         TextView mDbVersion = headerView.findViewById(R.id.db_version);
-        mDbVersion.setText(App.getInstance().getAppContext().getString(R.string.db_version) + " " + Constant.DB_VERSION);
+        mDbVersion.setText(App.getInstance().getAppContext().getString(R.string.db_version) + " " + ConstantUtils.DB_VERSION);
 
         if (isDarkTheme()) {
             ColorStateList csl = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white_overlay_85));

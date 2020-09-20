@@ -114,10 +114,6 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 		}
 	}
 
-	public void setSubtitle(@StringRes int subtitle) {
-		setSubtitle(getString(subtitle));
-	}
-
 	public void enableTransparentStatusBar(@ColorRes int color) {
 		if (Build.VERSION.SDK_INT >= 21) {
 			Window window = getWindow();
@@ -136,46 +132,6 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 			finish();
 		}
 		return super.onOptionsItemSelected(item);
-	}
-
-	public void setKeepScreenOn(boolean flag) {
-		if (flag) {
-			getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		} else {
-			getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		}
-	}
-
-	public void checkPermissions(int requestCode, String... permissions) {
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-			for (String o : permissions) {
-				onPermissionGranted(requestCode, o);
-			}
-		}
-		final ArrayList<String> required = new ArrayList<>(permissions.length);
-		for (String o : permissions) {
-			if (ContextCompat.checkSelfPermission(this, o) != PackageManager.PERMISSION_GRANTED) {
-				required.add(o);
-			} else {
-				onPermissionGranted(requestCode, o);
-			}
-		}
-		if (!required.isEmpty()) {
-			ActivityCompat.requestPermissions(this, required.toArray(new String[0]), requestCode);
-		}
-	}
-
-	@Override
-	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-		for (int i = 0; i < permissions.length; i++) {
-			if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-				onPermissionGranted(requestCode, permissions[i]);
-			}
-		}
-	}
-
-	protected void onPermissionGranted(int requestCode, String permission) {
-
 	}
 
 	protected void stub() {

@@ -1,6 +1,9 @@
-package org.xtimms.trackbus;
+package org.xtimms.trackbus.util;
 
-public class Constant {
+import org.xtimms.trackbus.App;
+import org.xtimms.trackbus.R;
+
+public class ConstantUtils {
     public static final int DB_VERSION = 360; //Изменить, если делались изменения в БД
 
     public static final int MINUTES_PASS = 4; // Минут прошло после отправления автобуса

@@ -8,11 +8,10 @@ import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.xtimms.trackbus.Constant;
+import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.object.StopsActivityTimeLineObject;
 import org.xtimms.trackbus.util.DateTime;
@@ -25,8 +24,6 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     private AdapterView.OnItemClickListener onItemClickListener;
     private String mCurrentTime;
     private List<StopsActivityTimeLineObject> mStopsActivityTimeLineObjects;
-    @ColorInt
-    private int mColor;
 
     public TimelineAdapter(List<StopsActivityTimeLineObject> stopsActivityTimeLineObjects, String currentTime) {
         this.mStopsActivityTimeLineObjects = stopsActivityTimeLineObjects;
@@ -53,8 +50,8 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         holder.mMainText.setText(object.getStop().getStopTitle());
 
         if ((object.getTimeList() == null) || (object.getTimeList().isEmpty())) {
-            holder.mRemainingTimeText.setText(Constant.TIME_EMPTY);
-            holder.mClosestTime.setText(Constant.TIME_EMPTY);
+            holder.mRemainingTimeText.setText(ConstantUtils.TIME_EMPTY);
+            holder.mClosestTime.setText(ConstantUtils.TIME_EMPTY);
         } else {
             DateTime dateTime = new DateTime();
             DateTime.ResultTime resultTime = null;
@@ -63,8 +60,8 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
                 resultTime = dateTime.getRemainingClosestTime(object.getTimeList(), mCurrentTime);
             } catch (ParseException e) {
                 //e.printStackTrace();
-                holder.mRemainingTimeText.setText(Constant.TIME_EMPTY);
-                holder.mClosestTime.setText(Constant.TIME_EMPTY);
+                holder.mRemainingTimeText.setText(ConstantUtils.TIME_EMPTY);
+                holder.mClosestTime.setText(ConstantUtils.TIME_EMPTY);
             }
 
             if (resultTime != null) {
@@ -127,21 +124,21 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
         private void setRemainingTime(String remainingTime) {
 
-            if (remainingTime.equals(Constant.TIME_EMPTY)) {
-                mRemainingTimeText.setText(Constant.TIME_EMPTY);
+            if (remainingTime.equals(ConstantUtils.TIME_EMPTY)) {
+                mRemainingTimeText.setText(ConstantUtils.TIME_EMPTY);
                 return;
             }
 
             String remainingStringTime = DateTime.formatRemainingTime(remainingTime);
 
             if (ThemeUtils.isAppThemeDark(itemView.getContext())) {
-                if (remainingStringTime.contains(Constant.TIME_EMPTY)) {
+                if (remainingStringTime.contains(ConstantUtils.TIME_EMPTY)) {
                     mRemainingTimeText.setTextColor(Color.RED);
                 } else mRemainingTimeText.setTextColor(Color.WHITE);
             }
 
             if (ThemeUtils.isAppThemeNotDark(itemView.getContext())) {
-                if (remainingStringTime.contains(Constant.TIME_EMPTY)) {
+                if (remainingStringTime.contains(ConstantUtils.TIME_EMPTY)) {
                     mRemainingTimeText.setTextColor(Color.RED);
                 } else mRemainingTimeText.setTextColor(Color.BLACK);
             }

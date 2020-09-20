@@ -10,9 +10,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Objects;
 
-import static org.xtimms.trackbus.Constant.DB_VERSION;
+import static org.xtimms.trackbus.util.ConstantUtils.DB_VERSION;
 
 @Database(entities = {
         City.class, Transport.class, TypeDay.class, KindRoute.class, Route.class, Stop.class,
@@ -30,9 +29,6 @@ public abstract class ScheduleDatabase extends RoomDatabase {
             //Log.d("Activity", "db Path Exists");
             //return;
         }
-
-        // Make sure we have a path to the file
-        boolean s = Objects.requireNonNull(dbPath.getParentFile()).mkdirs();
 
         // Try to copy database file
         try {

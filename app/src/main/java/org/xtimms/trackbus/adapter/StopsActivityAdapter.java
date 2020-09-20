@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.xtimms.trackbus.Constant;
+import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.object.StopActivityObject;
 import org.xtimms.trackbus.util.ColorUtils;
@@ -97,21 +97,21 @@ public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdap
 
         private void setRemainingTime(String remainingTime) {
 
-            if (remainingTime.equals(Constant.TIME_EMPTY)) {
-                mRemainingTimeText.setText(Constant.TIME_EMPTY);
+            if (remainingTime.equals(ConstantUtils.TIME_EMPTY)) {
+                mRemainingTimeText.setText(ConstantUtils.TIME_EMPTY);
                 return;
             }
 
             String remainingStringTime = DateTime.formatRemainingTime(remainingTime);
 
             if (ThemeUtils.isAppThemeDark(itemView.getContext())) {
-                if (remainingStringTime.contains(Constant.TIME_EMPTY)) {
+                if (remainingStringTime.contains(ConstantUtils.TIME_EMPTY)) {
                     mRemainingTimeText.setTextColor(Color.RED);
                 } else mRemainingTimeText.setTextColor(Color.WHITE);
             }
 
             if (ThemeUtils.isAppThemeNotDark(itemView.getContext())) {
-                if (remainingStringTime.contains(Constant.TIME_EMPTY)) {
+                if (remainingStringTime.contains(ConstantUtils.TIME_EMPTY)) {
                     mRemainingTimeText.setTextColor(Color.RED);
                 } else mRemainingTimeText.setTextColor(Color.BLACK);
             }

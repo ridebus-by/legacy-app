@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
-import org.xtimms.trackbus.Constant;
+import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.util.AppUtils;
 
@@ -72,17 +72,17 @@ public class AboutActivity extends AppBaseActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         Intent intent = new Intent();
-
-        switch (view.getId()) {
+        int x = view.getId();
+        switch (x) {
             case R.id.ll_card_about_2_google_play:
-                intent.setData(Uri.parse(Constant.APP_URL));
+                intent.setData(Uri.parse(ConstantUtils.APP_URL));
                 intent.setAction(Intent.ACTION_VIEW);
                 startActivity(intent);
                 break;
 
             case R.id.ll_card_about_2_email:
                 intent.setAction(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse(Constant.EMAIL));
+                intent.setData(Uri.parse(ConstantUtils.EMAIL));
                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.about_email_intent));
                 //intent.putExtra(Intent.EXTRA_TEXT, "Hi,");
                 try {
@@ -93,7 +93,7 @@ public class AboutActivity extends AppBaseActivity implements View.OnClickListen
                 break;
             case R.id.ll_card_about_2_report:
                 intent.setAction(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse(Constant.EMAIL));
+                intent.setData(Uri.parse(ConstantUtils.EMAIL));
                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.about_report_intent));
                 //intent.putExtra(Intent.EXTRA_TEXT, "Hi,");
                 try {

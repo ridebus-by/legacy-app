@@ -34,7 +34,6 @@ public class DrawerHeaderImageTool implements View.OnClickListener {
     private final AppCompatActivity mActivity;
     private final File mImageFile;
     private final View mGradient;
-    private Context context;
 
     public DrawerHeaderImageTool(AppCompatActivity activity, NavigationView navigationView) {
         mActivity = activity;

@@ -26,7 +26,7 @@ import org.xtimms.trackbus.util.TransportId;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.xtimms.trackbus.Constant.EMPTY_STRING;
+import static org.xtimms.trackbus.util.ConstantUtils.EMPTY_STRING;
 
 public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearchAdapter.ViewHolder> implements Filterable {
 

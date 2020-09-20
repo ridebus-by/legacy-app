@@ -1,7 +1,5 @@
 package org.xtimms.trackbus.util;
 
-import org.xtimms.trackbus.Constant;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,16 +9,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.NavigableSet;
 import java.util.Objects;
-import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
-import de.galgtonold.jollydayandroid.Holiday;
-import de.galgtonold.jollydayandroid.HolidayCalendar;
-import de.galgtonold.jollydayandroid.HolidayManager;
-
-import static org.xtimms.trackbus.Constant.HOURS;
-import static org.xtimms.trackbus.Constant.MINUTES;
+import static org.xtimms.trackbus.util.ConstantUtils.HOURS;
+import static org.xtimms.trackbus.util.ConstantUtils.MINUTES;
 
 public class DateTime {
     private static final StringBuilder mTempString = new StringBuilder();
@@ -38,7 +31,7 @@ public class DateTime {
         final int SIXTYMINUTES = 60;
         String stringRemainingTime;
 
-        if (remainingTime.equals(Constant.TIME_EMPTY)) {
+        if (remainingTime.equals(ConstantUtils.TIME_EMPTY)) {
             return "-";
         }
 
@@ -56,7 +49,7 @@ public class DateTime {
                 mTempString.delete(0, mTempString.length());
                 stringRemainingTime = mTempString.append(hours)
                         .append(HOURS)
-                        .append(Constant.ONE_SPACE)
+                        .append(ConstantUtils.ONE_SPACE)
                         .append(minutes)
                         .append(MINUTES).toString();
             }
@@ -109,19 +102,19 @@ public class DateTime {
         long subTime;
         boolean flag = false;
 
-        String remainingTime = Constant.TIME_EMPTY;
+        String remainingTime = ConstantUtils.TIME_EMPTY;
 
         if (!loClosestTime.isEmpty()) {
             subTime = parseTimeToMilliseconds(loClosestTime)
                     - parseTimeToMilliseconds(currentTime);
 
-            if (Math.abs(subTime) < TimeUnit.MINUTES.toMillis(Constant.MINUTES_PASS)) {
+            if (Math.abs(subTime) < TimeUnit.MINUTES.toMillis(ConstantUtils.MINUTES_PASS)) {
                 remainingTime = String.valueOf(TimeUnit.MILLISECONDS.toMinutes(subTime));
                 flag = true;
             }
         }
 
-        String closestTime = Constant.TIME_EMPTY;
+        String closestTime = ConstantUtils.TIME_EMPTY;
 
         if (!hiClosestTime.isEmpty()) {
             closestTime = hiClosestTime;
@@ -151,7 +144,7 @@ public class DateTime {
         Date now = parseDate(currentTime);
 
         for (String time : timeList) {
-            if (time.equals(currentTime)) return new String[]{Constant.EMPTY_STRING, currentTime};
+            if (time.equals(currentTime)) return new String[]{ConstantUtils.EMPTY_STRING, currentTime};
             times.add(parseDate(time));
         }
 
@@ -162,16 +155,16 @@ public class DateTime {
 
         if (lowClosestTime != null) {
             hiLoClosetTime[0] = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(lowClosestTime);
-        } else hiLoClosetTime[0] = Constant.EMPTY_STRING;
+        } else hiLoClosetTime[0] = ConstantUtils.EMPTY_STRING;
 
         if (hiClosestTime != null) {
             hiLoClosetTime[1] = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(hiClosestTime);
         } else {
             String firstTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(times.pollFirst());
 
-            if (subTime(currentTime, firstTime) < TimeUnit.HOURS.toMinutes(Constant.HOURS_AFTER_MIDNIGHT)) {
+            if (subTime(currentTime, firstTime) < TimeUnit.HOURS.toMinutes(ConstantUtils.HOURS_AFTER_MIDNIGHT)) {
                 hiLoClosetTime[1] = firstTime;
-            } else hiLoClosetTime[1] = Constant.EMPTY_STRING;
+            } else hiLoClosetTime[1] = ConstantUtils.EMPTY_STRING;
 
         }
 
@@ -186,7 +179,7 @@ public class DateTime {
         long closestTimeMillis = parseTimeToMilliseconds(closestTime);
 
         if (closestTimeMillis < currentTimeMillis) {
-            diff = (TimeUnit.HOURS.toMillis(Constant.HOUR_PER_DAY) + closestTimeMillis) - currentTimeMillis;
+            diff = (TimeUnit.HOURS.toMillis(ConstantUtils.HOUR_PER_DAY) + closestTimeMillis) - currentTimeMillis;
         } else {
             diff = closestTimeMillis - currentTimeMillis;
         }

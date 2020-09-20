@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import org.xtimms.trackbus.App;
-import org.xtimms.trackbus.Constant;
+import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.model.ModelFactory;
 import org.xtimms.trackbus.util.DateTime;
@@ -97,7 +97,7 @@ public class ScheduleActivityPresenter {
 
             for (int i = 0; i < mTimeList.size(); i++) {
                 List<String> mins = new ArrayList<>();
-                StringTokenizer tokenizer = new StringTokenizer(mTimeList.get(i), Constant.TIME_DELIM);
+                StringTokenizer tokenizer = new StringTokenizer(mTimeList.get(i), ConstantUtils.TIME_DELIM);
                 String hours = tokenizer.nextToken();
                 String minutes = tokenizer.nextToken();
 
@@ -108,7 +108,7 @@ public class ScheduleActivityPresenter {
                 mins.add(minutes);
 
                 for (int j = i + 1; j < mTimeList.size(); j++) {
-                    StringTokenizer token = new StringTokenizer(mTimeList.get(j), Constant.TIME_DELIM);
+                    StringTokenizer token = new StringTokenizer(mTimeList.get(j), ConstantUtils.TIME_DELIM);
 
                     if (token.nextToken().equals(hours)) {
                         mins.add(token.nextToken());

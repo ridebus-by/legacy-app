@@ -2,7 +2,7 @@ package org.xtimms.trackbus.presenter;
 
 import android.os.AsyncTask;
 
-import org.xtimms.trackbus.Constant;
+import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.model.ModelFactory;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.object.StopActivityObject;
@@ -75,7 +75,7 @@ public class StopsActivityPresenter {
                 }
 
                 if ((timeList == null) || (timeList.isEmpty())) {
-                    mStopActivityObjectList.add(new StopActivityObject(route, Constant.TIME_EMPTY, Constant.TIME_EMPTY));
+                    mStopActivityObjectList.add(new StopActivityObject(route, ConstantUtils.TIME_EMPTY, ConstantUtils.TIME_EMPTY));
                     continue;
                 }
 
@@ -94,18 +94,18 @@ public class StopsActivityPresenter {
 
                 Collections.sort(mStopActivityObjectList, (o1, o2) -> {
 
-                    if (o1.getRemainingTime().equals(Constant.TIME_EMPTY)
-                            && !o2.getRemainingTime().equals(Constant.TIME_EMPTY)) {
+                    if (o1.getRemainingTime().equals(ConstantUtils.TIME_EMPTY)
+                            && !o2.getRemainingTime().equals(ConstantUtils.TIME_EMPTY)) {
                         return 1;
                     }
 
-                    if (o2.getRemainingTime().equals(Constant.TIME_EMPTY)
-                            && !o1.getRemainingTime().equals(Constant.TIME_EMPTY)) {
+                    if (o2.getRemainingTime().equals(ConstantUtils.TIME_EMPTY)
+                            && !o1.getRemainingTime().equals(ConstantUtils.TIME_EMPTY)) {
                         return -1;
                     }
 
-                    if (o1.getRemainingTime().equals(Constant.TIME_EMPTY)
-                            && o2.getRemainingTime().equals(Constant.TIME_EMPTY)) {
+                    if (o1.getRemainingTime().equals(ConstantUtils.TIME_EMPTY)
+                            && o2.getRemainingTime().equals(ConstantUtils.TIME_EMPTY)) {
                         return 0;
                     }
 

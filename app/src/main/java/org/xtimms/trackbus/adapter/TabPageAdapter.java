@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import org.xtimms.trackbus.Constant;
+import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.fragment.ExpressFragment;
 import org.xtimms.trackbus.fragment.MinibusFragment;
 import org.xtimms.trackbus.fragment.BusFragment;
@@ -17,7 +17,7 @@ public class TabPageAdapter extends FragmentPagerAdapter {
 
     public TabPageAdapter(FragmentManager fm) {
         super(fm);
-        tabTitles = Constant.ROUTE_TABS;
+        tabTitles = ConstantUtils.ROUTE_TABS;
     }
 
     @Override

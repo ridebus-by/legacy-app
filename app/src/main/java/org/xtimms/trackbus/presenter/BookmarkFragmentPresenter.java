@@ -6,7 +6,7 @@ import android.preference.PreferenceManager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.xtimms.trackbus.Constant;
+import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.fragment.BookmarkFragment;
 import org.xtimms.trackbus.model.DatabaseObject;
 import org.xtimms.trackbus.model.Route;
@@ -62,7 +62,7 @@ public class BookmarkFragmentPresenter {
         SharedPreferences appSharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(mView.getContext());
 
-        String json = appSharedPrefs.getString(BOOKMARKS_PREFERENCES, Constant.EMPTY_STRING);
+        String json = appSharedPrefs.getString(BOOKMARKS_PREFERENCES, ConstantUtils.EMPTY_STRING);
 
         if (!json.isEmpty()) {
             Type type = new TypeToken<List<SharePreferenceObject>>() {
@@ -87,7 +87,7 @@ public class BookmarkFragmentPresenter {
     private List<Stop> getEmptyObjects() {
         List<Stop> stops = new ArrayList<>();
 
-        for (int i = 0; i < Constant.NUMBER_BOOKMARKS; i++) {
+        for (int i = 0; i < ConstantUtils.NUMBER_BOOKMARKS; i++) {
             stops.add(new Stop());
         }
 

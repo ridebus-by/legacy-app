@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Room;
 
 import org.xtimms.trackbus.model.ScheduleDatabase;
+import org.xtimms.trackbus.util.ConstantUtils;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -49,7 +50,7 @@ public class App extends Application {
 
         //mDatabase = Room.databaseBuilder(getApplicationContext(), ScheduleDatabase.class, ScheduleDatabase.DATABASE_NAME).allowMainThreadQueries().build();
         mDatabase = Room.databaseBuilder(getApplicationContext(), ScheduleDatabase.class, ScheduleDatabase.DATABASE_NAME).build();
-        ScheduleDatabase.setDbVersion(getApplicationContext(), Constant.DB_VERSION);
+        ScheduleDatabase.setDbVersion(getApplicationContext(), ConstantUtils.DB_VERSION);
         setLanguage(getResources(), PreferenceManager.getDefaultSharedPreferences(this).getString("lang", ""));
     }
 

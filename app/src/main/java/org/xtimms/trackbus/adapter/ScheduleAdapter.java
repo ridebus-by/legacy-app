@@ -18,7 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.xtimms.trackbus.Constant;
+import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.util.ThemeUtils;
 
@@ -43,9 +43,9 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
 
     private void setClosestTime(String closestTime) {
 
-        if (closestTime == null || closestTime.equals(Constant.TIME_EMPTY)) return;
+        if (closestTime == null || closestTime.equals(ConstantUtils.TIME_EMPTY)) return;
 
-        StringTokenizer tokenizer = new StringTokenizer(closestTime, Constant.TIME_DELIM);
+        StringTokenizer tokenizer = new StringTokenizer(closestTime, ConstantUtils.TIME_DELIM);
         mClosestHours = tokenizer.nextToken();
         mClosestMinutes = tokenizer.nextToken();
     }
@@ -89,7 +89,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
                     } else {
                         holder.mTextMinutes.append(m);
                     }
-                    holder.mTextMinutes.append(Constant.TWO_SPACES);
+                    holder.mTextMinutes.append(ConstantUtils.TWO_SPACES);
                 }
             }
         }

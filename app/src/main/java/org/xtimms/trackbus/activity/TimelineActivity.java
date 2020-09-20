@@ -1,5 +1,6 @@
 package org.xtimms.trackbus.activity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -20,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 
-import org.joda.time.LocalDate;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.adapter.TimelineAdapter;
 import org.xtimms.trackbus.model.Route;
@@ -32,11 +32,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
-
-import de.galgtonold.jollydayandroid.Holiday;
-import de.galgtonold.jollydayandroid.HolidayCalendar;
-import de.galgtonold.jollydayandroid.HolidayManager;
 
 public class TimelineActivity extends AppBaseActivity implements TimeLineActivityPresenter.View {
 
@@ -56,6 +51,7 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
         return intent;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
