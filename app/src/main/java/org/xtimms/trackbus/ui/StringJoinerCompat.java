@@ -23,6 +23,7 @@ public final class StringJoinerCompat {
         mEmptyValue = "";
     }
 
+    @NonNull
     @Override
     public String toString() {
         if (mValue == null) {

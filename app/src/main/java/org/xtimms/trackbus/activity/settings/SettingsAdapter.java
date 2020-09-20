@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.xtimms.trackbus.R;
@@ -27,8 +28,9 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Prefer
 		setHasStableIds(true);
 	}
 
-	@Override
-	public PreferenceHolder onCreateViewHolder(ViewGroup parent, @ItemType int viewType) {
+	@NonNull
+    @Override
+	public PreferenceHolder onCreateViewHolder(@NonNull ViewGroup parent, @ItemType int viewType) {
 		if (viewType == ItemType.TYPE_ITEM_DEFAULT) {
 			return new PreferenceHolder(LayoutInflater.from(parent.getContext())
 					.inflate(R.layout.item_two_lines_icon, parent, false));

@@ -1,16 +1,12 @@
 package org.xtimms.trackbus.activity;
 
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.util.TimeUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,14 +25,11 @@ import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.adapter.TimelineAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.object.StopsActivityTimeLineObject;
-import org.xtimms.trackbus.presenter.ScheduleActivityPresenter;
 import org.xtimms.trackbus.presenter.TimeLineActivityPresenter;
 import org.xtimms.trackbus.util.DateTime;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;

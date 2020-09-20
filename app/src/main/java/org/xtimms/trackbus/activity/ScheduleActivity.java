@@ -138,7 +138,6 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
                     Calendar newDate = Calendar.getInstance();
                     newDate.set(year1, monthOfYear, dayOfMonth);
                     SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.getDefault());
-                    //SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault());
                     mTextDate.setText(sdf.format(newDate.getTime()));
 
                     String currentDate = mTextDate.getText().toString();
