@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,7 +41,7 @@ public class StopsAdapter extends RecyclerView.Adapter<StopsAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LinearLayout layout = (LinearLayout) LayoutInflater.from(parent.getContext())
+        RelativeLayout layout = (RelativeLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_timeline, parent, false);
 
         return new ViewHolder(layout, this, viewType);
