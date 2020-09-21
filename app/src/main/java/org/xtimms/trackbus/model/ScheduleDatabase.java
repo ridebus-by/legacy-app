@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Objects;
 
 import static org.xtimms.trackbus.util.ConstantUtils.DB_VERSION;
 
@@ -29,6 +30,9 @@ public abstract class ScheduleDatabase extends RoomDatabase {
             //Log.d("Activity", "db Path Exists");
             //return;
         }
+
+        // Make sure we have a path to the file
+        boolean s = Objects.requireNonNull(dbPath.getParentFile()).mkdirs();
 
         // Try to copy database file
         try {
