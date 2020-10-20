@@ -11,6 +11,8 @@ import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lucasurbas.listitemview.ListItemView;
+
 import org.xtimms.trackbus.R;
 
 import java.lang.annotation.Retention;
@@ -33,7 +35,7 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Prefer
 	public PreferenceHolder onCreateViewHolder(@NonNull ViewGroup parent, @ItemType int viewType) {
 		if (viewType == ItemType.TYPE_ITEM_DEFAULT) {
 			return new PreferenceHolder(LayoutInflater.from(parent.getContext())
-					.inflate(R.layout.item_two_lines_icon, parent, false));
+					.inflate(R.layout.item_single_line_icon, parent, false));
 		}
 		throw new AssertionError("Unknown viewType");
 	}
@@ -41,13 +43,10 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Prefer
 	@Override
 	public void onBindViewHolder(PreferenceHolder holder, int position) {
 		SettingsHeader item = mDataset.get(position);
-		holder.text1.setText(item.title);
-		holder.icon.setImageDrawable(item.icon);
-		if (item.summary == null) {
-			holder.text2.setVisibility(View.GONE);
-		} else {
-			holder.text2.setText(item.summary);
-			holder.text2.setVisibility(View.VISIBLE);
+		holder.listItem.setIconDrawable(item.icon);
+		holder.listItem.setTitle(item.title);
+		if (item.summary != null) {
+			holder.listItem.setSubtitle(item.summary);
 		}
 	}
 
@@ -69,15 +68,11 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Prefer
 
 	class PreferenceHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-		private final ImageView icon;
-		private final TextView text1;
-		private final TextView text2;
+		private final ListItemView listItem;
 
 		PreferenceHolder(View itemView) {
 			super(itemView);
-			icon = itemView.findViewById(android.R.id.icon);
-			text1 = itemView.findViewById(android.R.id.text1);
-			text2 = itemView.findViewById(android.R.id.text2);
+			listItem = itemView.findViewById(R.id.list);
 			itemView.setOnClickListener(this);
 		}
 
