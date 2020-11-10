@@ -1,6 +1,7 @@
 package org.xtimms.trackbus.activity.settings;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -11,6 +12,7 @@ import androidx.annotation.Nullable;
 
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.activity.AppBaseActivity;
+import org.xtimms.trackbus.util.LogUtils;
 import org.xtimms.trackbus.util.TextUtils;
 
 public class SettingsActivity extends AppBaseActivity implements SharedPreferences.OnSharedPreferenceChangeListener,
@@ -74,6 +76,12 @@ public class SettingsActivity extends AppBaseActivity implements SharedPreferenc
 
     @Override
     public boolean onPreferenceClick(Preference preference) {
-        return false;
+        switch (preference.getKey()) {
+            case "bugreport":
+                LogUtils.sendLog(this);
+                return true;
+            default:
+                return false;
+        }
     }
 }
