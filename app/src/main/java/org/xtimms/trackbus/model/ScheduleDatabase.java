@@ -1,4 +1,5 @@
 package org.xtimms.trackbus.model;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 

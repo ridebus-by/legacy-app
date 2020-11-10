@@ -85,14 +85,14 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
         textTitle.setText(getResources().getString(R.string.number) + mRoute.getRouteNumber());
         textSubtitle.setText(mRoute.getRouteTitle());
 
-        boolean firstLoad = getSharedPreferences("PREFERENCE_TIMELINE", MODE_PRIVATE)
-                .getBoolean("firstLoad", true);
+        boolean firstLoad = getSharedPreferences("prefs", MODE_PRIVATE)
+                .getBoolean("firstLoadTimeline", true);
 
         if (firstLoad) {
 
             initTapTargetView();
 
-            getSharedPreferences("PREFERENCE_TIMELINE", MODE_PRIVATE).edit().putBoolean("firstLoad", false).apply();
+            getSharedPreferences("prefs", MODE_PRIVATE).edit().putBoolean("firstLoadTimeline", false).apply();
 
         }
     }
@@ -200,7 +200,7 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
     public void setAdapter(List<StopsActivityTimeLineObject> stopsActivityTimeLineObjects, String currentTime) {
 
         if (!mAdapterIsSet) {
-            mProgressBar.setVisibility(View.INVISIBLE);
+            mProgressBar.setVisibility(View.GONE);
             mTimeLineAdapter = new TimelineAdapter(stopsActivityTimeLineObjects, currentTime);
             mRecyclerView.setAdapter(mTimeLineAdapter);
             mAdapterIsSet = true;

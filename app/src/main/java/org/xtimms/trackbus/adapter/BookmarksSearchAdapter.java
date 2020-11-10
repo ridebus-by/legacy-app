@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.xtimms.trackbus.App;
@@ -47,9 +48,9 @@ public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearch
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        FrameLayout frameLayout = (FrameLayout) LayoutInflater.from(parent.getContext())
+        ConstraintLayout constraintLayout = (ConstraintLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_bookmarks_search, parent, false);
-        return new ViewHolder(frameLayout, this);
+        return new ViewHolder(constraintLayout, this);
     }
 
     @Override
@@ -58,9 +59,13 @@ public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearch
         DatabaseObject object = mDatabaseObjectFiltered.get(position);
 
         holder.mTramImage.setVisibility(View.GONE);
+        holder.mTitleText.setVisibility(View.GONE);
+        holder.mMarkText.setVisibility(View.GONE);
 
         if (object instanceof Stop) {
             Stop stop = (Stop) object;
+            holder.mTitleText.setVisibility(View.VISIBLE);
+            holder.mMarkText.setVisibility(View.VISIBLE);
             holder.mTitleText.setText(stop.getStopTitle());
             holder.mMarkText.setText(stop.getMark());
 
@@ -80,8 +85,8 @@ public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearch
         }
 
         if (object instanceof Route) {
-            holder.mMarkText.setText(EMPTY_STRING);
             Route route = (Route) object;
+            holder.mTitleText.setVisibility(View.VISIBLE);
             holder.mTitleText.setText(route.getRouteTitle());
 
             ColorUtils.setBackgroundCircle(route.getTransportId(), holder.mPictureText);

@@ -62,7 +62,6 @@ public class BookmarksActivity extends AppBaseActivity implements BookmarksActiv
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         BookmarksActivityPresenter presenter = new BookmarksActivityPresenter(this);
         presenter.setAdapter();
-
     }
 
     @Override

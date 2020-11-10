@@ -74,6 +74,8 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <include layout="@layout/content_timeline" />
+
     <ProgressBar
         android:id="@+id/progressBar_activityTimeline"
         android:layout_width="wrap_content"
@@ -81,8 +83,6 @@
         android:layout_gravity="center"
         android:minWidth="40dp"
         android:minHeight="40dp"
-        android:visibility="invisible" />
-
-    <include layout="@layout/content_timeline" />
+        android:visibility="visible" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

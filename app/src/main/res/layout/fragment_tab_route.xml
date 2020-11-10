@@ -15,7 +15,7 @@
         android:background="?colorPrimary"
         android:clipToPadding="false"
         app:tabIndicatorColor="@android:color/white"
-        app:tabMode="scrollable"
+        app:tabMode="fixed"
         app:tabSelectedTextColor="@android:color/white"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:elevation="4dp"/>

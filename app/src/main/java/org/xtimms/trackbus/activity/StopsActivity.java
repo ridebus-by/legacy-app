@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -40,6 +42,7 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
     private boolean mAdapterIsSet = false;
     private StopsActivityAdapter mStopsActivityAdapter;
     private BroadcastReceiver mBroadcastReceiver;
+    private ProgressBar mProgressBar;
     private FloatingActionButton floatingActionButton;
 
     public static Intent newIntent(Context context, Stop stop) {
@@ -57,6 +60,9 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
 
         //mTimeText = findViewById(R.id.text_time_activitystop);
         //mTimeText.setText(DateTime.getCurrentTime());
+
+        mProgressBar = findViewById(R.id.progress);
+        mProgressBar.setVisibility(View.VISIBLE);
 
         mWeekDay = findViewById(R.id.text_weekday_activitystop);
         mWeekDay.setText(DateTime.getCurrentDate());
@@ -131,19 +137,24 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
         //    datePickerDialog.show();
         //});
 
-        boolean firstLoad = getSharedPreferences("PREFERENCE_STOP", MODE_PRIVATE)
-                .getBoolean("firstLoad", true);
+        boolean firstLoad = getSharedPreferences("prefs", MODE_PRIVATE)
+                .getBoolean("firstLoadStops", true);
 
         if (firstLoad) {
 
             initTapTargetView();
 
-            getSharedPreferences("PREFERENCE_STOP", MODE_PRIVATE).edit().putBoolean("firstLoad", false).apply();
+            getSharedPreferences("prefs", MODE_PRIVATE).edit().putBoolean("firstLoadStops", false).apply();
 
         } else {
             floatingActionButton.hide();
         }
 
+    }
+
+    private char[] convertToIndexList(List<Stop> list) {
+        char[] chars = list.get(0).getStopTitle().toUpperCase().toCharArray();
+        return chars;
     }
 
     private void initTapTargetView() {
@@ -253,6 +264,7 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
     @Override
     public void setAdapter(List<StopActivityObject> stopActivityObjectList) {
         if (!mAdapterIsSet) {
+            mProgressBar.setVisibility(View.GONE);
             mStopsActivityAdapter = new StopsActivityAdapter(stopActivityObjectList);
             mRecyclerView.setAdapter(mStopsActivityAdapter);
             mAdapterIsSet = true;

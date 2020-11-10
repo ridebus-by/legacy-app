@@ -10,19 +10,19 @@ public interface ScheduleDao {
     @Query("SELECT  * FROM stop ORDER BY stopTitle ASC")
     List<Stop> getAllStops();
 
-    @Query("SELECT * FROM route WHERE (city_id=1 AND transport_id=1)")
+    @Query("SELECT * FROM route WHERE (city_id=1 AND transport_id=1) ORDER BY LENGTH(routeNumber), routeNumber")
     List<Route> getAllRoutesBus();
 
-    @Query("SELECT * FROM route WHERE (city_id=1)")
+    @Query("SELECT * FROM route WHERE (city_id=1) ORDER BY LENGTH(routeNumber), routeNumber")
     List<Route> getAllRoutes();
 
-    @Query("SELECT * FROM route WHERE (city_id=1 AND transport_id=3)")
+    @Query("SELECT * FROM route WHERE (city_id=1 AND transport_id=3) ORDER BY LENGTH(routeNumber), routeNumber")
     List<Route> getAllRoutesExpress();
 
-    @Query("SELECT * FROM route WHERE (city_id=1 AND transport_id=2)")
+    @Query("SELECT * FROM route WHERE (city_id=1 AND transport_id=2) ORDER BY LENGTH(routeNumber), routeNumber")
     List<Route> getAllRoutesTram();
 
-    @Query("SELECT * FROM route WHERE (city_id=1 AND transport_id=4)")
+    @Query("SELECT * FROM route WHERE (city_id=1 AND transport_id=4) ORDER BY LENGTH(routeNumber), routeNumber")
     List<Route> getAllRoutesMinibus();
 
     @Query("SELECT route.* FROM routeStops" +

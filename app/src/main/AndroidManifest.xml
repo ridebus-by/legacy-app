@@ -31,9 +31,6 @@
             android:theme="@style/AppTheme"/>
         <activity android:name=".activity.BookmarksActivity"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".activity.MyAppsActivity"
-            android:label="@string/more_apps"
-            android:theme="@style/AppTheme"/>
         <activity android:name=".activity.AboutActivity"
             android:label="@string/title_activity_about"
             android:theme="@style/AppTheme"/>

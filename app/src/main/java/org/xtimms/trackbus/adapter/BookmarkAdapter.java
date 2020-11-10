@@ -69,9 +69,11 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
         DatabaseObject object = mBookmarks.get(position);
 
         if (object.isEmpty()) {
+            holder.mTextTitleBtn.setVisibility(View.GONE);
+            holder.mTextDescriptionBtn.setVisibility(View.GONE);
             holder.mTextPlus.setVisibility(View.VISIBLE);
             holder.mCircle.setVisibility(View.VISIBLE);
-            holder.mLinearLayout.setVisibility(View.INVISIBLE);
+            holder.mLinearLayout.setVisibility(View.GONE);
             return;
         }
 
@@ -81,6 +83,8 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 
         if (object instanceof Route) {
             Route route = (Route) object;
+            holder.mTextTitleBtn.setVisibility(View.VISIBLE);
+            holder.mTextDescriptionBtn.setVisibility(View.VISIBLE);
             holder.mTextImageBtn.setText(route.getRouteNumber());
             holder.mTextDescriptionBtn.setVisibility(View.GONE);
 
@@ -102,7 +106,8 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
                 holder.mTextImageBtn.setBackground(App.getInstance().getAppContext().getResources()
                         .getDrawable(R.drawable.ic_store));
             }
-
+            holder.mTextTitleBtn.setVisibility(View.VISIBLE);
+            holder.mTextDescriptionBtn.setVisibility(View.VISIBLE);
             holder.mTextTitleBtn.setText(stop.getStopTitle());
             holder.mTextDescriptionBtn.setText(stop.getMark());
         }

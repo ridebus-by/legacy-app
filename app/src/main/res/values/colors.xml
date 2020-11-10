@@ -3,6 +3,9 @@
     <color name="red_tram">#ea4335</color>
     <color name="green_express">#757575</color>
     <color name="blue_bus">#4CAF50</color>
-    <color name="orange_minibus">#FFC107</color>
+    <color name="orange_minibus">#FFA000</color>
     <color name="white_overlay_85">#d9ffffff</color>
+    <color name="text_primary">#dd000000</color>
+    <color name="text_secondary">#89000000</color>
+    <color name="index_text_color">#8a8a8a</color>
 </resources>

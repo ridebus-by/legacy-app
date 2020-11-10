@@ -1,5 +1,7 @@
 package org.xtimms.trackbus.util;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.MultiSelectListPreference;
@@ -10,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
+import org.apache.commons.lang3.StringUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.components.IntegerPreference;
 import org.xtimms.trackbus.ui.StringJoinerCompat;
@@ -17,7 +20,9 @@ import org.xtimms.trackbus.ui.StringJoinerCompat;
 import java.util.Set;
 
 @SuppressWarnings("ALL")
-public abstract class PreferencesUtils {
+public class PreferencesUtils {
+
+    private static final String LOCATION = "state";
 
     public static void bindPreferenceSummary(@Nullable Preference preference) {
         if (preference != null) {
@@ -66,6 +71,49 @@ public abstract class PreferencesUtils {
             }
         }
         return joiner.toString();
+    }
+
+    private final SharedPreferences preferences;
+
+    public static PreferencesUtils of(@NonNull Context context) {
+        return new PreferencesUtils(context);
+    }
+
+    private PreferencesUtils(Context context) {
+        this.preferences = context.getSharedPreferences(LOCATION, Context.MODE_PRIVATE);
+    }
+
+    private String getString(String key) {
+        return preferences.getString(key, Defaults.STRING);
+    }
+
+    public void setDatabaseVersion(@NonNull String databaseVersion) {
+        set(Keys.DATABASE_VERSION, databaseVersion);
+    }
+
+    public String getDatabaseVersion() {
+        return getString(Keys.DATABASE_VERSION);
+    }
+
+    private void set(String key, String value) {
+        preferences.edit().putString(key, value).apply();
+    }
+
+    private static final class Defaults
+    {
+        private Defaults() {
+        }
+
+        public static final int INT = 0;
+        public static final String STRING = StringUtils.EMPTY;
+    }
+
+    private static final class Keys
+    {
+        private Keys() {
+        }
+
+        public static final String DATABASE_VERSION = "database_version";
     }
 
     @SuppressWarnings("deprecation")

@@ -118,35 +118,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_card_about_2_more"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
-            android:clickable="true"
-            android:orientation="horizontal"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="16dp"
-                app:tint="?android:attr/textColorSecondary"
-                android:src="@drawable/ic_new_releases_black_24dp"
-                android:contentDescription="TODO"
-                tools:ignore="ContentDescription,HardcodedText" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="16dp"
-                android:text="@string/more_apps"
-                android:textStyle="italic"/>
-
-        </LinearLayout>
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

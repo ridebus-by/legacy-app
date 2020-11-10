@@ -46,6 +46,8 @@
     <string name="select_image">Select image</string>
     <string name="route_info">Route information</string>
     <string name="number">Route №</string>
+    <string name="route_tab_title_trams">Trams</string>
+    <string name="route">route</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

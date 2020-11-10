@@ -22,6 +22,7 @@
             android:id="@+id/img_card_about_1"
             android:layout_width="64dp"
             android:layout_height="128dp"
+            android:padding="8dp"
             android:background="?colorLine"
             android:scaleType="centerInside"
             android:src="@mipmap/ic_launcher"

@@ -36,8 +36,38 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="?colorLine"
-        android:layout_marginStart="90dp"
+        android:layout_marginStart="72dp"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/main_info"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        app:layout_constraintStart_toEndOf="@+id/circle">
+
+        <TextView
+            android:id="@+id/text_title_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            tools:text="text"
+            android:textColor="?attr/text_primary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/text_description_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            tools:text="text"
+            android:textColor="?attr/text_secondary"
+            android:textSize="14sp" />
+
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_bookmark"
@@ -60,44 +90,6 @@
             cardView:layout_constraintBottom_toBottomOf="parent"
             cardView:layout_constraintStart_toStartOf="parent"
             cardView:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_title_bookmark"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="20dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:singleLine="false"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.538"
-            cardView:layout_constraintStart_toEndOf="@+id/text_image_bookmark"
-            cardView:layout_constraintTop_toTopOf="parent"
-            tools:text="Title" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_description_bookmark"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:singleLine="true"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            cardView:layout_constraintStart_toEndOf="@+id/text_image_bookmark"
-            cardView:layout_constraintTop_toBottomOf="@+id/text_title_bookmark"
-            tools:text="mark" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="?colorLine"
-            android:layout_marginStart="72dp"
-            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

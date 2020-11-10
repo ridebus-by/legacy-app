@@ -46,4 +46,6 @@
     <string name="error">Ошибка</string>
     <string name="route_info">Информация</string>
     <string name="number">Маршрут №</string>
+    <string name="route_tab_title_trams">Трамваи</string>
+    <string name="route">маршрут</string>
 </resources>

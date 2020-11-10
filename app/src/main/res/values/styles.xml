@@ -10,6 +10,9 @@
         <item name="colorLine">#CCCCCC</item>
         <item name="textColor">#000000</item>
         <item name="autoCompleteTextViewStyle">@style/Cursor</item>
+        <item name="text_primary">#dd000000</item>
+        <item name="text_secondary">#89000000</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
     </style>
 
     <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
@@ -21,6 +24,9 @@
         <item name="textColor">#FFFFFF</item>
         <item name="colorPrimaryLight">#484848</item>
         <item name="autoCompleteTextViewStyle">@style/Cursor</item>
+        <item name="text_primary">#ddFFFFFF</item>
+        <item name="text_secondary">#89FFFFFF</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
     </style>
 
     <style name="AMOLED" parent="Theme.AppCompat.NoActionBar">
@@ -35,13 +41,16 @@
         <item name="textColor">#FFFFFF</item>
         <item name="colorPrimaryLight">#000000</item>
         <item name="autoCompleteTextViewStyle">@style/Cursor</item>
+        <item name="text_primary">#ddFFFFFF</item>
+        <item name="text_secondary">#89FFFFFF</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
     </style>
 
     <style name="AppTheme.Default">
-        <item name="colorPrimary">#1565C0</item>
-        <item name="colorPrimaryDark">#283593</item>
-        <item name="colorAccent">#1565C0</item>
-        <item name="colorPrimaryLight">#3387E2</item>
+        <item name="colorPrimary">#01579B</item>
+        <item name="colorPrimaryDark">#002f6c</item>
+        <item name="colorAccent">#01579B</item>
+        <item name="colorPrimaryLight">#4f83cc</item>
     </style>
 
     <style name="AppTheme.Red">
@@ -59,17 +68,17 @@
     </style>
 
     <style name="AppTheme.LightGreen">
-        <item name="colorPrimary">#5181b8</item>
-        <item name="colorPrimaryDark">#38618f</item>
-        <item name="colorAccent">#5181b8</item>
-        <item name="colorPrimaryLight">#83b0eb</item>
+        <item name="colorPrimary">#8BC34A</item>
+        <item name="colorPrimaryDark">#5a9216</item>
+        <item name="colorAccent">#8bc34a</item>
+        <item name="colorPrimaryLight">#bef67a</item>
     </style>
 
     <style name="AppTheme.Green">
-        <item name="colorPrimary">#af504c</item>
-        <item name="colorPrimaryDark">#6B2D2B</item>
-        <item name="colorAccent">#af504c</item>
-        <item name="colorPrimaryLight">#e47f78</item>
+        <item name="colorPrimary">#4CAF50</item>
+        <item name="colorPrimaryDark">#087f23</item>
+        <item name="colorAccent">#4CAF50</item>
+        <item name="colorPrimaryLight">#80e27e</item>
     </style>
 
     <style name="AppTheme.Teal">

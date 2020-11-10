@@ -8,6 +8,8 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -35,8 +37,8 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
 
     private TextView mTextDate;
     private RecyclerView mRecyclerView;
+    private ProgressBar mProgressBar;
     private BroadcastReceiver mBroadcastReceiver;
-
 
     public static Intent newIntent(Context context, Route route, Stop stop) {
         Intent intent = new Intent(context, ScheduleActivity.class);
@@ -60,6 +62,9 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
         setContentView(R.layout.activity_schedule);
         Toolbar toolbar = findViewById(R.id.toolbar_schedule_activity);
         setSupportActionBar(toolbar);
+
+        mProgressBar = findViewById(R.id.progress);
+        mProgressBar.setVisibility(View.VISIBLE);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -164,6 +169,7 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
     @Override
     public void setAdapter(Map<String, List<String>> scheduleMap, String closestTime) {
         ScheduleAdapter scheduleAdapter = new ScheduleAdapter(scheduleMap, closestTime);
+        mProgressBar.setVisibility(View.GONE);
         mRecyclerView.setAdapter(scheduleAdapter);
         scheduleAdapter.setOnItemClickListener((parent, v, position, id) -> {
             //Snackbar.make(v, "click", Snackbar.LENGTH_SHORT).show();

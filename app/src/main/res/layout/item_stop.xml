@@ -3,26 +3,35 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="8dp"
     android:background="?android:selectableItemBackground"
     tools:ignore="Overdraw">
 
-    <TextView
-        android:id="@+id/stop_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginStart="8dp"
-        tools:text="Швейная фабрика"
-        tools:ignore="RelativeOverlap" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:listPreferredItemHeight"
+        android:layout_toStartOf="@+id/item_tram"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-    <TextView
-        android:id="@+id/stop_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/stop_title"
-        android:layout_marginStart="8dp"
-        tools:text="На Гоголя" />
+        <TextView
+            android:id="@+id/stop_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="?attr/text_primary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/stop_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="?attr/text_secondary"
+            android:textSize="14sp" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/item_tram"

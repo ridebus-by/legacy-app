@@ -166,7 +166,7 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
         }
 
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        boolean firstStart = prefs.getBoolean("firstStart", true);
+        boolean firstStart = prefs.getBoolean("firstLoadMain", true);
 
         if (firstStart) {
             initTapTargetView();
@@ -254,7 +254,7 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
 
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("firstStart", false);
+        editor.putBoolean("firstLoadMain", false);
         editor.apply();
     }
 
