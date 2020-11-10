@@ -48,6 +48,12 @@
     <string name="number">Route №</string>
     <string name="route_tab_title_trams">Trams</string>
     <string name="route">route</string>
+    <string name="bug_report">Send a bug report</string>
+    <string name="bug_report_message">Sending a bug report will help the developers.</string>
+    <string name="send">Send</string>
+    <string name="log_not_found">Error log not found!</string>
+    <string name="bug_report_summ">Send debug log to developer</string>
+    <string name="debug">Debug</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

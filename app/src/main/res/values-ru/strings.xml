@@ -48,4 +48,10 @@
     <string name="number">Маршрут №</string>
     <string name="route_tab_title_trams">Трамваи</string>
     <string name="route">маршрут</string>
+    <string name="bug_report_message">Отправив отчёт об ошибке Вы поможете разработчикам.</string>
+    <string name="bug_report">Отчёт об ошибке</string>
+    <string name="send">Отправить</string>
+    <string name="log_not_found">Лог не найден!</string>
+    <string name="bug_report_summ">Отправить отладочный лог разработчику</string>
+    <string name="debug">Отладка</string>
 </resources>

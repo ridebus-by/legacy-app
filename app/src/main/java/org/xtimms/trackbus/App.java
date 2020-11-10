@@ -14,6 +14,7 @@ import androidx.room.Room;
 
 import org.xtimms.trackbus.model.ScheduleDatabase;
 import org.xtimms.trackbus.util.ConstantUtils;
+import org.xtimms.trackbus.util.LogUtils;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -43,6 +44,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        LogUtils.init(this);
 
         if (!ScheduleDatabase.checkDatabaseExist(getApplicationContext())) {
             ScheduleDatabase.copyDatabase(getApplicationContext(), ScheduleDatabase.DATABASE_NAME);

@@ -18,6 +18,7 @@ public class SettingsActivity extends AppBaseActivity implements SharedPreferenc
 
     public static final String ACTION_SETTINGS_APPEARANCE = "org.xtimms.trackbus.ACTION_SETTINGS_APPEARANCE";
     public static final String ACTION_SETTINGS_GENERAL = "org.xtimms.trackbus.ACTION_SETTINGS_GENERAL";
+    public static final String ACTION_SETTINGS_DEBUG = "org.xtimms.trackbus.DEBUG_SETTINGS_GENERAL";
 
     public static final int RESULT_RESTART = Activity.RESULT_FIRST_USER + 1;
 
@@ -38,6 +39,9 @@ public class SettingsActivity extends AppBaseActivity implements SharedPreferenc
                 break;
             case ACTION_SETTINGS_GENERAL:
                 mFragment = new GeneralSettingsFragment();
+                break;
+            case ACTION_SETTINGS_DEBUG:
+                mFragment = new DebugSettingsFragment();
                 break;
             default:
                 finish();
