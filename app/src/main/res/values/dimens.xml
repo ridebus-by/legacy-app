@@ -12,4 +12,6 @@
 
     <dimen name="my_app_bar_height">128dp</dimen>
     <dimen name="my_app_bar_overlap">56dp</dimen>
+
+    <dimen name="navigation_bar_height">48dp</dimen>
 </resources>

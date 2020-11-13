@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             tools:text="text"
-            android:textColor="?attr/text_primary"
+            android:textColor="?android:textColorPrimary"
             android:textSize="16sp" />
 
         <TextView
@@ -64,7 +64,6 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             tools:text="text"
-            android:textColor="?attr/text_secondary"
             android:textSize="14sp" />
 
     </LinearLayout>

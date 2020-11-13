@@ -24,9 +24,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetSequence;
-import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -40,6 +37,7 @@ import org.xtimms.trackbus.fragment.StopFragment;
 import org.xtimms.trackbus.fragment.TabRouteFragment;
 import org.xtimms.trackbus.ui.DrawerHeaderImageTool;
 
+import java.util.Calendar;
 import java.util.Objects;
 import java.util.Set;
 
@@ -56,7 +54,6 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
     private NavigationView mNavigationView;
     private Toolbar toolbar;
     private DrawerHeaderImageTool mDrawerHeaderTool;
-    private FloatingActionButton floatingActionButton;
 
     private TabRouteFragment tabRouteFragment;
     private StopFragment stopFragment;
@@ -78,7 +75,6 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
         toolbar.inflateMenu(R.menu.main);
         toolbar.setTitle(R.string.menu_item_1);
         toolbar.setNavigationOnClickListener(v -> mDrawerLayout.openDrawer(GravityCompat.START));
-        floatingActionButton = findViewById(R.id.fab);
         setSupportActionBar(toolbar);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -168,12 +164,6 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         boolean firstStart = prefs.getBoolean("firstLoadMain", true);
 
-        if (firstStart) {
-            initTapTargetView();
-        } else {
-            floatingActionButton.hide();
-        }
-
         initDrawerHeaderTool();
         initOnHolidayDialog();
 
@@ -186,14 +176,13 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
 
     private void initOnHolidayDialog() {
         HolidayManager m = HolidayManager.getInstance(HolidayCalendar.BELARUS);
-        Set<Holiday> holidays = m.getHolidays(2019);
+        Set<Holiday> holidays = m.getHolidays(Calendar.getInstance().get(Calendar.YEAR));
 
         for (Holiday holiday : holidays) {
             if (holiday.getDate().equals(LocalDate.now())) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("Кажется сегодня праздничный день!")
                         .setMessage("Возможно, транспорт ходит с изменениями в маршруте или по расписанию выходного дня. За подробной информацией обратитесь в автопарк.")
-                        .setIcon(R.drawable.ic_new_releases_black_24dp)
                         .setCancelable(false)
                         .setNegativeButton("Понятно",
                                 (dialog, id) -> dialog.cancel());
@@ -202,60 +191,6 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
 
             }
         }
-    }
-
-    private void initTapTargetView() {
-        final TapTargetSequence sequence = new TapTargetSequence(this)
-                .targets(
-                        TapTarget.forToolbarMenuItem(toolbar, R.id.action_settings, "Настройте приложение под себя", "Также, эта кнопка доступна в новом меню навигации.").
-                                cancelable(false)
-                                .id(1),
-                        TapTarget.forToolbarNavigationIcon(toolbar, "В этом обновлении теперь изменён способ навигации", "Нажмите на эту иконку, чтобы показать меню.")
-                                .cancelable(true)
-                                .id(2)
-                )
-                .listener(new TapTargetSequence.Listener() {
-                    @Override
-                    public void onSequenceFinish() {
-                        Log.d("TapTargetView", "Finished!");
-                        openDrawer();
-                    }
-
-                    @Override
-                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
-                        Log.d("TapTargetView", "Clicked on " + lastTarget.id());
-                    }
-
-                    @Override
-                    public void onSequenceCanceled(TapTarget lastTarget) {
-
-                    }
-                });
-
-        TapTargetView.showFor(this, TapTarget.forView(findViewById(R.id.fab), "Привет!", "Давайте посмотрим, что изменилось в этом обновлении.")
-                .cancelable(true)
-                .drawShadow(true)
-                .tintTarget(false), new TapTargetView.Listener() {
-            @Override
-            public void onTargetClick(TapTargetView view) {
-                super.onTargetClick(view);
-                sequence.start();
-                floatingActionButton.hide();
-            }
-
-            @Override
-            public void onTargetDismissed(TapTargetView view, boolean userInitiated) {
-                Log.d("TapTargetView", "You dismissed me :(");
-                sequence.start();
-                floatingActionButton.hide();
-            }
-
-        });
-
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("firstLoadMain", false);
-        editor.apply();
     }
 
     @Override

@@ -18,9 +18,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetView;
-
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.adapter.TimelineAdapter;
 import org.xtimms.trackbus.model.Route;
@@ -72,7 +69,7 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
         getRecyclerViewData();
 
         toolbar = findViewById(R.id.toolbar_timeline_activity);
-        toolbar.inflateMenu(R.menu.activity_stops_menu);
+        toolbar.inflateMenu(R.menu.calendar);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null) {
@@ -84,39 +81,11 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
 
         textTitle.setText(getResources().getString(R.string.number) + mRoute.getRouteNumber());
         textSubtitle.setText(mRoute.getRouteTitle());
-
-        boolean firstLoad = getSharedPreferences("prefs", MODE_PRIVATE)
-                .getBoolean("firstLoadTimeline", true);
-
-        if (firstLoad) {
-
-            initTapTargetView();
-
-            getSharedPreferences("prefs", MODE_PRIVATE).edit().putBoolean("firstLoadTimeline", false).apply();
-
-        }
-    }
-
-    private void initTapTargetView() {
-        TapTargetView.showFor(this, TapTarget.forToolbarMenuItem(toolbar, R.id.calendar, "Посмотреть расписание рабочего или выходного дня стало проще", "Нажмите на иконку и выберите день недели.")
-                .cancelable(true), new TapTargetView.Listener() {
-
-            @Override
-            public void onTargetClick(TapTargetView view) {
-                super.onTargetClick(view);
-            }
-
-            @Override
-            public void onTargetDismissed(TapTargetView view, boolean userInitiated) {
-                Log.d("TapTargetView", "You dismissed me :(");
-            }
-
-        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_timeline_menu, menu);
+        getMenuInflater().inflate(R.menu.calendar, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

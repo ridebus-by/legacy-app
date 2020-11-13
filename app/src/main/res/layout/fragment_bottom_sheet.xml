@@ -9,7 +9,6 @@
         android:id="@+id/recycleView_bottomsheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?windowBackground"
         android:scrollbars="vertical" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,14 +40,26 @@ public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.mRouteNumberText.setText(mStopActivityObjectList.get(position).getRoute().getRouteNumber());
-        holder.mRouteTitleText.setText(mStopActivityObjectList.get(position).getRoute().getRouteTitle());
-        holder.mClosestTime.setText(mStopActivityObjectList.get(position).getClosestTime());
-        holder.setRemainingTime(mStopActivityObjectList.get(position).getRemainingTime());
+        holder.mRouteNumberText.setText(mStopActivityObjectList.get(holder.getAdapterPosition()).getRoute().getRouteNumber());
+        holder.mRouteTitleText.setText(mStopActivityObjectList.get(holder.getAdapterPosition()).getRoute().getRouteTitle());
+        holder.mClosestTime.setText(mStopActivityObjectList.get(holder.getAdapterPosition()).getClosestTime());
+        holder.setRemainingTime(mStopActivityObjectList.get(holder.getAdapterPosition()).getRemainingTime());
 
         ColorUtils.setBackgroundColor(mStopActivityObjectList
-                .get(position).getRoute().getTransportId(), holder.mColor);
+                .get(holder.getAdapterPosition()).getRoute().getTransportId(), holder.mColor);
 
+        holder.setIsRecyclable(false);
+
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override

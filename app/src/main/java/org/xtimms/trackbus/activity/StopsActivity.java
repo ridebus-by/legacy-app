@@ -17,8 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetView;
+import com.google.android.material.appbar.SubtitleCollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.xtimms.trackbus.R;
@@ -43,7 +42,6 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
     private StopsActivityAdapter mStopsActivityAdapter;
     private BroadcastReceiver mBroadcastReceiver;
     private ProgressBar mProgressBar;
-    private FloatingActionButton floatingActionButton;
 
     public static Intent newIntent(Context context, Stop stop) {
         Intent intent = new Intent(context, StopsActivity.class);
@@ -58,6 +56,10 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
 
         mStop = (Stop) getIntent().getSerializableExtra(StopsActivity.EXTRA_STOP);
 
+        SubtitleCollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
+        collapsingToolbarLayout.setTitle(mStop.getTitle());
+        collapsingToolbarLayout.setSubtitle(mStop.getMark());
+
         //mTimeText = findViewById(R.id.text_time_activitystop);
         //mTimeText.setText(DateTime.getCurrentTime());
 
@@ -70,8 +72,6 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
         mRecyclerView = findViewById(R.id.recyclerview_stops_activity);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        floatingActionButton = findViewById(R.id.fab);
-
         getRecyclerViewData();
 
         Toolbar toolbar = findViewById(R.id.toolbar_stopactivity);
@@ -81,10 +81,10 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        TextView textTitle = findViewById(R.id.text_title_stopactivity);
+        /*TextView textTitle = findViewById(R.id.text_title_stopactivity);
         textTitle.setText(mStop.getStopTitle());
         TextView subtitle = findViewById(R.id.subtitle_stopactivity);
-        subtitle.setText(mStop.getMark());
+        subtitle.setText(mStop.getMark());*/
 
 //        mTimeText.setOnClickListener(v -> {
 //            Calendar mcurrentTime = Calendar.getInstance();
@@ -137,50 +137,11 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
         //    datePickerDialog.show();
         //});
 
-        boolean firstLoad = getSharedPreferences("prefs", MODE_PRIVATE)
-                .getBoolean("firstLoadStops", true);
-
-        if (firstLoad) {
-
-            initTapTargetView();
-
-            getSharedPreferences("prefs", MODE_PRIVATE).edit().putBoolean("firstLoadStops", false).apply();
-
-        } else {
-            floatingActionButton.hide();
-        }
-
-    }
-
-    private char[] convertToIndexList(List<Stop> list) {
-        char[] chars = list.get(0).getStopTitle().toUpperCase().toCharArray();
-        return chars;
-    }
-
-    private void initTapTargetView() {
-        TapTargetView.showFor(this, TapTarget.forView(findViewById(R.id.fab), "Тут показывается транспорт, который проезжает данную остановку", "Также, здесь тоже был изменён интерфейс.")
-                .cancelable(true)
-                .drawShadow(true)
-                .tintTarget(false), new TapTargetView.Listener() {
-            @Override
-            public void onTargetClick(TapTargetView view) {
-                super.onTargetClick(view);
-                floatingActionButton.hide();
-            }
-
-            @Override
-            public void onTargetDismissed(TapTargetView view, boolean userInitiated) {
-                Log.d("TapTargetView", "You dismissed me :(");
-                floatingActionButton.hide();
-            }
-
-        });
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_stops_menu, menu);
+        getMenuInflater().inflate(R.menu.calendar, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

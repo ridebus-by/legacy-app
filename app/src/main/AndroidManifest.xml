@@ -15,7 +15,7 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:fullBackupContent="@xml/backup_descriptor">
         <activity android:name=".activity.MainActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/SplashScreenBackground">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

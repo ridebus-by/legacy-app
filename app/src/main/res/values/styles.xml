@@ -5,8 +5,8 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
         <item name="windowActionModeOverlay">true</item>
-        <item name="colorTranslucent">#d2414141</item>
         <item name="windowBackground">#FFFFFF</item>
+        <item name="colorTranslucent">#d2414141</item>
         <item name="colorLine">#CCCCCC</item>
         <item name="textColor">#000000</item>
         <item name="autoCompleteTextViewStyle">@style/Cursor</item>
@@ -154,6 +154,10 @@
 
     <style name="Cursor" parent="Widget.AppCompat.AutoCompleteTextView">
         <item name="android:textCursorDrawable">@drawable/cursor</item>
+    </style>
+
+    <style name="SplashScreenBackground" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/onboarding</item>
     </style>
 
 </resources>

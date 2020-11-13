@@ -88,7 +88,7 @@ public class LogUtils implements Thread.UncaughtExceptionHandler {
                     emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]
                             {"ztimms73@gmail.com"});
                     emailIntent.putExtra(Intent.EXTRA_SUBJECT,
-                            "Error report for Kitsune");
+                            "Error report for RideBus");
                     emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + file.getAbsolutePath()));
                     context.startActivity(Intent.createChooser(emailIntent, context.getString(R.string.bug_report)));
                 }).setNegativeButton(android.R.string.cancel, (dialog, which) -> dialog.cancel()).create().show();
