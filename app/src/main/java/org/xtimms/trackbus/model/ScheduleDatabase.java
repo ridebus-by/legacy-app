@@ -3,11 +3,8 @@ package org.xtimms.trackbus.model;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
-
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,7 +20,7 @@ import static org.xtimms.trackbus.util.ConstantUtils.DB_VERSION;
         RouteStops.class, Schedule.class, ClassTransport.class}, version = 1)
 public abstract class ScheduleDatabase extends RoomDatabase {
     public static final String DATABASE_NAME = "trackbus.db";
-    private static final String DB_VERSION_KEY = ScheduleDatabase.class.getSimpleName().concat("DB_VERSION");
+    public static final String DB_VERSION_KEY = ScheduleDatabase.class.getSimpleName().concat("DB_VERSION");
 
     public static void copyDatabase(Context context, String databaseName) {
         final File dbPath = context.getDatabasePath(databaseName);
@@ -68,13 +65,8 @@ public abstract class ScheduleDatabase extends RoomDatabase {
         return sharedPreferences.getInt(DB_VERSION_KEY, 0) == DB_VERSION;
     }
 
-    public static void checkDatabaseExistOnServer() {
-
-    }
-
     public static void setDbVersion(Context context, int dbVersion) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(
-                DB_VERSION_KEY, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences(DB_VERSION_KEY, Context.MODE_PRIVATE);
         sharedPreferences.edit().putInt(DB_VERSION_KEY, dbVersion).apply();
     }
 

@@ -2,9 +2,23 @@ package org.xtimms.trackbus.util;
 
 import org.xtimms.trackbus.App;
 import org.xtimms.trackbus.R;
+import org.xtimms.trackbus.task.RetrieveDatabaseVersionTask;
+
+import java.util.concurrent.ExecutionException;
 
 public class ConstantUtils {
-    public static final int DB_VERSION = 523; //Изменить, если делались изменения в БД
+
+    public static int getDbVersion() {
+        final RetrieveDatabaseVersionTask.RetrieveTask task = new RetrieveDatabaseVersionTask.RetrieveTask();
+        try {
+            return Integer.parseInt(task.execute(App.getInstance().getAppContext().getResources().getString(R.string.url_version)).get());
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public static final int DB_VERSION = getDbVersion(); //Изменить, если делались изменения в БД
 
     public static final int MINUTES_PASS = 4; // Минут прошло после отправления автобуса
     public static final int HOURS_AFTER_MIDNIGHT = 3; //Проверка есть ли автобусы после 00:00ч.(до 3-х ночи проверяем)

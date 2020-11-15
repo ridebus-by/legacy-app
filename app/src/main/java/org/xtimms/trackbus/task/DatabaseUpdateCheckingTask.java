@@ -14,7 +14,7 @@ import java.net.URL;
 
 public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, String> {
 
-    private Context context;
+    private final Context context;
     private PowerManager.WakeLock mWakeLock;
 
     public DatabaseUpdateCheckingTask(Context context) {

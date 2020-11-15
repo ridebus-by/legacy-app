@@ -1,33 +1,37 @@
 package org.xtimms.trackbus.task;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class RetrieveDatabaseVersionTask extends AsyncTask<Integer, Void, Integer> {
+public class RetrieveDatabaseVersionTask {
 
-    @Override
-    protected Integer doInBackground(Integer... integers) {
-        String str = null;
-        try {
-            // Create a URL for the desired page
-            URL url = new URL("https://rumblur.hrebeni.uk/ridebus/version.txt");
+    public static class RetrieveTask extends AsyncTask<String, Integer, String> {
 
-            // Read all the text returned by the server
-            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-            StringBuilder total = new StringBuilder();
-            while ((str = in.readLine()) != null) {
-                total.append(str);
+        String line = null;
+
+        protected String doInBackground(String...params) {
+            URL url;
+            try {
+                url = new URL(params[0]);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                InputStream is = con.getInputStream();
+                BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                line = br.readLine();
+                br.close();
+                Log.d("VERSION", line);
+                return line;
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            in.close();
 
-        } catch (MalformedURLException e) {
-        } catch (IOException e) {
+            return null;
         }
-        return Integer.parseInt(str);
     }
+
 }

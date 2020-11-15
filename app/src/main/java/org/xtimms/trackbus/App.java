@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Room;
 
 import org.xtimms.trackbus.model.ScheduleDatabase;
+import org.xtimms.trackbus.task.DatabaseUpdateCheckingTask;
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.util.LogUtils;
 
@@ -46,6 +48,8 @@ public class App extends Application {
         instance = this;
         LogUtils.init(this);
 
+        updateDatabase();
+
         if (!ScheduleDatabase.checkDatabaseExist(getApplicationContext())) {
             ScheduleDatabase.copyDatabase(getApplicationContext(), ScheduleDatabase.DATABASE_NAME);
         }
@@ -69,6 +73,14 @@ public class App extends Application {
                 .getLaunchIntentForPackage(getBaseContext().getPackageName());
         Objects.requireNonNull(intent).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    private void updateDatabase() {
+        SharedPreferences sharedPreferences = getSharedPreferences(ScheduleDatabase.DB_VERSION_KEY, Context.MODE_PRIVATE);
+        if (sharedPreferences.getInt(ScheduleDatabase.DB_VERSION_KEY, 0) != ConstantUtils.getDbVersion()) {
+            final DatabaseUpdateCheckingTask task = new DatabaseUpdateCheckingTask( this);
+            task.execute(App.getInstance().getAppContext().getResources().getString(R.string.url_backend));
+        }
     }
 
 }
