@@ -10,7 +10,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 30
         versionCode gitCommits
-        versionName "1.2.0"
+        versionName "1.2.1"
         testInstrumentationRunner "androidx.item_bookmarks_search.runner.AndroidJUnitRunner"
     }
     buildTypes {

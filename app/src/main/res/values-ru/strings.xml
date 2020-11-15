@@ -54,4 +54,7 @@
     <string name="log_not_found">Лог не найден!</string>
     <string name="bug_report_summ">Отправить отладочный лог разработчику</string>
     <string name="debug">Отладка</string>
+    <string name="database_updated_successfully">Расписание обновлено</string>
+    <string name="updating_database">Обновление расписания…</string>
+    <string name="current_version">"Текущая версия расписания: "</string>
 </resources>

@@ -54,6 +54,9 @@
     <string name="log_not_found">Error log not found!</string>
     <string name="bug_report_summ">Send debug log to developer</string>
     <string name="debug">Debug</string>
+    <string name="database_updated_successfully">Schedule updated successfully</string>
+    <string name="updating_database">Updating schedule...</string>
+    <string name="current_version">The current version of the schedule: </string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

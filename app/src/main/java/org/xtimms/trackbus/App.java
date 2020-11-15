@@ -2,6 +2,7 @@ package org.xtimms.trackbus;
 
 import android.app.Activity;
 import android.app.Application;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +10,7 @@ import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.room.Room;
@@ -17,6 +19,7 @@ import org.xtimms.trackbus.model.ScheduleDatabase;
 import org.xtimms.trackbus.task.DatabaseUpdateCheckingTask;
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.util.LogUtils;
+import org.xtimms.trackbus.util.NetworkUtils;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -47,6 +50,7 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         LogUtils.init(this);
+        NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 
         updateDatabase();
 
@@ -76,10 +80,16 @@ public class App extends Application {
     }
 
     private void updateDatabase() {
-        SharedPreferences sharedPreferences = getSharedPreferences(ScheduleDatabase.DB_VERSION_KEY, Context.MODE_PRIVATE);
-        if (sharedPreferences.getInt(ScheduleDatabase.DB_VERSION_KEY, 0) != ConstantUtils.getDbVersion()) {
-            final DatabaseUpdateCheckingTask task = new DatabaseUpdateCheckingTask( this);
-            task.execute(App.getInstance().getAppContext().getResources().getString(R.string.url_backend));
+        if (NetworkUtils.isNetworkAvailable(this)) {
+            SharedPreferences sharedPreferences = getSharedPreferences(ScheduleDatabase.DB_VERSION_KEY, Context.MODE_PRIVATE);
+            try {
+                if (sharedPreferences.getInt(ScheduleDatabase.DB_VERSION_KEY, 0) != ConstantUtils.getDbVersion()) {
+                    final DatabaseUpdateCheckingTask task = new DatabaseUpdateCheckingTask(this);
+                    task.execute("https://rumblur.hrebeni.uk/ridebus/trackbus.db");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

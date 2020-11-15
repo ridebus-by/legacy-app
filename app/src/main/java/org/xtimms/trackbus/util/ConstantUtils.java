@@ -9,13 +9,16 @@ import java.util.concurrent.ExecutionException;
 public class ConstantUtils {
 
     public static int getDbVersion() {
-        final RetrieveDatabaseVersionTask.RetrieveTask task = new RetrieveDatabaseVersionTask.RetrieveTask();
-        try {
-            return Integer.parseInt(task.execute(App.getInstance().getAppContext().getResources().getString(R.string.url_version)).get());
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
+        if (NetworkUtils.isNetworkAvailable(App.getInstance().getAppContext())) {
+            final RetrieveDatabaseVersionTask.RetrieveTask task = new RetrieveDatabaseVersionTask.RetrieveTask();
+            try {
+                return Integer.parseInt(task.execute("https://rumblur.hrebeni.uk/ridebus/version.txt").get());
+            } catch (ExecutionException | InterruptedException e) {
+                e.printStackTrace();
+            }
+            return 1;
         }
-        return 0;
+        return 1;
     }
 
     public static final int DB_VERSION = getDbVersion(); //Изменить, если делались изменения в БД
