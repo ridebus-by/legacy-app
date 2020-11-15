@@ -39,4 +39,5 @@ public class ConstantUtils {
     public static final int NUMBER_BOOKMARKS = 12; // Количество закладок на Home-экране
     public static final String EMAIL = "mailto:ztimms73@gmail.com";
     public static final String APP_URL = "https://play.google.com/store/apps/details?id=org.xtimms.trackbus";
+    public static final String RUMBLUR = "https://vk.com/rumblur";
 }

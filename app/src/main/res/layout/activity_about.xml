@@ -27,6 +27,8 @@
 
             <include layout="@layout/card_about_2"/>
 
+            <include layout="@layout/card_about_3"/>
+
         </LinearLayout>
 
     </ScrollView>

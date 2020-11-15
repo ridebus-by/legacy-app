@@ -43,9 +43,11 @@ public class AboutActivity extends AppBaseActivity implements View.OnClickListen
         LinearLayout ll_card_about_2_google_play = findViewById(R.id.ll_card_about_2_google_play);
         LinearLayout ll_card_about_2_email = findViewById(R.id.ll_card_about_2_email);
         LinearLayout ll_card_about_2_report = findViewById(R.id.ll_card_about_2_report);
+        LinearLayout ll_card_about_2_rumblur = findViewById(R.id.ll_card_about_2_rumblur);
         ll_card_about_2_google_play.setOnClickListener(this);
         ll_card_about_2_email.setOnClickListener(this);
         ll_card_about_2_report.setOnClickListener(this);
+        ll_card_about_2_rumblur.setOnClickListener(this);
         AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
         alphaAnimation.setDuration(300);
         alphaAnimation.setStartOffset(600);
@@ -99,6 +101,11 @@ public class AboutActivity extends AppBaseActivity implements View.OnClickListen
                 } catch (Exception e) {
                     Toast.makeText(AboutActivity.this, getString(R.string.about_not_found_email), Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case R.id.ll_card_about_2_rumblur:
+                intent.setData(Uri.parse(ConstantUtils.RUMBLUR));
+                intent.setAction(Intent.ACTION_VIEW);
+                startActivity(intent);
                 break;
         }
     }

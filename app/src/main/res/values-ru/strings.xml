@@ -57,4 +57,7 @@
     <string name="database_updated_successfully">Расписание обновлено</string>
     <string name="updating_database">Обновление расписания…</string>
     <string name="current_version">"Текущая версия расписания: "</string>
+    <string name="minecraft_rumblur">Ссылка на группу сервера во ВКонтакте</string>
+    <string name="gratitide">Выражаю благодарность команде проекта Rumblur за предоставление сервера (на котором, кстати, находится одноименный Minecraft сервер) для хранения базы данных расписания :)</string>
+    <string name="special_thanks">Особая благодарность</string>
 </resources>

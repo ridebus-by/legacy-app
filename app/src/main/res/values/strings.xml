@@ -55,8 +55,9 @@
     <string name="bug_report_summ">Send debug log to developer</string>
     <string name="debug">Debug</string>
     <string name="database_updated_successfully">Schedule updated successfully</string>
-    <string name="updating_database">Updating schedule...</string>
+    <string name="updating_database">Updating schedule…</string>
     <string name="current_version">The current version of the schedule: </string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="gratitide">I would like to thank the team of the Rumblur project for providing server (which, by the way, contains the Minecraft server of the same name) for storing the schedule database :)</string>
+    <string name="minecraft_rumblur">Link to the server group in VKontakte</string>
+    <string name="special_thanks">Special thanks to</string>
 </resources>
