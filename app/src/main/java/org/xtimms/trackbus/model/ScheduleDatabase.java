@@ -3,8 +3,11 @@ package org.xtimms.trackbus.model;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
+
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -63,6 +66,10 @@ public abstract class ScheduleDatabase extends RoomDatabase {
         if (sharedPreferences == null) return false;
 
         return sharedPreferences.getInt(DB_VERSION_KEY, 0) == DB_VERSION;
+    }
+
+    public static void checkDatabaseExistOnServer() {
+
     }
 
     public static void setDbVersion(Context context, int dbVersion) {

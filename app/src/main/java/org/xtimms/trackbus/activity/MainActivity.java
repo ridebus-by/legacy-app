@@ -1,12 +1,20 @@
 package org.xtimms.trackbus.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +37,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import org.joda.time.LocalDate;
 import org.xtimms.trackbus.App;
+import org.xtimms.trackbus.task.DatabaseUpdateCheckingTask;
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.activity.settings.SettingsHeadersActivity;
@@ -37,6 +46,17 @@ import org.xtimms.trackbus.fragment.StopFragment;
 import org.xtimms.trackbus.fragment.TabRouteFragment;
 import org.xtimms.trackbus.ui.DrawerHeaderImageTool;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.Set;
@@ -46,6 +66,8 @@ import de.galgtonold.jollydayandroid.HolidayCalendar;
 import de.galgtonold.jollydayandroid.HolidayManager;
 
 public class MainActivity extends AppBaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    ProgressDialog mProgressDialog;
 
     private boolean mDoubleBackToExitPressedOnce = false;
     private boolean mInstanceState = false;
@@ -166,6 +188,9 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
 
         initDrawerHeaderTool();
         initOnHolidayDialog();
+
+        final DatabaseUpdateCheckingTask task = new DatabaseUpdateCheckingTask( this);
+        task.execute("https://rumblur.hrebeni.uk/ridebus/trackbus.db");
 
     }
 

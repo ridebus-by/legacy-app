@@ -24,6 +24,13 @@ android {
             }
         }
     }
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
@@ -45,6 +52,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
+    implementation 'commons-io:commons-io:2.4'
     implementation 'org.apache.commons:commons-lang3:3.9'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.retrofit:retrofit:1.9.0'
@@ -59,5 +67,7 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'org.jetbrains:annotations:15.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'junit:junit:4.12'
     annotationProcessor 'androidx.room:room-compiler:2.0.0'
 }

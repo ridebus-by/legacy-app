@@ -2,58 +2,100 @@ package org.xtimms.trackbus.task;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.PowerManager;
+import android.util.Log;
 
-import androidx.annotation.NonNull;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-import org.apache.commons.lang3.StringUtils;
-import org.xtimms.trackbus.backend.DatabaseBackend;
-import org.xtimms.trackbus.bus.BusEvent;
-import org.xtimms.trackbus.bus.DatabaseUpdateAvailableEvent;
-import org.xtimms.trackbus.bus.DatabaseUpdateNotAvailableEvent;
-import org.xtimms.trackbus.util.PreferencesUtils;
+public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, String> {
 
-public class DatabaseUpdateCheckingTask extends AsyncTask<Void, Void, BusEvent> {
+    private Context context;
+    private PowerManager.WakeLock mWakeLock;
 
-    private final Context context;
-
-    public static void execute(@NonNull Context context) {
-        new DatabaseUpdateCheckingTask(context).execute();
-    }
-
-    private DatabaseUpdateCheckingTask(Context context) {
-        this.context = context.getApplicationContext();
+    public DatabaseUpdateCheckingTask(Context context) {
+        this.context = context;
     }
 
     @Override
-    protected BusEvent doInBackground(Void... voids) {
-        String localDatabaseVersion = getLocalDatabaseVersion();
-        String serverDatabaseVersion = getServerDatabaseVersion();
+    protected String doInBackground(String... sUrl) {
+        InputStream input = null;
+        OutputStream output = null;
+        HttpURLConnection connection = null;
+        try {
+            URL url = new URL(sUrl[0]);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.connect();
 
-        if (StringUtils.isBlank(serverDatabaseVersion)) {
-            return new DatabaseUpdateNotAvailableEvent();
+            // expect HTTP 200 OK, so we don't mistakenly save error report
+            // instead of the file
+            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                return "Server returned HTTP " + connection.getResponseCode()
+                        + " " + connection.getResponseMessage();
+            }
+
+            // this will be useful to display download percentage
+            // might be -1: server did not report the length
+            int fileLength = connection.getContentLength();
+
+            // download the file
+            input = connection.getInputStream();
+            output = new FileOutputStream("/data/data/" + context.getPackageName() + "/databases/trackbus.db");
+
+            byte data[] = new byte[4096];
+            long total = 0;
+            int count;
+            while ((count = input.read(data)) != -1) {
+                // allow canceling with back button
+                if (isCancelled()) {
+                    input.close();
+                    return null;
+                }
+                total += count;
+                // publishing the progress....
+                if (fileLength > 0) // only if total length is known
+                    publishProgress((int) (total * 100 / fileLength));
+                output.write(data, 0, count);
+            }
+        } catch (Exception e) {
+            return e.toString();
+        } finally {
+            try {
+                if (output != null)
+                    output.close();
+                if (input != null)
+                    input.close();
+            } catch (IOException ignored) {
+            }
+
+            if (connection != null)
+                connection.disconnect();
         }
-
-        if (StringUtils.isBlank(localDatabaseVersion)) {
-            return new DatabaseUpdateAvailableEvent();
-        }
-
-        if (!localDatabaseVersion.equals(serverDatabaseVersion)) {
-            return new DatabaseUpdateAvailableEvent();
-        }
-
-        return new DatabaseUpdateNotAvailableEvent();
-    }
-
-    private String getLocalDatabaseVersion() {
-        return PreferencesUtils.of(context).getDatabaseVersion();
-    }
-
-    private String getServerDatabaseVersion() {
-        return DatabaseBackend.with(context).getDatabaseVersion();
+        return null;
     }
 
     @Override
-    protected void onPostExecute(BusEvent busEvent) {
-        super.onPostExecute(busEvent);
+    protected void onPreExecute() {
+        super.onPreExecute();
+        // take CPU lock to prevent CPU from going off if the user
+        // presses the power button during download
+        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
+                getClass().getName());
+        mWakeLock.acquire(10*60*1000L /*10 minutes*/);
+        /*mProgressDialog.show();*/
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        mWakeLock.release();
+            if (result != null)
+                Log.d("ERROR", "Download error: " + result);
+            else
+                Log.d("SUCCESS", "File downloaded");
     }
 }
