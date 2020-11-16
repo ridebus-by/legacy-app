@@ -60,4 +60,5 @@
     <string name="minecraft_rumblur">Ссылка на группу сервера во ВКонтакте</string>
     <string name="gratitide">Выражаю благодарность команде проекта Rumblur за предоставление сервера (на котором, кстати, находится одноименный Minecraft сервер) для хранения базы данных расписания :)</string>
     <string name="special_thanks">Особая благодарность</string>
+    <string name="built_with_material_components">В приложении использованы элементы Material Design.</string>
 </resources>

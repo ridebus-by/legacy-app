@@ -29,7 +29,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?windowBackground">
+            android:background="?colorWeekdayCard">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_weekday_activitystop"

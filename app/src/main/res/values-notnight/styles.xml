@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorTranslucent">#d2414141</item>
+        <item name="colorLine">#CCCCCC</item>
+        <item name="colorWeekdayCard">#FFFFFF</item>
+        <item name="textColor">#000000</item>
+        <item name="autoCompleteTextViewStyle">@style/Cursor</item>
+        <item name="text_primary">#dd000000</item>
+        <item name="text_secondary">#89000000</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+    </style>
+
+    <style name="SplashScreenBackground" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/onboarding</item>
+        <item name="windowBackground">#FFFFFF</item>
+    </style>
+
+</resources>

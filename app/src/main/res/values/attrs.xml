@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="colorTranslucent" format="color" />
+    <attr name="colorWeekdayCard" format="color" />
     <attr name="colorLine" format="color"/>
     <attr name="windowBackground" format="color"/>
     <attr name="textColor" format="color"/>

@@ -1,5 +1,6 @@
 package org.xtimms.trackbus.adapter;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.xtimms.trackbus.App;
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.object.StopsActivityTimeLineObject;
@@ -124,6 +126,8 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
         private void setRemainingTime(String remainingTime) {
 
+            int nightModeFlags = itemView.getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
             if (remainingTime.equals(ConstantUtils.TIME_EMPTY)) {
                 mRemainingTimeText.setText(ConstantUtils.TIME_EMPTY);
                 return;
@@ -134,13 +138,21 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             if (ThemeUtils.isAppThemeDark(itemView.getContext())) {
                 if (remainingStringTime.contains(ConstantUtils.TIME_EMPTY)) {
                     mRemainingTimeText.setTextColor(Color.RED);
-                } else mRemainingTimeText.setTextColor(Color.WHITE);
+                } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_NO) {
+                    mRemainingTimeText.setTextColor(Color.BLACK);
+                } else {
+                    mRemainingTimeText.setTextColor(Color.WHITE);
+                }
             }
 
             if (ThemeUtils.isAppThemeNotDark(itemView.getContext())) {
                 if (remainingStringTime.contains(ConstantUtils.TIME_EMPTY)) {
                     mRemainingTimeText.setTextColor(Color.RED);
-                } else mRemainingTimeText.setTextColor(Color.BLACK);
+                } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+                    mRemainingTimeText.setTextColor(Color.WHITE);
+                } else {
+                    mRemainingTimeText.setTextColor(Color.BLACK);
+                }
             }
 
             mRemainingTimeText.setText(remainingStringTime);

@@ -152,7 +152,9 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
         TextView mDbVersion = headerView.findViewById(R.id.db_version);
         mDbVersion.setText(App.getInstance().getAppContext().getString(R.string.db_version) + " " + ConstantUtils.DB_VERSION);
 
-        if (isDarkTheme()) {
+        int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        if (isDarkTheme() | nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
             ColorStateList csl = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white_overlay_85));
             mNavigationView.setItemTextColor(csl);
             mNavigationView.setItemIconTintList(csl);

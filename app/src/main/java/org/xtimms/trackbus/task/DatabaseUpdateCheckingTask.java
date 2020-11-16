@@ -110,8 +110,8 @@ public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, Strin
             {
                 mNotifyManager = (NotificationManager) mContext.getSystemService(NOTIFICATION_SERVICE);
 
-                updatingNotificationChannel = new NotificationChannel(UPDATING_NOTIFICATION_CHANNEL_ID, mContext.getResources().getString(R.string.updating_database), NotificationManager.IMPORTANCE_DEFAULT);
-                updatedNotificationChannel = new NotificationChannel(UPDATED_NOTIFICATION_CHANNEL_ID, mContext.getResources().getString(R.string.database_updated_successfully), NotificationManager.IMPORTANCE_HIGH);
+                updatingNotificationChannel = new NotificationChannel(UPDATING_NOTIFICATION_CHANNEL_ID, mContext.getResources().getString(R.string.updating_database), NotificationManager.IMPORTANCE_LOW);
+                updatedNotificationChannel = new NotificationChannel(UPDATED_NOTIFICATION_CHANNEL_ID, mContext.getResources().getString(R.string.database_updated_successfully), NotificationManager.IMPORTANCE_LOW);
 
                 // Configure the notification channel.
                 updatingNotificationChannel.setDescription("Уведомление, сообщающее об обновлении расписания, если есть новая версия на сервере.");
@@ -152,9 +152,7 @@ public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, Strin
                         .setAutoCancel(true)
                         .setSmallIcon(R.drawable.ic_baseline_check_24)
                         .setContentTitle(mContext.getResources().getString(R.string.database_updated_successfully))
-                        .setContentText(mContext.getString(R.string.current_version) + ConstantUtils.getDbVersion())
-                        .setDefaults(NotificationCompat.DEFAULT_ALL)
-                        .setPriority(NotificationCompat.PRIORITY_HIGH);
+                        .setContentText(mContext.getString(R.string.current_version) + ConstantUtils.getDbVersion());
 
                 mNotifyManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
                 mNotifyManager.notify(1, mUpdatingBuilder.build());
