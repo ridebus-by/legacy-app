@@ -1,7 +1,11 @@
 package org.xtimms.trackbus.util;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import org.xtimms.trackbus.App;
 import org.xtimms.trackbus.R;
+import org.xtimms.trackbus.model.ScheduleDatabase;
 import org.xtimms.trackbus.task.RetrieveDatabaseVersionTask;
 
 import java.util.concurrent.ExecutionException;
@@ -18,7 +22,10 @@ public class ConstantUtils {
             }
             return 1;
         }
-        return 1;
+        else {
+            SharedPreferences sharedPreferences = App.getInstance().getAppContext().getSharedPreferences(ScheduleDatabase.DB_VERSION_KEY, Context.MODE_PRIVATE);
+            return sharedPreferences.getInt(ScheduleDatabase.DB_VERSION_KEY, 0);
+        }
     }
 
     public static final int DB_VERSION = getDbVersion(); //Изменить, если делались изменения в БД
