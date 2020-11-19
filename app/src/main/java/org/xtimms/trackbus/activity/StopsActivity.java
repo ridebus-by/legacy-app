@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +17,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.SubtitleCollapsingToolbarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.adapter.StopsActivityAdapter;
@@ -141,7 +139,7 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.calendar, menu);
+        getMenuInflater().inflate(R.menu.report, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

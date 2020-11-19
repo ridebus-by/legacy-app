@@ -1,18 +1,18 @@
 package org.xtimms.trackbus.activity;
 
 import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,12 +23,10 @@ import org.xtimms.trackbus.adapter.TimelineAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.object.StopsActivityTimeLineObject;
 import org.xtimms.trackbus.presenter.TimeLineActivityPresenter;
+import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.util.DateTime;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 public class TimelineActivity extends AppBaseActivity implements TimeLineActivityPresenter.View {
 
@@ -69,7 +67,7 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
         getRecyclerViewData();
 
         toolbar = findViewById(R.id.toolbar_timeline_activity);
-        toolbar.inflateMenu(R.menu.calendar);
+        toolbar.inflateMenu(R.menu.report);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null) {
@@ -85,12 +83,13 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.calendar, menu);
+        getMenuInflater().inflate(R.menu.report, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent();
         //Menu
         int x = item.getItemId();
         switch (x) {
@@ -98,20 +97,17 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
             case android.R.id.home:
                 onBackPressed();
                 return true;
-            case R.id.calendar:
-                Calendar mcurrentDate = Calendar.getInstance();
-                int year = mcurrentDate.get(Calendar.YEAR);
-                int month = mcurrentDate.get(Calendar.MONTH);
-                int day = mcurrentDate.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog datePickerDialog = new DatePickerDialog(TimelineActivity.this, (view, year1, monthOfYear, dayOfMonth) -> {
-                    Calendar newDate = Calendar.getInstance();
-                    newDate.set(year1, monthOfYear, dayOfMonth);
-                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.getDefault());
-                    mWeekDay.setText(sdf.format(newDate.getTime()));
-                    dateTimeChange();
-                }, year, month, day);
-                datePickerDialog.show();
+            case R.id.report:
+                intent.setAction(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse(ConstantUtils.EMAIL));
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.about_report_intent));
+                //intent.putExtra(Intent.EXTRA_TEXT, "Hi,");
+                try {
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Toast.makeText(TimelineActivity.this, getString(R.string.about_not_found_email), Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
 
         return super.onOptionsItemSelected(item);

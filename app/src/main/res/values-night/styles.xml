@@ -11,6 +11,7 @@
         <item name="text_primary">#dd000000</item>
         <item name="text_secondary">#89000000</item>
         <item name="android:navigationBarColor">@android:color/black</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
     </style>
 
     <style name="SplashScreenBackground" parent="AppTheme">

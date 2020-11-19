@@ -29,8 +29,7 @@ public class RetrieveDatabaseVersionTask {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-            return null;
+            return "1";
         }
     }
 
