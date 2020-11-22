@@ -62,4 +62,9 @@
     <string name="special_thanks">Special thanks to</string>
     <string name="built_with_material_components">Built with Material Components.</string>
     <string name="open_on_start">Open on start</string>
+    <string name="rate_title">Rate this app</string>
+    <string name="rate_message">If you enjoy using this app, would you mind taking a moment to rate it? It won\'t take more than a minute. Thanks for your support!</string>
+    <string name="rate_positive">Rate it now</string>
+    <string name="rate_remind_later">Remind me later</string>
+    <string name="rate_never">No, thanks</string>
 </resources>

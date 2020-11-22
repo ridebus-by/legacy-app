@@ -9,9 +9,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class RetrieveDatabaseVersionTask {
-
-    public static class RetrieveTask extends AsyncTask<String, Integer, String> {
+public class RetrieveDatabaseVersionTask extends AsyncTask<String, Integer, String> {
 
         String line = null;
 
@@ -31,6 +29,4 @@ public class RetrieveDatabaseVersionTask {
             }
             return "1";
         }
-    }
-
 }

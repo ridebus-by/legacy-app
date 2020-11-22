@@ -174,11 +174,11 @@ public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, Strin
     @Override
     protected void onPostExecute(String result) {
         mWakeLock.release();
-        mNotifyManager.cancel(UPDATING_NOTIFICATION_ID);
-        mNotifyManager.notify(UPDATED_NOTIFICATION_ID, mUpdatedBuilder.build());
         if (result != null) {
             Log.d("ERROR", "Download error: " + result);
         } else {
+            mNotifyManager.cancel(UPDATING_NOTIFICATION_ID);
+            mNotifyManager.notify(UPDATED_NOTIFICATION_ID, mUpdatedBuilder.build());
             Log.d("SUCCESS", "File downloaded");
         }
 

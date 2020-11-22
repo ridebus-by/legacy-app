@@ -23,7 +23,8 @@ public class StopFragmentPresenter {
         void setAdapter(List<Stop> stopList);
     }
 
-    private static class GetBusStopsAsyncTask extends AsyncTask<Integer, Void, Void> {
+
+    private static class GetBusStopsAsyncTask extends AsyncTask<Void, Void, Void> {
         private final WeakReference<View> mFragmentWeakReference;
         private List<Stop> mStopList;
 
@@ -38,7 +39,7 @@ public class StopFragmentPresenter {
         }
 
         @Override
-        protected Void doInBackground(Integer... params) {
+        protected Void doInBackground(Void... params) {
             mStopList = ModelFactory.getModel().getAllStops();
             return null;
         }

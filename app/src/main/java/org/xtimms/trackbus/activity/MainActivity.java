@@ -26,6 +26,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import org.joda.time.LocalDate;
 import org.xtimms.trackbus.App;
+import org.xtimms.trackbus.fragment.RateItDialogFragment;
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.activity.settings.SettingsHeadersActivity;
@@ -162,6 +163,8 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
 
         initDrawerHeaderTool();
         initOnHolidayDialog();
+
+        RateItDialogFragment.show(this, getSupportFragmentManager());
 
     }
 

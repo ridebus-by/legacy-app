@@ -62,4 +62,9 @@
     <string name="special_thanks">Особая благодарность</string>
     <string name="built_with_material_components">В приложении использованы элементы Material Design.</string>
     <string name="open_on_start">Открывать при запуске</string>
+    <string name="rate_title">Оцените это приложение</string>
+    <string name="rate_message">Если вам нравится использовать это приложение, не могли бы Вы воспользоваться моментом, чтобы оценить его? Это займет не больше минуты. Спасибо за Вашу поддержку!</string>
+    <string name="rate_positive">Оценить</string>
+    <string name="rate_remind_later">Напомнить позже</string>
+    <string name="rate_never">Нет, спасибо</string>
 </resources>

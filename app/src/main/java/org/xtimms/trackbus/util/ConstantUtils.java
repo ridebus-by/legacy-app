@@ -14,7 +14,7 @@ public class ConstantUtils {
 
     public static int getDbVersion() {
         if (NetworkUtils.isNetworkAvailable(App.getInstance().getAppContext())) {
-            final RetrieveDatabaseVersionTask.RetrieveTask task = new RetrieveDatabaseVersionTask.RetrieveTask();
+            final RetrieveDatabaseVersionTask task = new RetrieveDatabaseVersionTask();
             try {
                 return Integer.parseInt(task.execute("https://rumblur.hrebeni.uk/ridebus/version.txt").get());
             } catch (ExecutionException | InterruptedException e) {

@@ -14,6 +14,39 @@
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
     </style>
 
+    <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorTranslucent">#d2ffffff</item>
+        <item name="colorLine">#666666</item>
+        <item name="colorWeekdayCard">#1C1C1D</item>
+        <item name="windowBackground">?android:windowBackground</item>
+        <item name="textColor">#FFFFFF</item>
+        <item name="colorPrimaryLight">#484848</item>
+        <item name="autoCompleteTextViewStyle">@style/Cursor</item>
+        <item name="text_primary">#ddFFFFFF</item>
+        <item name="text_secondary">#89FFFFFF</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+    </style>
+
+    <style name="AMOLED" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorTranslucent">#d2ffffff</item>
+        <item name="colorLine">#666666</item>
+        <item name="colorWeekdayCard">#1C1C1D</item>
+        <item name="windowBackground">#000000</item>
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="textColor">#FFFFFF</item>
+        <item name="colorPrimaryLight">#000000</item>
+        <item name="autoCompleteTextViewStyle">@style/Cursor</item>
+        <item name="text_primary">#ddFFFFFF</item>
+        <item name="text_secondary">#89FFFFFF</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+    </style>
+
     <style name="SplashScreenBackground" parent="AppTheme">
         <item name="android:windowBackground">@drawable/onboarding</item>
         <item name="windowBackground">#1C1C1D</item>

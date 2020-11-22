@@ -7,7 +7,7 @@ import java.util.List;
 
 @Dao
 public interface ScheduleDao {
-    @Query("SELECT  * FROM stop ORDER BY stopTitle ASC")
+    @Query("SELECT * FROM stop ORDER BY stopTitle ASC")
     List<Stop> getAllStops();
 
     @Query("SELECT * FROM route WHERE (city_id=1 AND transport_id=1) ORDER BY LENGTH(routeNumber), routeNumber")

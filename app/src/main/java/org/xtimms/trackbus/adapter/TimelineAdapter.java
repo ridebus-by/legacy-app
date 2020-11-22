@@ -139,9 +139,11 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
                 if (remainingStringTime.contains(ConstantUtils.TIME_EMPTY)) {
                     mRemainingTimeText.setTextColor(Color.RED);
                 } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_NO) {
-                    mRemainingTimeText.setTextColor(Color.BLACK);
-                } else {
                     mRemainingTimeText.setTextColor(Color.WHITE);
+                } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+                    mRemainingTimeText.setTextColor(Color.WHITE);
+                } else {
+                    mRemainingTimeText.setTextColor(Color.BLACK);
                 }
             }
 
@@ -150,6 +152,8 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
                     mRemainingTimeText.setTextColor(Color.RED);
                 } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
                     mRemainingTimeText.setTextColor(Color.WHITE);
+                } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_NO) {
+                    mRemainingTimeText.setTextColor(Color.BLACK);
                 } else {
                     mRemainingTimeText.setTextColor(Color.BLACK);
                 }
