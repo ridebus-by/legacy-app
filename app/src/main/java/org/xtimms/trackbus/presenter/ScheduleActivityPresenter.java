@@ -2,6 +2,7 @@ package org.xtimms.trackbus.presenter;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.xtimms.trackbus.App;
 import org.xtimms.trackbus.util.ConstantUtils;
@@ -43,7 +44,7 @@ public class ScheduleActivityPresenter {
         void setAdapter(Map<String, List<String>> scheduleMap, String closestTime);
     }
 
-    public static class GetScheduleAsyncTask extends AsyncTask<String, Void, Void> {
+    public static class GetScheduleAsyncTask extends AsyncTask<String, Void, String> {
         private final WeakReference<View> mViewWeakReference;
         private List<String> mTimeList;
         private final List<String> mErrorMessage = new ArrayList<>();
@@ -70,7 +71,7 @@ public class ScheduleActivityPresenter {
         }
 
         @Override
-        protected Void doInBackground(String... params) {
+        protected String doInBackground(String... params) {
             int stopId = Integer.parseInt(params[0]);
             int routeId = Integer.parseInt(params[1]);
             String currentDate = params[2];
@@ -122,9 +123,14 @@ public class ScheduleActivityPresenter {
         }
 
         @Override
-        protected void onPostExecute(Void v) {
-            super.onPostExecute(v);
-            mViewWeakReference.get().setAdapter(mMap, mClosestTime);
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                Log.d("ERROR", "OnPostExecute not working...");
+                return;
+            } else {
+                mViewWeakReference.get().setAdapter(mMap, mClosestTime);
+                Log.d("SUCCESS", "Yay! Adapter working!");
+            }
         }
     }
 }
