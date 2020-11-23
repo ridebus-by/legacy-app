@@ -1,19 +1,15 @@
 language: android
-
+dist: trusty
 jdk:
   - oraclejdk8
-
 android:
   components:
-    - platform-tools
     - tools
+    - platform-tools-29.0.3
     - build-tools-29.0.3
     - android-30
-    - extra-android-m2repository
-
   licenses:
-    - android-sdk-license-.+
     - android-sdk-preview-license-.+
-
-script:
-   - ./gradlew build connectedCheck
+    - android-sdk-license-.+
+    - google-gdk-license-.+
+script: ./gradlew assembleDebug lintDebug
