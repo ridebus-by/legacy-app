@@ -3,8 +3,6 @@ package org.xtimms.trackbus.task;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.PowerManager;
@@ -33,8 +31,6 @@ public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, Strin
     private NotificationManager mNotifyManager;
     private NotificationCompat.Builder mUpdatingBuilder;
     private NotificationCompat.Builder mUpdatedBuilder;
-    private NotificationChannel updatingNotificationChannel;
-    private NotificationChannel updatedNotificationChannel;
     private static final int UPDATING_NOTIFICATION_ID = 1;
     private static final int UPDATED_NOTIFICATION_ID = 2;
     private static final String UPDATING_NOTIFICATION_CHANNEL_ID = "1";
@@ -69,7 +65,7 @@ public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, Strin
             input = connection.getInputStream();
             output = new FileOutputStream(mContext.getDatabasePath("trackbus.db"));
 
-            byte data[] = new byte[4096];
+            byte[] data = new byte[4096];
             long total = 0;
             int count;
             while ((count = input.read(data)) != -1) {
@@ -110,8 +106,8 @@ public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, Strin
             {
                 mNotifyManager = (NotificationManager) mContext.getSystemService(NOTIFICATION_SERVICE);
 
-                updatingNotificationChannel = new NotificationChannel(UPDATING_NOTIFICATION_CHANNEL_ID, mContext.getResources().getString(R.string.updating_database), NotificationManager.IMPORTANCE_LOW);
-                updatedNotificationChannel = new NotificationChannel(UPDATED_NOTIFICATION_CHANNEL_ID, mContext.getResources().getString(R.string.database_updated_successfully), NotificationManager.IMPORTANCE_LOW);
+                NotificationChannel updatingNotificationChannel = new NotificationChannel(UPDATING_NOTIFICATION_CHANNEL_ID, mContext.getResources().getString(R.string.updating_database), NotificationManager.IMPORTANCE_LOW);
+                NotificationChannel updatedNotificationChannel = new NotificationChannel(UPDATED_NOTIFICATION_CHANNEL_ID, mContext.getResources().getString(R.string.database_updated_successfully), NotificationManager.IMPORTANCE_LOW);
 
                 // Configure the notification channel.
                 updatingNotificationChannel.setDescription("Уведомление, сообщающее об обновлении расписания, если есть новая версия на сервере.");

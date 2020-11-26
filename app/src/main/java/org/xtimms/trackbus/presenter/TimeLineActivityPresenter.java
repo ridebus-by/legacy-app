@@ -51,11 +51,6 @@ public class TimeLineActivityPresenter {
         }
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
         protected Boolean doInBackground(Integer... params) {
 
             List<Stop> stopList = App.getInstance().getDatabase().ScheduleDao().getStops(mRouteId);

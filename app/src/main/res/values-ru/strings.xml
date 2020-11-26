@@ -3,9 +3,6 @@
     <string name="menu_item_1">Маршруты</string>
     <string name="menu_item_2">Остановки</string>
     <string name="menu_item_3">Закладки</string>
-    <string name="route_tab_title_buses">Автобусы</string>
-    <string name="route_tab_title_minibuses">Маршрутки</string>
-    <string name="route_tab_title_express">Экспресс</string>
     <string name="hours">ч</string>
     <string name="minutes">м</string>
     <string name="bookmarks_context_menu_item_change">Изменить</string>
@@ -38,7 +35,6 @@
     <string name="about_report_intent">Сообщение об ошибке: RideBus</string>
     <string name="about_email">Связаться по электронной почте</string>
     <string name="change_day">Сменить день недели</string>
-    <string name="more_apps">Больше приложений</string>
     <string name="db_version">Версия расписания:</string>
     <string name="drawer_close">Закрыть</string>
     <string name="drawer_open">Открыть</string>
@@ -46,8 +42,6 @@
     <string name="error">Ошибка</string>
     <string name="route_info">Информация</string>
     <string name="number">Маршрут №</string>
-    <string name="route_tab_title_trams">Трамваи</string>
-    <string name="route">маршрут</string>
     <string name="bug_report_message">Отправив отчёт об ошибке Вы поможете разработчикам.</string>
     <string name="bug_report">Отчёт об ошибке</string>
     <string name="send">Отправить</string>
@@ -61,7 +55,6 @@
     <string name="gratitide">Выражаю благодарность команде проекта Rumblur за предоставление сервера (на котором, кстати, находится одноименный Minecraft сервер) для хранения базы данных расписания :)</string>
     <string name="special_thanks">Особая благодарность</string>
     <string name="built_with_material_components">В приложении использованы элементы Material Design.</string>
-    <string name="open_on_start">Открывать при запуске</string>
     <string name="rate_title">Оцените это приложение</string>
     <string name="rate_message">Если вам нравится использовать это приложение, не могли бы Вы воспользоваться моментом, чтобы оценить его? Это займет не больше минуты. Спасибо за Вашу поддержку!</string>
     <string name="rate_positive">Оценить</string>

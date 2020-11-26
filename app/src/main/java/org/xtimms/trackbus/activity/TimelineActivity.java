@@ -34,7 +34,6 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
     private RecyclerView mRecyclerView;
     private TextView mWeekDay;
     private Route mRoute;
-    private Toolbar toolbar;
     private ProgressBar mProgressBar;
     private boolean mAdapterIsSet = false;
     private TimelineAdapter mTimeLineAdapter;
@@ -66,7 +65,7 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
 
         getRecyclerViewData();
 
-        toolbar = findViewById(R.id.toolbar_timeline_activity);
+        Toolbar toolbar = findViewById(R.id.toolbar_timeline_activity);
         toolbar.inflateMenu(R.menu.report);
         setSupportActionBar(toolbar);
 

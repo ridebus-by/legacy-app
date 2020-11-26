@@ -75,12 +75,10 @@ public class SettingsActivity extends AppBaseActivity implements SharedPreferenc
 
     @Override
     public boolean onPreferenceClick(Preference preference) {
-        switch (preference.getKey()) {
-            case "bugreport":
-                LogUtils.sendLog(this);
-                return true;
-            default:
-                return false;
+        if ("bugreport".equals(preference.getKey())) {
+            LogUtils.sendLog(this);
+            return true;
         }
+        return false;
     }
 }

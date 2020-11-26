@@ -33,11 +33,6 @@ public class ExpressFragmentPresenter {
         }
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
         protected Void doInBackground(Void... params) {
             mRouteList = ModelFactory.getModel().getAllRoutesExpress();
             return null;

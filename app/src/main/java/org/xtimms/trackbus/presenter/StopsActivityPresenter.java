@@ -52,11 +52,6 @@ public class StopsActivityPresenter {
         }
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
         protected Boolean doInBackground(Integer... params) {
 
             List<Route> routeList = ModelFactory.getModel().getRoutesByStop(mStopId);

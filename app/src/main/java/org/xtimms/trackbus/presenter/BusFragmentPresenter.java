@@ -33,11 +33,6 @@ public class BusFragmentPresenter {
         }
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
         protected Void doInBackground(Void... params) {
             mRouteList = ModelFactory.getModel().getAllRoutesBus();
             return null;

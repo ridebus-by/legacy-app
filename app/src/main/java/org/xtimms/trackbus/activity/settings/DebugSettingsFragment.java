@@ -20,7 +20,6 @@ public class DebugSettingsFragment extends PreferenceFragment {
         b.setOnPreferenceClickListener(onPreferenceClickListener);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

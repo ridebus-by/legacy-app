@@ -1,5 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="url_backend" translatable="false">BACKEND</string>
-    <string name="url_version" translatable="false">VERSION</string>
-</resources>
+<resources></resources>

@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.xtimms.trackbus.App;
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.object.StopsActivityTimeLineObject;

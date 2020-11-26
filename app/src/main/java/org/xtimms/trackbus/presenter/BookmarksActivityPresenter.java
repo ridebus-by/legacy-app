@@ -36,11 +36,6 @@ public class BookmarksActivityPresenter {
         }
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
         protected Boolean doInBackground(Integer... params) {
             List<Route> routeList = ModelFactory.getModel().getAllRoutes();
             List<Stop> stopList = ModelFactory.getModel().getAllStops();

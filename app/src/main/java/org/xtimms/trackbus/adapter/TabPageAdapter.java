@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import org.xtimms.trackbus.fragment.TramsFragment;
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.fragment.ExpressFragment;
 import org.xtimms.trackbus.fragment.MinibusFragment;

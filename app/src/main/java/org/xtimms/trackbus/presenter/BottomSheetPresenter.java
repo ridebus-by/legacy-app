@@ -36,11 +36,6 @@ public class BottomSheetPresenter {
         }
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
         protected Void doInBackground(String... params) {
             String routeNumber = params[0];
             List<Route> routeList;

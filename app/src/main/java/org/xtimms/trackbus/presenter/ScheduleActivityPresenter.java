@@ -66,11 +66,6 @@ public class ScheduleActivityPresenter {
         }
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
         protected String doInBackground(String... params) {
             int stopId = Integer.parseInt(params[0]);
             int routeId = Integer.parseInt(params[1]);

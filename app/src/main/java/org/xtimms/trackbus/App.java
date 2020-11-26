@@ -10,7 +10,6 @@ import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.room.Room;
