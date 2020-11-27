@@ -1,6 +1,7 @@
 package org.xtimms.trackbus.presenter;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.xtimms.trackbus.model.ModelFactory;
 import org.xtimms.trackbus.model.Stop;
@@ -24,7 +25,7 @@ public class StopFragmentPresenter {
     }
 
 
-    private static class GetBusStopsAsyncTask extends AsyncTask<Void, Void, Void> {
+    private static class GetBusStopsAsyncTask extends AsyncTask<Void, Void, String> {
         private final WeakReference<View> mFragmentWeakReference;
         private List<Stop> mStopList;
 
@@ -34,15 +35,20 @@ public class StopFragmentPresenter {
         }
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected String doInBackground(Void... params) {
             mStopList = ModelFactory.getModel().getAllStops();
             return null;
         }
 
         @Override
-        protected void onPostExecute(Void v) {
-            super.onPostExecute(v);
-            mFragmentWeakReference.get().setAdapter(mStopList);
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                Log.d("ERROR", "OnPostExecute not working...");
+                return;
+            } else {
+                mFragmentWeakReference.get().setAdapter(mStopList);
+                Log.d("SUCCESS", "Yay! Adapter working!");
+            }
         }
     }
 

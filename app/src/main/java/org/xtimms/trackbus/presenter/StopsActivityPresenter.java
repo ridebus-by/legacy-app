@@ -1,6 +1,7 @@
 package org.xtimms.trackbus.presenter;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.model.ModelFactory;
@@ -113,9 +114,14 @@ public class StopsActivityPresenter {
         }
 
         @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            activityWeakReference.get().setAdapter(mStopActivityObjectList);
+        protected void onPostExecute(Boolean result) {
+            if (result == null) {
+                Log.d("ERROR", "OnPostExecute not working...");
+                return;
+            } else {
+                activityWeakReference.get().setAdapter(mStopActivityObjectList);
+                Log.d("SUCCESS", "Yay! Adapter working!");
+            }
         }
     }
 }

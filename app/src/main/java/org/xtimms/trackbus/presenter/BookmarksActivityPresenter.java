@@ -1,6 +1,7 @@
 package org.xtimms.trackbus.presenter;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.xtimms.trackbus.model.DatabaseObject;
 import org.xtimms.trackbus.model.ModelFactory;
@@ -45,9 +46,14 @@ public class BookmarksActivityPresenter {
         }
 
         @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            activityWeakReference.get().setAdapter(mDatabaseObjects);
+        protected void onPostExecute(Boolean result) {
+            if (result == null) {
+                Log.d("ERROR", "OnPostExecute not working...");
+                return;
+            } else {
+                activityWeakReference.get().setAdapter(mDatabaseObjects);
+                Log.d("SUCCESS", "Yay! Adapter working!");
+            }
         }
     }
 

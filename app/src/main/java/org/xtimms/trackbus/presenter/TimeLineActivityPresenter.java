@@ -1,6 +1,7 @@
 package org.xtimms.trackbus.presenter;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.xtimms.trackbus.App;
 import org.xtimms.trackbus.model.ModelFactory;
@@ -74,9 +75,14 @@ public class TimeLineActivityPresenter {
         }
 
         @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            activityWeakReference.get().setAdapter(mStopsActivityTimeLineObjects, mCurrentTime);
+        protected void onPostExecute(Boolean result) {
+            if (result == null) {
+                Log.d("ERROR", "OnPostExecute not working...");
+                return;
+            } else {
+                activityWeakReference.get().setAdapter(mStopsActivityTimeLineObjects, mCurrentTime);
+                Log.d("SUCCESS", "Yay! Adapter working!");
+            }
         }
     }
 }
