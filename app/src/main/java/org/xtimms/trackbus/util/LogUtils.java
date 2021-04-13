@@ -9,10 +9,10 @@ import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
-import org.jetbrains.annotations.NotNull;
 import org.xtimms.trackbus.BuildConfig;
 import org.xtimms.trackbus.R;
 
@@ -134,7 +134,7 @@ public class LogUtils implements Thread.UncaughtExceptionHandler {
     }
 
     @Override
-    public void uncaughtException(@NotNull Thread thread, Throwable ex) {
+    public void uncaughtException(@NonNull Thread thread, Throwable ex) {
         report("!CRASH\n" + ex.getMessage() + "\n\n" + ex.getCause() + "\n");
         if (mOldHandler != null)
             mOldHandler.uncaughtException(thread, ex);

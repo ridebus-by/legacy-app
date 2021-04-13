@@ -36,7 +36,7 @@ public final class SettingsHeadersActivity extends AppBaseActivity implements Ad
         mHeaders = new ArrayList<>();
         mHeaders.add(new SettingsHeader(this, 1, R.string.general, R.drawable.ic_build_24dp));
         mHeaders.add(new SettingsHeader(this, 2, R.string.appearance, R.drawable.ic_brush_24dp));
-        mHeaders.add(new SettingsHeader(this, 3, R.string.debug, R.drawable.ic_baseline_bug_report_24));
+        mHeaders.add(new SettingsHeader(this, 3, R.string.debug, R.drawable.ic_bug_report_black_24dp));
         //mHeaders.add(new SettingsHeader(this, 3, R.string.tabs, R.drawable.ic_tab_white_24dp));
 
         SettingsAdapter mAdapter = new SettingsAdapter(mHeaders, this);
@@ -68,6 +68,7 @@ public final class SettingsHeadersActivity extends AppBaseActivity implements Ad
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_SETTINGS && resultCode == SettingsActivity.RESULT_RESTART) {
             new AlertDialog.Builder(this)
                     .setMessage(R.string.need_restart)

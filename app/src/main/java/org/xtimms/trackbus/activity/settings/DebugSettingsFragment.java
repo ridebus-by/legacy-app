@@ -26,4 +26,13 @@ public class DebugSettingsFragment extends PreferenceFragment {
         addPreferencesFromResource(R.xml.pref_debug);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Activity activity = getActivity();
+        if (activity != null) {
+            activity.setTitle(R.string.debug);
+        }
+    }
+
 }

@@ -16,53 +16,60 @@
         android:layout_marginEnd="16dp"
         android:contentDescription="TODO"
         android:src="@drawable/ic_tram_black_24dp"
-        android:tint="#757575"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription,HardcodedText" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="?colorLine"
-        android:layout_marginStart="72dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_height="1dp"
+        android:alpha="0.25"
+        android:background="?android:attr/textColorHint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="72dp" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/text_title_bookmarks_cardview"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="16sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ImageView_tram_itemBookmarksSearch"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/text_picture_bookmarks_cardview">
+        app:layout_constraintStart_toEndOf="@+id/text_picture_bookmarks_cardview"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="test" />
 
-        <TextView
-            android:id="@+id/text_title_bookmarks_cardview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="16sp"
-            tools:text="text" />
-
-        <TextView
-            android:id="@+id/text_mark_bookmarks_cardview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColor="?android:attr/textColorSecondary"
-            android:textSize="14sp"
-            tools:text="text" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/text_mark_bookmarks_cardview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="14sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ImageView_tram_itemBookmarksSearch"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/text_picture_bookmarks_cardview"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_bookmarks_cardview"
+        tools:text="test" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_picture_bookmarks_cardview"
@@ -77,6 +84,6 @@
         android:textSize="18sp"
         cardView:layout_constraintBottom_toBottomOf="parent"
         cardView:layout_constraintStart_toStartOf="parent"
-        cardView:layout_constraintTop_toTopOf="parent" />
+        cardView:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

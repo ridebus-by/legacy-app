@@ -34,8 +34,9 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="?colorLine"
+        android:layout_height="1dp"
+        android:alpha="0.25"
+        android:background="?android:attr/textColorHint"
         android:layout_marginStart="72dp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -81,7 +82,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
-            android:background="@drawable/circle_stop"
+            android:background="@drawable/ic_store_mall_directory_black_24dp"
             android:textColor="@android:color/white"
             android:gravity="center"
             android:textSize="24sp"

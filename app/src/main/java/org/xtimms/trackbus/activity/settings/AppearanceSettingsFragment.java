@@ -1,5 +1,6 @@
 package org.xtimms.trackbus.activity.settings;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
@@ -19,4 +20,14 @@ public final class AppearanceSettingsFragment extends PreferenceFragment {
 				"theme"
 		);
 	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		Activity activity = getActivity();
+		if (activity != null) {
+			activity.setTitle(R.string.appearance);
+		}
+	}
+
 }

@@ -14,22 +14,9 @@ import org.xtimms.trackbus.R;
 public abstract class ThemeUtils {
 
 	private static final int[] APP_THEMES = new int[]{
-			R.style.AppTheme_Default,
-			R.style.AppTheme_Red,
-			R.style.AppTheme_Orange,
-			R.style.AppTheme_LightGreen,
-			R.style.AppTheme_Green,
-			R.style.AppTheme_Teal,
-			R.style.AppTheme_Cyan,
-			R.style.AppTheme_LightBlue,
-			R.style.AppTheme_Blue,
-			R.style.AppTheme_Indigo,
-			R.style.AppTheme_DeepPurple,
-			R.style.AppTheme_Purple,
-			R.style.AppTheme_Pink,
-			R.style.AppTheme_Black,
-			R.style.AppThemeDark,
-			R.style.AMOLED
+			R.style.Theme_RideBus,
+			R.style.Theme_RideBus_LightBlue,
+			R.style.Theme_RideBus_DarkBlue
 	};
 
 	@ColorInt

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--============-->
+    <!-- Base Theme -->
+    <!--============-->
+    <style name="Theme"/>
+
+    <!--==============-->
+    <!-- Light Themes -->
+    <!--=======-======-->
+    <style name="Theme.Base" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- AppBar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!-- Theme colors -->
+        <item name="colorPrimary">@color/md_white_1000</item>
+        <item name="colorOnPrimary">@color/md_black_1000</item>
+        <item name="colorAccentOnPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/md_white_1000</item>
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorOnSecondary">@color/md_white_1000</item>
+        <item name="colorSurface">@color/dialogLight</item>
+        <item name="colorOnSurface">@color/textColorPrimaryLight</item>
+        <item name="colorOnBackground">@color/textColorPrimaryLight</item>
+        <item name="colorAccent">@color/colorAccentLight</item>
+
+        <!-- Base background/text colors -->
+        <item name="android:colorBackground">@color/backgroundLight</item>
+        <item name="android:textColorPrimary">@color/textColorPrimaryLight</item>
+        <item name="android:textColorSecondary">@color/textColorSecondaryLight</item>
+        <item name="android:textColorHint">@color/textColorHintLight</item>
+        <item name="android:textColorPrimaryInverse">@color/textColorPrimaryDark</item>
+        <item name="android:textColorSecondaryInverse">@color/textColorSecondaryDark</item>
+        <item name="android:textColorHintInverse">@color/textColorHintDark</item>
+        <item name="rippleColor">@color/rippleColorLight</item>
+
+        <item name="android:divider">@color/dividerLight</item>
+        <item name="android:listDivider">@drawable/line_divider</item>
+
+        <!-- Handles RTL text -->
+        <item name="android:textAlignment">gravity</item>
+        <item name="android:textDirection">locale</item>
+
+        <!-- Themes -->
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:navigationBarColor">?attr/colorPrimary</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="29">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="actionModeStyle">@style/Theme.ActionMode</item>
+        <item name="actionModeCloseButtonStyle">@style/Theme.ActionMode.CloseButton</item>
+        <item name="actionBarPopupTheme">@style/ThemeOverlay.MaterialComponents</item>
+        <item name="toolbarNavigationButtonStyle">@style/Theme.Toolbar.Navigation</item>
+        <item name="dialogTheme">@style/Theme.AlertDialog.Light</item>
+        <item name="materialAlertDialogTheme">@style/Theme.AlertDialog.Light</item>
+        <item name="bottomSheetDialogTheme">@style/Theme.BottomSheet</item>
+        <item name="chipStyle">@style/Theme.Widget.Chip</item>
+        <item name="buttonStyle">@style/Theme.Widget.Button</item>
+        <item name="snackbarStyle">@style/Theme.Widget.Snackbar</item>
+        <item name="snackbarButtonStyle">@style/Theme.Widget.Button</item>
+        <item name="snackbarTextViewStyle">@style/Theme.Widget.Snackbar.TextView</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Widget.Button</item>
+        <item name="textInputStyle">@style/Theme.Widget.TextInputLayout.OutlinedBox</item>
+        <item name="android:itemTextAppearance">@style/TextAppearance.Widget.Menu</item>
+        <item name="circularProgressIndicatorStyle">@style/Theme.Widget.CircularProgressIndicator</item>
+        <item name="linearProgressIndicatorStyle">@style/Theme.Widget.LinearProgressIndicator</item>
+    </style>
+
+    <!--===========-->
+    <!-- Main Theme-->
+    <!--===========-->
+    <style name="Theme.RideBus" parent="Theme.Base">
+        <item name="android:statusBarColor">@color/grey</item>
+        <item name="android:navigationBarColor">@color/md_black_1000_54</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+
+    </style>
+
+    <!--===============-->
+    <!-- Launch Screen -->
+    <!--===============-->
+    <style name="Theme.Splash" parent="Theme.RideBus">
+        <item name="colorBackgroundSplash">@color/md_white_1000</item>
+
+        <item name="android:windowBackground">@drawable/onboarding_light</item>
+        <item name="android:statusBarColor">@color/grey</item>
+        <item name="android:navigationBarColor">@color/md_black_1000_54</item>
+    </style>
+
+</resources>

@@ -9,8 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="56dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+        style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -18,14 +17,13 @@
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll"
             app:contentScrim="?colorPrimary"
-            app:toolbarId="@+id/toolbar_schedule_activity"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            app:toolbarId="@+id/toolbar_schedule_activity">
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar_schedule_activity"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_date_scheduleactivity"
@@ -33,16 +31,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="4dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
                 tools:text="Tu, 5 Sept 2019" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="2dp"
-            app:cardCornerRadius="2dp"
+            app:strokeWidth="0.5dp"
+            app:strokeColor="@color/stroke_color"
+            app:cardElevation="0dp"
             android:layout_margin="8dp">
 
             <LinearLayout
@@ -145,7 +144,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
     </com.google.android.material.appbar.AppBarLayout>
 

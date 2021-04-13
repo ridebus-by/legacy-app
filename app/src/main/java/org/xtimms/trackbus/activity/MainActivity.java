@@ -1,31 +1,47 @@
 package org.xtimms.trackbus.activity;
 
+import android.animation.AnimatorInflater;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowInsets;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import org.joda.time.LocalDate;
 import org.xtimms.trackbus.App;
+import org.xtimms.trackbus.fragment.AppBaseFragment;
 import org.xtimms.trackbus.fragment.RateItDialogFragment;
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
@@ -33,7 +49,6 @@ import org.xtimms.trackbus.activity.settings.SettingsHeadersActivity;
 import org.xtimms.trackbus.fragment.BookmarkFragment;
 import org.xtimms.trackbus.fragment.StopFragment;
 import org.xtimms.trackbus.fragment.TabRouteFragment;
-import org.xtimms.trackbus.ui.DrawerHeaderImageTool;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -43,17 +58,16 @@ import de.galgtonold.jollydayandroid.Holiday;
 import de.galgtonold.jollydayandroid.HolidayCalendar;
 import de.galgtonold.jollydayandroid.HolidayManager;
 
-public class MainActivity extends AppBaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppBaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener,
+        BottomNavigationView.OnNavigationItemReselectedListener {
 
     private boolean mDoubleBackToExitPressedOnce = false;
     private boolean mInstanceState = false;
-    private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mToggle;
-    private NavigationView mNavigationView;
     private Toolbar toolbar;
-    private DrawerHeaderImageTool mDrawerHeaderTool;
+    private BottomNavigationView mBottomNavigationView;
 
-    private TabRouteFragment tabRouteFragment;
+
+    private AppBaseFragment mFragment;
     private StopFragment stopFragment;
     private BookmarkFragment bookmarkFragment;
 
@@ -67,110 +81,29 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        enableTransparentStatusBar(android.R.color.transparent);
-
+        mBottomNavigationView = findViewById(R.id.navigation_view);
+        mBottomNavigationView.setOnNavigationItemSelectedListener(this);
+        mBottomNavigationView.setOnNavigationItemReselectedListener(this);
         toolbar = findViewById(R.id.toolbar_main);
         toolbar.inflateMenu(R.menu.main);
         toolbar.setTitle(R.string.menu_item_1);
-        toolbar.setNavigationOnClickListener(v -> mDrawerLayout.openDrawer(GravityCompat.START));
         setSupportActionBar(toolbar);
 
-        mDrawerLayout = findViewById(R.id.drawer_layout);
-        if (mDrawerLayout != null){
-            mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close){
-                @Override
-                public void onDrawerClosed(View drawerView) {
-                    super.onDrawerClosed(drawerView);
-                    invalidateOptionsMenu();
-                }
+        mFragment = new TabRouteFragment();
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(
+                        R.anim.fade_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.fade_out  // popExit
+                )
+                .replace(R.id.frame_layout, mFragment)
+                .commitAllowingStateLoss();
 
-                @Override
-                public void onDrawerOpened(View drawerView) {
-                    super.onDrawerOpened(drawerView);
-                    invalidateOptionsMenu();
-                }
-            };
-            mToggle.setDrawerIndicatorEnabled(true);
-            mDrawerLayout.addDrawerListener(mToggle);
-            Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeButtonEnabled(true);
-        }
-        mNavigationView = findViewById(R.id.navigation_view);
-        mNavigationView.setNavigationItemSelectedListener(this);
-
-        // Init the fragments.
-        if (savedInstanceState != null) {
-            tabRouteFragment = (TabRouteFragment) getSupportFragmentManager().getFragment(savedInstanceState, "TabRouteFragment");
-            stopFragment = (StopFragment) getSupportFragmentManager().getFragment(savedInstanceState, "StopFragment");
-            bookmarkFragment = (BookmarkFragment) getSupportFragmentManager().getFragment(savedInstanceState, "BookmarkFragment");
-            selectedNavItem = savedInstanceState.getInt(KEY_NAV_ITEM);
-        } else {
-            tabRouteFragment = (TabRouteFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout);
-            if (tabRouteFragment == null) {
-                tabRouteFragment = TabRouteFragment.newInstance(0);
-            }
-
-            stopFragment = (StopFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout);
-            if (stopFragment == null) {
-                stopFragment = StopFragment.newInstance();
-            }
-
-            bookmarkFragment = (BookmarkFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout);
-            if (bookmarkFragment == null) {
-                bookmarkFragment = BookmarkFragment.newInstance();
-            }
-        }
-
-        // Add the fragments.
-        if (!tabRouteFragment.isAdded()) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.frame_layout, tabRouteFragment, "TabRouteFragment")
-                    .commit();
-        }
-
-        if (!stopFragment.isAdded()) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.frame_layout, stopFragment, "StopFragment")
-                    .commit();
-        }
-
-        if (!bookmarkFragment.isAdded()) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.frame_layout, bookmarkFragment, "BookmarkFragment")
-                    .commit();
-        }
-
-        // Show the default fragment.
-        if (selectedNavItem == 0) {
-            showRoutesFragment();
-        } else if (selectedNavItem == 1) {
-            showStopsFragment();
-        } else if (selectedNavItem == 2) {
-            showBookmarksFragment();
-        }
-
-        final View headerView = mNavigationView.getHeaderView(0);
-        TextView mDbVersion = headerView.findViewById(R.id.db_version);
-        mDbVersion.setText(App.getInstance().getAppContext().getString(R.string.db_version) + " " + ConstantUtils.DB_VERSION);
-
-        int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-
-        if (isDarkTheme() | nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
-            ColorStateList csl = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white_overlay_85));
-            mNavigationView.setItemTextColor(csl);
-            mNavigationView.setItemIconTintList(csl);
-        }
-
-        initDrawerHeaderTool();
         initOnHolidayDialog();
 
         RateItDialogFragment.show(this, getSupportFragmentManager());
 
-    }
-
-    private void initDrawerHeaderTool() {
-        mDrawerHeaderTool = new DrawerHeaderImageTool(this, mNavigationView);
-        mDrawerHeaderTool.initDrawerImage();
     }
 
     private void initOnHolidayDialog() {
@@ -179,35 +112,13 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
 
         for (Holiday holiday : holidays) {
             if (holiday.getDate().equals(LocalDate.now())) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Кажется сегодня праздничный день!")
-                        .setMessage("Возможно, транспорт ходит с изменениями в маршруте или по расписанию выходного дня. За подробной информацией обратитесь в автопарк.")
-                        .setCancelable(false)
-                        .setNegativeButton("Понятно",
-                                (dialog, id) -> dialog.cancel());
-                AlertDialog alert = builder.create();
-                alert.show();
-
+                new MaterialDialog.Builder(this)
+                        .title("Кажется сегодня праздничный день!")
+                        .content("Возможно, транспорт ходит с изменениями в маршруте или по расписанию выходного дня. За подробной информацией обратитесь в автопарк.")
+                        .positiveText("Понятно")
+                        .show();
             }
         }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        mDrawerHeaderTool.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
@@ -218,9 +129,6 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mToggle != null && mToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
         Intent intent = new Intent();
         int x = item.getItemId();
         switch (x) {
@@ -238,43 +146,6 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
     }
 
     @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-
-            if (mDoubleBackToExitPressedOnce) {
-                super.onBackPressed();
-                return;
-            }
-
-            this.mDoubleBackToExitPressedOnce = true;
-            Toast.makeText(this, getString(R.string.double_back_to_exit_message), Toast.LENGTH_SHORT).show();
-
-            new Handler().postDelayed(() -> mDoubleBackToExitPressedOnce = false, 2000);
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        //Log.d(TAG, "onSaveInstanceState()");
-        mInstanceState = true;
-        //outState.putSerializable(DATABASE_INSTANCE_STATE, App.getInstance().getDatabase());
-        // Store the fragments' states.
-        if (tabRouteFragment.isAdded()) {
-            getSupportFragmentManager().putFragment(outState, "TabRouteFragment", tabRouteFragment);
-        }
-        if (stopFragment.isAdded()) {
-            getSupportFragmentManager().putFragment(outState, "StopFragment", stopFragment);
-        }
-        if (bookmarkFragment.isAdded()) {
-            getSupportFragmentManager().putFragment(outState, "BookmarkFragment", bookmarkFragment);
-        }
-    }
-
-    @Override
     protected void onDestroy() {
         //Log.d(TAG, "onDestroy()");
         super.onDestroy();
@@ -286,72 +157,41 @@ public class MainActivity extends AppBaseActivity implements NavigationView.OnNa
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        Intent intent = new Intent();
-        int id = menuItem.getItemId();
-        if (id == R.id.menu_item_1) {
-            showRoutesFragment();
-        } else if (id == R.id.menu_item_2) {
-            showStopsFragment();
-        } else if (id == R.id.menu_item_3) {
-            showBookmarksFragment();
-        } else if (id == R.id.nav_action_about) {
-            intent.setClass(MainActivity.this, AboutActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_action_settings) {
-            intent.setClass(MainActivity.this, SettingsHeadersActivity.class);
-            startActivity(intent);
+    public void onNavigationItemReselected(@NonNull MenuItem item) {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content);
+        if (fragment != null && fragment instanceof AppBaseFragment) {
+            ((AppBaseFragment) fragment).scrollToTop();
         }
-        mDrawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        mFragment.onDestroyOptionsMenu();
+        switch (item.getItemId()) {
+            case R.id.menu_item_1:
+                mFragment = new TabRouteFragment();
+                getSupportActionBar().setTitle(getResources().getString(R.string.menu_item_1));
+                break;
+            case R.id.menu_item_2:
+                mFragment = new StopFragment();
+                getSupportActionBar().setTitle(getResources().getString(R.string.menu_item_2));
+                break;
+            case R.id.menu_item_3:
+                mFragment = new BookmarkFragment();
+                getSupportActionBar().setTitle(getResources().getString(R.string.menu_item_3));
+                break;
+            default:
+                return false;
+        }
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(
+                        R.anim.fade_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.fade_out  // popExit
+                )
+                .replace(R.id.frame_layout, mFragment)
+                .commit();
         return true;
     }
-
-    /**
-     * Show the routes list fragment.
-     */
-    private void showRoutesFragment() {
-
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.show(tabRouteFragment);
-        fragmentTransaction.hide(stopFragment);
-        fragmentTransaction.hide(bookmarkFragment);
-        fragmentTransaction.commit();
-
-        toolbar.setTitle(getResources().getString(R.string.menu_item_1));
-        mNavigationView.setCheckedItem(R.id.menu_item_1);
-
-    }
-
-    /**
-     * Show the companies list fragment.
-     */
-    private void showStopsFragment() {
-
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.show(stopFragment);
-        fragmentTransaction.hide(tabRouteFragment);
-        fragmentTransaction.hide(bookmarkFragment);
-        fragmentTransaction.commit();
-
-        toolbar.setTitle(getResources().getString(R.string.menu_item_2));
-        mNavigationView.setCheckedItem(R.id.menu_item_2);
-
-    }
-
-    /**
-     * Show the bookmarks list fragment.
-     */
-    private void showBookmarksFragment() {
-
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.show(bookmarkFragment);
-        fragmentTransaction.hide(tabRouteFragment);
-        fragmentTransaction.hide(stopFragment);
-        fragmentTransaction.commit();
-
-        toolbar.setTitle(getResources().getString(R.string.menu_item_3));
-        mNavigationView.setCheckedItem(R.id.menu_item_3);
-
-    }
-
 }

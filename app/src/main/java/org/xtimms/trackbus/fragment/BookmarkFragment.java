@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.xtimms.trackbus.App;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.activity.BookmarksActivity;
 import org.xtimms.trackbus.activity.StopsActivity;
@@ -27,7 +28,7 @@ import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
-public class BookmarkFragment extends Fragment {
+public class BookmarkFragment extends AppBaseFragment {
     private final static int SEARCH_ACTIVITY_REQUEST = 1;
     private final static String BOOKMARKS_PREFERENCES = "bookmarksPreferences";
     private List<DatabaseObject> mBookmarks;
@@ -63,7 +64,7 @@ public class BookmarkFragment extends Fragment {
             DatabaseObject object = mBookmarkAdapter.getBookmarks().get(position);
 
             if (object.isEmpty()) {
-                Intent intent = BookmarksActivity.newIntent(getContext());
+                Intent intent = BookmarksActivity.newIntent(App.getInstance().getAppContext());
                 startActivityForResult(intent, SEARCH_ACTIVITY_REQUEST);
             } else {
                 if (object instanceof Route) {
@@ -95,7 +96,7 @@ public class BookmarkFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.bookmarks_context_menu_change:
                 mPosition = position;
-                Intent intent = BookmarksActivity.newIntent(getContext());
+                Intent intent = BookmarksActivity.newIntent(App.getInstance().getAppContext());
                 startActivityForResult(intent, SEARCH_ACTIVITY_REQUEST);
                 return true;
             case R.id.bookmarks_context_menu_delete:

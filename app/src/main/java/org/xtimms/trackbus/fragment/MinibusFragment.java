@@ -20,7 +20,7 @@ import org.xtimms.trackbus.presenter.MinibusFragmentPresenter;
 
 import java.util.List;
 
-public class MinibusFragment extends Fragment implements MinibusFragmentPresenter.View {
+public class MinibusFragment extends AppBaseFragment implements MinibusFragmentPresenter.View {
 
     private RecyclerView mRecyclerView;
 

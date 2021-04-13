@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--===============-->
+    <!-- Launch Screen -->
+    <!--===============-->
+    <style name="Theme.Splash" parent="Theme.RideBus">
+        <item name="colorBackgroundSplash">@color/md_white_1000</item>
+
+        <item name="android:windowBackground">@drawable/onboarding_light</item>
+        <item name="android:statusBarColor">@color/md_white_1000</item>
+        <item name="android:navigationBarColor">@color/md_black_1000_54</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.RideBus" parent="Theme.Base">
+        <item name="android:statusBarColor">@color/md_white_1000</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/md_black_1000_54</item>
+    </style>
+
+</resources>

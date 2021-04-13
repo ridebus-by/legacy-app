@@ -21,9 +21,10 @@
         tools:text="8" />
 
     <View
-        android:layout_width="0.5dp"
+        android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:background="?colorLine"
+        android:alpha="0.25"
+        android:background="?android:attr/textColorHint"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintStart_toEndOf="@+id/text_hours_schedulecardview" />
@@ -46,9 +47,10 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="1dp"
+        android:alpha="0.25"
+        android:background="?android:attr/textColorHint"
         android:layout_marginStart="8dp"
-        android:background="?colorLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

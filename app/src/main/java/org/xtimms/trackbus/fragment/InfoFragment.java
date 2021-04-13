@@ -14,7 +14,7 @@ import org.xtimms.trackbus.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InfoFragment extends Fragment {
+public class InfoFragment extends AppBaseFragment {
 
     public static InfoFragment newInstance() {
         return new InfoFragment();

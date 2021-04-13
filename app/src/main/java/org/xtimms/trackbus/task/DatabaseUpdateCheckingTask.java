@@ -116,14 +116,14 @@ public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, Strin
                 mNotifyManager.createNotificationChannel(updatedNotificationChannel);
 
                 mUpdatingBuilder = new NotificationCompat.Builder(mContext, UPDATING_NOTIFICATION_CHANNEL_ID)
-                        .setColor(ThemeUtils.getThemeAttrColor(mContext, R.attr.colorPrimary))
+                        .setColor(ThemeUtils.getThemeAttrColor(mContext, R.attr.colorAccent))
                         .setOnlyAlertOnce(true)
                         .setAutoCancel(true)
                         .setSmallIcon(R.drawable.ic_baseline_bus_24)
                         .setContentTitle(mContext.getResources().getString(R.string.updating_database));
 
                 mUpdatedBuilder = new NotificationCompat.Builder(mContext, UPDATED_NOTIFICATION_CHANNEL_ID)
-                        .setColor(ThemeUtils.getThemeAttrColor(mContext, R.attr.colorPrimary))
+                        .setColor(ThemeUtils.getThemeAttrColor(mContext, R.attr.colorAccent))
                         .setOnlyAlertOnce(true)
                         .setAutoCancel(true)
                         .setSmallIcon(R.drawable.ic_baseline_check_24)
@@ -137,13 +137,13 @@ public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, Strin
                 mUpdatingBuilder = new NotificationCompat.Builder(mContext, "updating");
                 mUpdatedBuilder = new NotificationCompat.Builder(mContext, "updated");
 
-                mUpdatingBuilder.setColor(ThemeUtils.getThemeAttrColor(mContext, R.attr.colorPrimary))
+                mUpdatingBuilder.setColor(ThemeUtils.getThemeAttrColor(mContext, R.attr.colorOnPrimary))
                         .setOnlyAlertOnce(true)
                         .setAutoCancel(true)
                         .setSmallIcon(R.drawable.ic_baseline_bus_24)
                         .setContentTitle(mContext.getResources().getString(R.string.updating_database));
 
-                mUpdatedBuilder.setColor(ThemeUtils.getThemeAttrColor(mContext, R.attr.colorPrimary))
+                mUpdatedBuilder.setColor(ThemeUtils.getThemeAttrColor(mContext, R.attr.colorOnPrimary))
                         .setOnlyAlertOnce(true)
                         .setAutoCancel(true)
                         .setSmallIcon(R.drawable.ic_baseline_check_24)
@@ -182,7 +182,7 @@ public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, Strin
 
     @Override
     protected void onProgressUpdate(Integer... values) {
-        mUpdatingBuilder.setProgress(100, values[0], false);
+        mUpdatingBuilder.setProgress(100, values[0], true);
         // Displays the progress bar on notification
         mNotifyManager.notify(UPDATING_NOTIFICATION_ID, mUpdatingBuilder.build());
     }

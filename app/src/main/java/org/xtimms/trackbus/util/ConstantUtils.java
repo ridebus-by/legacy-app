@@ -11,7 +11,6 @@ import org.xtimms.trackbus.task.RetrieveDatabaseVersionTask;
 import java.util.concurrent.ExecutionException;
 
 public class ConstantUtils {
-
     public static int getDbVersion() {
         if (NetworkUtils.isNetworkAvailable(App.getInstance().getAppContext())) {
             final RetrieveDatabaseVersionTask task = new RetrieveDatabaseVersionTask();

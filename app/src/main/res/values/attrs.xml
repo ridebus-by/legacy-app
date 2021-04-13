@@ -8,4 +8,6 @@
     <attr name="colorPrimaryLight" format="color"/>
     <attr name="text_primary" format="color"/>
     <attr name="text_secondary" format="color"/>
+    <attr name="colorAccentOnPrimary" format="reference|integer"/>
+    <attr name="colorBackgroundSplash" format="reference|integer"/>
 </resources>

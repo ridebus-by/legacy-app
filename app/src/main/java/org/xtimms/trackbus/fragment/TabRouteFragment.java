@@ -15,7 +15,7 @@ import com.google.android.material.tabs.TabLayout;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.adapter.TabPageAdapter;
 
-public class TabRouteFragment extends Fragment {
+public class TabRouteFragment extends AppBaseFragment {
 
     public static final String ARG_PAGE = "ARG_PAGE";
 

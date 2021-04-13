@@ -12,6 +12,7 @@ import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
@@ -21,17 +22,12 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
 	private boolean mActionBarVisible = false;
 	private boolean mHomeAsUpEnabled = false;
-	private int mTheme = 0;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mTheme = ThemeUtils.getAppTheme(this);
-		setTheme(ThemeUtils.getAppThemeRes(mTheme));
-	}
-
-	public boolean isDarkTheme() {
-		return mTheme > 13;
+		getDelegate().setLocalNightMode(
+				AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
 	}
 
 	public void enableHomeAsUp() {
@@ -90,10 +86,6 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
 	public boolean isActionBarVisible() {
 		return mActionBarVisible;
-	}
-
-	public int getActivityTheme() {
-		return mTheme;
 	}
 
 	public void setSubtitle(@Nullable CharSequence subtitle) {

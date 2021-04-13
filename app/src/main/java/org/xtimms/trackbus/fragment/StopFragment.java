@@ -27,7 +27,7 @@ import org.xtimms.trackbus.presenter.StopFragmentPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StopFragment extends Fragment implements StopFragmentPresenter.View{
+public class StopFragment extends AppBaseFragment implements StopFragmentPresenter.View{
     //private final String TAG = BusStopFragment.class.getSimpleName();
     private StopAdapter mStopAdapter;
     private FastScrollRecyclerView mRecyclerView;

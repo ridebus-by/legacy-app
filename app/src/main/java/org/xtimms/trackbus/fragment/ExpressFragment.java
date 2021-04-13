@@ -20,7 +20,7 @@ import org.xtimms.trackbus.presenter.ExpressFragmentPresenter;
 
 import java.util.List;
 
-public class ExpressFragment extends Fragment implements ExpressFragmentPresenter.View {
+public class ExpressFragment extends AppBaseFragment implements ExpressFragmentPresenter.View {
 
     private RecyclerView mRecyclerView;
 

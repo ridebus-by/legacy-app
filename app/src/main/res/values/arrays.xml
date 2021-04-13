@@ -16,38 +16,11 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
     </string-array>
     <string-array name="themes_names">
         <item>Default</item>
-        <item>Red</item>
-        <item>Orange</item>
-        <item>Light Green</item>
-        <item>Green</item>
-        <item>Teal</item>
-        <item>Cyan</item>
         <item>Light Blue</item>
-        <item>Blue</item>
-        <item>Indigo</item>
-        <item>Deep Purple</item>
-        <item>Purple</item>
-        <item>Pink</item>
-        <item>Black</item>
-        <item>Dark</item>
-        <item>AMOLED</item>
+        <item>Dark Blue</item>
     </string-array>
     <string name="automatic">Auto</string>
     <string-array name="route_tabs">

@@ -74,7 +74,7 @@ public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearch
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 holder.mPictureText.setBackground(App.getInstance().getAppContext().getResources()
-                        .getDrawable(R.drawable.circle_stop));
+                        .getDrawable(R.drawable.ic_store_mall_directory_black_24dp));
             } else {
                 holder.mPictureText.setBackground(App.getInstance().getAppContext().getResources()
                         .getDrawable(R.drawable.ic_store));
