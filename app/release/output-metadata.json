@@ -10,9 +10,9 @@
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 66,
-      "versionName": "1.2.1",
-      "outputFile": "ridebus_v1.2.1-66.apk"
+      "versionCode": 67,
+      "versionName": "2.0.0",
+      "outputFile": "ridebus_v2.0.0-67.apk"
     }
   ]
 }

@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <gradient
-                android:startColor="#333333"
-                android:endColor="#555555"
-                android:angle="135"/>
-        </shape>
-    </item>
     <item
         android:top="6dp"
         android:drawable="@drawable/metro_nav"

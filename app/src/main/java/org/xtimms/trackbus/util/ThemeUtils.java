@@ -27,21 +27,8 @@ public abstract class ThemeUtils {
 		return color;
 	}
 
-	public static Drawable getAttrDrawable(Context context, @AttrRes int resId) {
-		TypedValue typedValue = new TypedValue();
-		TypedArray a = context.obtainStyledAttributes(typedValue.data, new int[] { resId });
-		Drawable drawable = a.getDrawable(0);
-		a.recycle();
-		return drawable;
-	}
-
 	public static int getAppThemeRes(Context context) {
 		return APP_THEMES[getAppTheme(context)];
-	}
-
-	@StyleRes
-	public static int getAppThemeRes(int index) {
-		return APP_THEMES[index];
 	}
 
 	public static int getAppTheme(Context context) {

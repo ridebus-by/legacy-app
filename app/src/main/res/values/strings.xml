@@ -64,6 +64,7 @@
     <string name="bug_report_message">Sending a bug report will help the developers.</string>
     <string name="send">Send</string>
     <string name="log_not_found">Error log not found!</string>
+    <string name="disclaimer">All information provided in the application is taken from open Internet sources and is provided in its original form.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

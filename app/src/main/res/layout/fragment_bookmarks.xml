@@ -8,12 +8,6 @@
     android:animateLayoutChanges="true"
     tools:ignore="Overdraw">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:background="@drawable/gradient"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_favorite"
         android:layout_width="match_parent"

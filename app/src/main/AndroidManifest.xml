@@ -27,7 +27,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.StopsActivity" />
-        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
         <activity android:name=".activity.ScheduleActivity" />
         <activity android:name=".activity.TimelineActivity" />
         <activity android:name=".activity.BookmarksActivity" />

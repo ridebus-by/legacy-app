@@ -18,6 +18,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.SubtitleCollapsingToolbarLayout;
+
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.adapter.TimelineAdapter;
 import org.xtimms.trackbus.model.Route;
@@ -59,6 +61,10 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
         mProgressBar = findViewById(R.id.progressBar_activityTimeline);
         mProgressBar.setVisibility(View.VISIBLE);
 
+        SubtitleCollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
+        collapsingToolbarLayout.setTitle(getResources().getString(R.string.number) + mRoute.getRouteNumber());
+        collapsingToolbarLayout.setSubtitle(mRoute.getRouteTitle());
+
         mRecyclerView = findViewById(R.id.recyclerview_timeline);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setHasFixedSize(true);
@@ -72,12 +78,8 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
-        TextView textTitle = findViewById(R.id.text_title_activitytimeline);
-        TextView textSubtitle = findViewById(R.id.text_subtitle_activitytimeline);
-
-        textTitle.setText(getResources().getString(R.string.number) + mRoute.getRouteNumber());
-        textSubtitle.setText(mRoute.getRouteTitle());
+        TextView textNumber = findViewById(R.id.number);
+        textNumber.setText(mRoute.getRouteNumber());
     }
 
     @Override

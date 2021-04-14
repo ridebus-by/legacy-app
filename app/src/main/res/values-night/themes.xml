@@ -16,6 +16,7 @@
         <item name="colorOnSurface">@color/textColorPrimaryDark</item>
         <item name="colorOnBackground">@color/textColorPrimaryDark</item>
         <item name="colorAccent">@color/md_blue_A200</item>
+        <item name="colorTransparent">@android:color/transparent</item>
 
         <!-- Handles RTL text -->
         <item name="android:textAlignment">gravity</item>
@@ -61,6 +62,14 @@
     </style>
 
     <style name="Theme.RideBus" parent="Theme.Base.Dark">
+        <item name="colorPrimary">@color/colorAmoledPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorAmoledPrimary</item>
+        <item name="colorSurface">@color/colorAmoledPrimary</item>
+
+        <item name="android:colorBackground">@color/colorAmoledPrimary</item>
+
+        <!-- Some ROMs make black navbars white (e.g. OxygenOS) -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
     <style name="Theme.RideBus.DarkBlue" parent="Theme.Base.Dark">
@@ -73,11 +82,11 @@
     <!-- Launch Screen -->
     <!--===============-->
     <style name="Theme.Splash" parent="Theme.RideBus">
-        <item name="colorBackgroundSplash">@color/backgroundDark</item>
+        <item name="colorBackgroundSplash">@color/colorAmoledPrimary</item>
 
         <item name="android:windowBackground">@drawable/onboarding_dark</item>
-        <item name="android:statusBarColor">?attr/colorBackgroundSplash</item>
-        <item name="android:navigationBarColor">?attr/colorBackgroundSplash</item>
+        <item name="android:statusBarColor">@color/colorAmoledPrimary</item>
+        <item name="android:navigationBarColor">@color/colorAmoledPrimary</item>
     </style>
 
 </resources>

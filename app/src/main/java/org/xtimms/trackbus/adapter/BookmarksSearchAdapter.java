@@ -30,7 +30,6 @@ import static org.xtimms.trackbus.util.ConstantUtils.EMPTY_STRING;
 
 public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearchAdapter.ViewHolder> implements Filterable {
 
-    private Context context;
     private final List<DatabaseObject> mDatabaseObjects;
     private List<DatabaseObject> mDatabaseObjectFiltered;
     private AdapterView.OnItemClickListener onItemClickListener;

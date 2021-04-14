@@ -10,7 +10,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.github.vipulasri.timelineview.TimelineView;
 
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
@@ -42,7 +45,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         RelativeLayout layout = (RelativeLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_timeline, parent, false);
 
-        return new ViewHolder(layout, this);
+        return new ViewHolder(layout, viewType, this);
     }
 
     @Override
@@ -98,21 +101,18 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TimelineAdapter mAdapter;
-        //private TimelineView mTimelineView;
+        private TimelineView mTimelineView;
         private final TextView mMainText;
         private final TextView mRemainingTimeText;
         private final TextView mClosestTime;
 
-        ViewHolder(View itemView, TimelineAdapter adapter) {
+        ViewHolder(View itemView, int viewType, TimelineAdapter adapter) {
             super(itemView);
             mMainText = itemView.findViewById(R.id.text_stoptitle_timeline);
             mRemainingTimeText = itemView.findViewById(R.id.text_remainingtime_timeline);
             mClosestTime = itemView.findViewById(R.id.text_closesttime_timeline);
-            //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            //    mTimelineView = itemView.findViewById(R.id.timemarker_timelineview);
-            //    mTimelineView.setMarker(App.getInstance().getAppContext().getResources().getDrawable(R.drawable.ic_brightness_1_24dp));
-            //    mTimelineView.initLine(viewType);
-            //}
+            mTimelineView = itemView.findViewById(R.id.timemarker_timelineview);
+            mTimelineView.initLine(viewType);
             this.mAdapter = adapter;
 
             itemView.setOnClickListener(this);
@@ -163,4 +163,8 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return TimelineView.getTimeLineViewType(position, getItemCount());
+    }
 }

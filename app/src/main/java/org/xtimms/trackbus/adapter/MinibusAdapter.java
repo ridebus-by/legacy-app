@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.model.Route;
 
-import java.util.Collections;
 import java.util.List;
 
 public class MinibusAdapter extends RecyclerView.Adapter<MinibusAdapter.ViewHolder> {

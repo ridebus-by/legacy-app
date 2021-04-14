@@ -55,8 +55,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             tools:text="text"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="16sp" />
+            android:textAppearance="?attr/textAppearanceSubtitle1" />
 
         <TextView
             android:id="@+id/text_description_bookmark"
@@ -64,7 +63,8 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             tools:text="text"
-            android:textSize="14sp" />
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@color/mtrl_list_item_tint_secondary"/>
 
     </LinearLayout>
 
@@ -85,7 +85,7 @@
             android:background="@drawable/ic_store_mall_directory_black_24dp"
             android:textColor="@android:color/white"
             android:gravity="center"
-            android:textSize="24sp"
+            android:textSize="18sp"
             cardView:layout_constraintBottom_toBottomOf="parent"
             cardView:layout_constraintStart_toStartOf="parent"
             cardView:layout_constraintTop_toTopOf="parent" />

@@ -13,15 +13,6 @@ import java.util.Locale;
 
 public class AppUtils {
 
-    public static boolean checkAppInstalled(Context context, String packageName) {
-        try {
-            context.getPackageManager().getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-    }
-
     public static String getVersionName(Context context) {
         try {
             PackageManager manager = context.getPackageManager();

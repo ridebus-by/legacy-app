@@ -10,4 +10,5 @@
     <attr name="text_secondary" format="color"/>
     <attr name="colorAccentOnPrimary" format="reference|integer"/>
     <attr name="colorBackgroundSplash" format="reference|integer"/>
+    <attr name="colorTransparent" format="reference|integer"/>
 </resources>

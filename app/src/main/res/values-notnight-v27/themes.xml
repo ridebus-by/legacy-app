@@ -20,6 +20,7 @@
         <item name="colorOnSurface">@color/textColorPrimaryLight</item>
         <item name="colorOnBackground">@color/textColorPrimaryLight</item>
         <item name="colorAccent">@color/colorAccentLight</item>
+        <item name="colorTransparent">@android:color/transparent</item>
 
         <!-- Base background/text colors -->
         <item name="android:colorBackground">@color/backgroundLight</item>

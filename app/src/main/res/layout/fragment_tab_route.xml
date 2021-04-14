@@ -7,16 +7,23 @@
     android:orientation="vertical"
     tools:ignore="Overdraw">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/sliding_tabs"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Theme.Widget.Tabs"
-        android:elevation="4dp"/>
+        app:liftOnScroll="true">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/sliding_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Theme.Widget.Tabs"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/tabs_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
 </LinearLayout>

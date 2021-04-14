@@ -49,7 +49,6 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         LogUtils.init(this);
-        NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 
         updateDatabase();
 
