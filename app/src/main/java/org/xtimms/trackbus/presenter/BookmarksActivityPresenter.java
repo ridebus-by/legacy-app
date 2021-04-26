@@ -24,7 +24,7 @@ public class BookmarksActivityPresenter {
     }
 
     public interface View {
-        void setAdapter(List<DatabaseObject> databaseObjects);
+        void setAdapter(ArrayList<DatabaseObject> databaseObjects);
     }
 
     private static class DatabaseObjectsListAsyncTask extends AsyncTask<Integer, Void, Boolean> {
@@ -51,7 +51,7 @@ public class BookmarksActivityPresenter {
                 Log.d("ERROR", "OnPostExecute not working...");
                 return;
             } else {
-                activityWeakReference.get().setAdapter(mDatabaseObjects);
+                activityWeakReference.get().setAdapter((ArrayList<DatabaseObject>) mDatabaseObjects);
                 Log.d("SUCCESS", "Yay! Adapter working!");
             }
         }

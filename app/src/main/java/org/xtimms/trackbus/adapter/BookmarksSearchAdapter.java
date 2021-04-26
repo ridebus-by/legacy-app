@@ -30,16 +30,17 @@ import static org.xtimms.trackbus.util.ConstantUtils.EMPTY_STRING;
 
 public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearchAdapter.ViewHolder> implements Filterable {
 
-    private final List<DatabaseObject> mDatabaseObjects;
-    private List<DatabaseObject> mDatabaseObjectFiltered;
+    private final ArrayList<DatabaseObject> mDataset;
+    private ArrayList<DatabaseObject> mDatabaseObjectFiltered;
     private AdapterView.OnItemClickListener onItemClickListener;
 
-    public BookmarksSearchAdapter(List<DatabaseObject> databaseObjects) {
-        this.mDatabaseObjects = databaseObjects;
-        this.mDatabaseObjectFiltered = databaseObjects;
+    public BookmarksSearchAdapter(ArrayList<DatabaseObject> dataset) {
+        setHasStableIds(true);
+        this.mDataset = dataset;
+        this.mDatabaseObjectFiltered = dataset;
     }
 
-    public List<DatabaseObject> getStopsListFiltered() {
+    public ArrayList<DatabaseObject> getStopsListFiltered() {
         return mDatabaseObjectFiltered;
     }
 
@@ -91,12 +92,17 @@ public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearch
 
             holder.mPictureText.setText(route.getRouteNumber());
         }
-
+        holder.itemView.setTag(object);
     }
 
     @Override
     public int getItemCount() {
         return mDatabaseObjectFiltered.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
@@ -117,10 +123,10 @@ public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearch
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String charString = charSequence.toString();
                 if (charString.isEmpty()) {
-                    mDatabaseObjectFiltered = mDatabaseObjects;
+                    mDatabaseObjectFiltered = mDataset;
                 } else {
-                    List<DatabaseObject> filteredList = new ArrayList<>();
-                    for (DatabaseObject row : mDatabaseObjects) {
+                    ArrayList<DatabaseObject> filteredList = new ArrayList<>();
+                    for (DatabaseObject row : mDataset) {
 
                         if (row.getTitle().toLowerCase().contains(charString.toLowerCase()) ||
                                 row.getNumber().equalsIgnoreCase(charString.toLowerCase())) {
@@ -139,8 +145,8 @@ public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearch
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
 
-                List<DatabaseObject> databaseObjects = new ArrayList<>();
-                List<?> result = (List<?>) filterResults.values;
+                ArrayList<DatabaseObject> databaseObjects = new ArrayList<>();
+                ArrayList<?> result = (ArrayList<?>) filterResults.values;
 
                 for (Object object : result) {
                     if (object instanceof DatabaseObject) {

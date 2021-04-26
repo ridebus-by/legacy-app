@@ -32,7 +32,7 @@ public class TimeLineActivityPresenter {
     }
 
     public interface View {
-        void setAdapter(List<StopsActivityTimeLineObject> stopsActivityTimeLineObjects, String currentTime);
+        void setAdapter(ArrayList<StopsActivityTimeLineObject> stopsActivityTimeLineObjects, String currentTime);
     }
 
     private static class ActivityObjectsListAsyncTask extends AsyncTask<Integer, Void, Boolean> {
@@ -80,7 +80,7 @@ public class TimeLineActivityPresenter {
                 Log.d("ERROR", "OnPostExecute not working...");
                 return;
             } else {
-                activityWeakReference.get().setAdapter(mStopsActivityTimeLineObjects, mCurrentTime);
+                activityWeakReference.get().setAdapter((ArrayList<StopsActivityTimeLineObject>) mStopsActivityTimeLineObjects, mCurrentTime);
                 Log.d("SUCCESS", "Yay! Adapter working!");
             }
         }

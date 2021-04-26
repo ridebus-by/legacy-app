@@ -14,13 +14,14 @@
         <item name="colorOnPrimary">@color/md_black_1000</item>
         <item name="colorAccentOnPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/md_white_1000</item>
-        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorPrimary_70</item>
         <item name="colorOnSecondary">@color/md_white_1000</item>
         <item name="colorSurface">@color/dialogLight</item>
         <item name="colorOnSurface">@color/textColorPrimaryLight</item>
         <item name="colorOnBackground">@color/textColorPrimaryLight</item>
         <item name="colorAccent">@color/colorAccentLight</item>
         <item name="colorTransparent">@android:color/transparent</item>
+        <item name="colorError">@color/colorError</item>
 
         <!-- Base background/text colors -->
         <item name="android:colorBackground">@color/backgroundLight</item>
@@ -42,15 +43,17 @@
         <!-- Themes -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <item name="android:navigationBarColor">?attr/colorPrimary</item>
+        <item name="android:navigationBarDividerColor">?android:attr/divider</item>
         <item name="android:enforceNavigationBarContrast" tools:targetApi="29">false</item>
+        <item name="android:alertDialogTheme">@style/Theme.AlertDialog</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="elevationOverlayEnabled">false</item>
         <item name="actionModeStyle">@style/Theme.ActionMode</item>
         <item name="actionModeCloseButtonStyle">@style/Theme.ActionMode.CloseButton</item>
         <item name="actionBarPopupTheme">@style/ThemeOverlay.MaterialComponents</item>
         <item name="toolbarNavigationButtonStyle">@style/Theme.Toolbar.Navigation</item>
-        <item name="dialogTheme">@style/Theme.AlertDialog.Light</item>
-        <item name="materialAlertDialogTheme">@style/Theme.AlertDialog.Light</item>
+        <item name="dialogTheme">@style/Theme.AlertDialog</item>
+        <item name="materialAlertDialogTheme">@style/Theme.AlertDialog</item>
         <item name="bottomSheetDialogTheme">@style/Theme.BottomSheet</item>
         <item name="chipStyle">@style/Theme.Widget.Chip</item>
         <item name="buttonStyle">@style/Theme.Widget.Button</item>

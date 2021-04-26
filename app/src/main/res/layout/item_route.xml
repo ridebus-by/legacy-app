@@ -16,7 +16,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/route_bus_number"
+            android:id="@+id/route_number"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -26,12 +26,13 @@
             android:textColor="@android:color/white"
             android:background="@drawable/circle_bus"
             android:textSize="18sp"
+            android:textStyle="bold"
             cardView:layout_constraintBottom_toBottomOf="parent"
             cardView:layout_constraintStart_toStartOf="parent"
             cardView:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/route_bus_title"
+            android:id="@+id/route_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="72dp"
@@ -45,7 +46,7 @@
             app:layout_constraintStart_toStartOf="parent"
             cardView:layout_constraintStart_toEndOf="@+id/route_bus_number"
             cardView:layout_constraintTop_toTopOf="parent"
-            tools:text="Title" />
+            tools:text="@tools:sample/lorem/random" />
 
         <View
             android:layout_width="match_parent"

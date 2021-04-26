@@ -18,6 +18,12 @@ public class DebugSettingsFragment extends PreferenceFragment {
         Preference.OnPreferenceClickListener onPreferenceClickListener = (Preference.OnPreferenceClickListener) activity;
         Preference b = findPreference("bugreport");
         b.setOnPreferenceClickListener(onPreferenceClickListener);
+        Preference t = findPreference("checkdb");
+        t.setOnPreferenceClickListener(onPreferenceClickListener);
+        Preference s = findPreference("checkserver");
+        s.setOnPreferenceClickListener(onPreferenceClickListener);
+        Preference l = findPreference("viewlog");
+        l.setOnPreferenceClickListener(onPreferenceClickListener);
     }
 
     @Override

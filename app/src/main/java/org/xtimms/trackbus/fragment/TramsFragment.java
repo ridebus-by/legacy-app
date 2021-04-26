@@ -17,6 +17,7 @@ import org.xtimms.trackbus.adapter.TramsAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.TramsFragmentPresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TramsFragment extends AppBaseFragment implements TramsFragmentPresenter.View {
@@ -28,7 +29,7 @@ public class TramsFragment extends AppBaseFragment implements TramsFragmentPrese
     }
 
     @Override
-    public void setAdapter(List<Route> routeList) {
+    public void setAdapter(ArrayList<Route> routeList) {
         TramsAdapter mTramsAdapter = new TramsAdapter(routeList);
         mRecyclerView.setAdapter(mTramsAdapter);
         mTramsAdapter.setOnItemClickListener((parent, v, position, id) -> {

@@ -17,6 +17,7 @@ import org.xtimms.trackbus.adapter.BusAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.BusFragmentPresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BusFragment extends AppBaseFragment implements BusFragmentPresenter.View {
@@ -28,7 +29,7 @@ public class BusFragment extends AppBaseFragment implements BusFragmentPresenter
     }
 
     @Override
-    public void setAdapter(List<Route> routeList) {
+    public void setAdapter(ArrayList<Route> routeList) {
         BusAdapter mBusAdapter = new BusAdapter(routeList);
         mRecyclerView.setAdapter(mBusAdapter);
         mBusAdapter.setOnItemClickListener((parent, view, position, id) -> {
@@ -56,6 +57,7 @@ public class BusFragment extends AppBaseFragment implements BusFragmentPresenter
         mRecyclerView.setHasFixedSize(true);
         BusFragmentPresenter presenter = new BusFragmentPresenter(this);
         presenter.setAdapter();
+
     }
 
 }

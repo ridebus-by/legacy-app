@@ -17,11 +17,11 @@
             android:id="@+id/timemarker_timelineview"
             android:layout_width="56dp"
             android:layout_height="match_parent"
-            app:marker="@drawable/marker"
+            app:marker="@drawable/circle_bus"
             app:markerSize="14dp"
             app:lineWidth="3dp"
-            app:startLineColor="?attr/colorAccentOnPrimary"
-            app:endLineColor="?attr/colorAccentOnPrimary"/>
+            app:startLineColor="?attr/colorSecondary"
+            app:endLineColor="?attr/colorSecondary"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_stoptitle_timeline"

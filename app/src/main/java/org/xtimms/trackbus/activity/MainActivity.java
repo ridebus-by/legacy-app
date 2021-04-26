@@ -3,10 +3,12 @@ package org.xtimms.trackbus.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
@@ -16,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.joda.time.LocalDate;
 import org.xtimms.trackbus.App;
+import org.xtimms.trackbus.activity.settings.SettingsActivity;
 import org.xtimms.trackbus.fragment.AppBaseFragment;
 import org.xtimms.trackbus.fragment.RateItDialogFragment;
 import org.xtimms.trackbus.R;
@@ -73,11 +76,14 @@ public class MainActivity extends AppBaseActivity implements BottomNavigationVie
 
         for (Holiday holiday : holidays) {
             if (holiday.getDate().equals(LocalDate.now())) {
-                new MaterialDialog.Builder(this)
-                        .title("Кажется сегодня праздничный день!")
-                        .content("Возможно, транспорт ходит с изменениями в маршруте или по расписанию выходного дня. За подробной информацией обратитесь в автопарк.")
-                        .positiveText("Понятно")
-                        .show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.Theme_AlertDialog);
+                builder.setTitle("Кажется сегодня праздничный день!")
+                        .setMessage("Возможно, транспорт ходит с изменениями в маршруте или по расписанию выходного дня. За подробной информацией обратитесь в автопарк.")
+                        .setCancelable(false)
+                        .setNegativeButton("Понятно",
+                                (dialog, id) -> dialog.cancel());
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         }
     }

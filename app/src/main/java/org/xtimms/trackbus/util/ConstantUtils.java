@@ -11,6 +11,7 @@ import org.xtimms.trackbus.task.RetrieveDatabaseVersionTask;
 import java.util.concurrent.ExecutionException;
 
 public class ConstantUtils {
+
     public static int getDbVersion() {
         if (NetworkUtils.isNetworkAvailable(App.getInstance().getAppContext())) {
             final RetrieveDatabaseVersionTask task = new RetrieveDatabaseVersionTask();
@@ -46,4 +47,5 @@ public class ConstantUtils {
     public static final String EMAIL = "mailto:ztimms73@gmail.com";
     public static final String APP_URL = "https://play.google.com/store/apps/details?id=org.xtimms.trackbus";
     public static final String RUMBLUR = "https://vk.com/rumblur";
+    public static final String TELEGRAM = "https://t.me/ridebus";
 }

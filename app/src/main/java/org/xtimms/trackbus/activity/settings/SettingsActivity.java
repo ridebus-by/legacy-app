@@ -1,16 +1,23 @@
 package org.xtimms.trackbus.activity.settings;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import org.xtimms.trackbus.R;
+import org.xtimms.trackbus.activity.AboutActivity;
 import org.xtimms.trackbus.activity.AppBaseActivity;
+import org.xtimms.trackbus.activity.LogsActivity;
+import org.xtimms.trackbus.activity.MainActivity;
+import org.xtimms.trackbus.util.AppUtils;
 import org.xtimms.trackbus.util.LogUtils;
 import org.xtimms.trackbus.util.TextUtils;
 
@@ -25,6 +32,7 @@ public class SettingsActivity extends AppBaseActivity implements SharedPreferenc
 
     private PreferenceFragment mFragment;
     private SharedPreferences mDefaultPreferences;
+    private LogsActivity mLogFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,10 +55,13 @@ public class SettingsActivity extends AppBaseActivity implements SharedPreferenc
             default:
                 finish();
         }
+        mLogFragment = new LogsActivity();
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content, mFragment)
                 .commit();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 
     @Override
@@ -77,6 +88,46 @@ public class SettingsActivity extends AppBaseActivity implements SharedPreferenc
     public boolean onPreferenceClick(Preference preference) {
         if ("bugreport".equals(preference.getKey())) {
             LogUtils.sendLog(this);
+            return true;
+        }
+        if ("checkdb".equals(preference.getKey())) {
+            if (!AppUtils.isValidSQLite("/data/data/org.xtimms.trackbus/databases/trackbus.db")) {
+                new AlertDialog.Builder(this, R.style.Theme_AlertDialog)
+                        .setTitle("Uh oh...")
+                        .setMessage("База данных повреждена.")
+                        .setPositiveButton("ОК", ((dialog, which) -> dialog.dismiss()))
+                        .show();
+                return false;
+            } else {
+                new AlertDialog.Builder(this, R.style.Theme_AlertDialog)
+                        .setTitle("Отлично")
+                        .setMessage("База данных прошла проверку целостности.")
+                        .setPositiveButton("ОК", ((dialog, which) -> dialog.dismiss()))
+                        .show();
+                return true;
+            }
+        }
+        if ("checkserver".equals(preference.getKey())) {
+            if (!AppUtils.isURLReachable(this)) {
+                new AlertDialog.Builder(this, R.style.Theme_AlertDialog)
+                        .setTitle("Uh oh...")
+                        .setMessage("Соединение с сервером недоступно.")
+                        .setPositiveButton("ОК", ((dialog, which) -> dialog.dismiss()))
+                        .show();
+                return false;
+            } else {
+                new AlertDialog.Builder(this, R.style.Theme_AlertDialog)
+                        .setTitle("Отлично")
+                        .setMessage("Успешно получен ответ от сервера.")
+                        .setPositiveButton("ОК", ((dialog, which) -> dialog.dismiss()))
+                        .show();
+                return true;
+            }
+        }
+        if ("viewlog".equals(preference.getKey())) {
+            Intent intent = new Intent();
+            intent.setClass(SettingsActivity.this, LogsActivity.class);
+            startActivity(intent);
             return true;
         }
         return false;

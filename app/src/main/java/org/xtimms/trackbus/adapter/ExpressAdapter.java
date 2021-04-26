@@ -13,15 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.model.Route;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExpressAdapter extends RecyclerView.Adapter<ExpressAdapter.ViewHolder> {
 
-    private final List<Route> routes;
+    private final ArrayList<Route> mDataset;
     private AdapterView.OnItemClickListener onItemClickListener;
 
-    public ExpressAdapter(List<Route> routes) {
-        this.routes = routes;
+    public ExpressAdapter(ArrayList<Route> dataset) {
+        setHasStableIds(true);
+        this.mDataset = dataset;
     }
 
     public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
@@ -32,14 +34,16 @@ public class ExpressAdapter extends RecyclerView.Adapter<ExpressAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ConstraintLayout constraintLayout = (ConstraintLayout) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_route_express, parent, false);
+                .inflate(R.layout.item_route, parent, false);
         return new ViewHolder(constraintLayout, this);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.mRouteNumber.setText(routes.get(position).getRouteNumber());
-        holder.mRouteTitle.setText(routes.get(position).getRouteTitle());
+        Route item = mDataset.get(position);
+        holder.mRouteNumber.setText(item.getRouteNumber());
+        holder.mRouteTitle.setText(item.getRouteTitle());
+        holder.itemView.setTag(item);
     }
 
     private void onItemHolderClick(ViewHolder itemHolder) {
@@ -51,7 +55,12 @@ public class ExpressAdapter extends RecyclerView.Adapter<ExpressAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return routes.size();
+        return mDataset.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return mDataset.get(position).getId();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -62,8 +71,8 @@ public class ExpressAdapter extends RecyclerView.Adapter<ExpressAdapter.ViewHold
 
         ViewHolder(ConstraintLayout itemView, ExpressAdapter adapter) {
             super(itemView);
-            mRouteNumber = itemView.findViewById(R.id.route_express_number);
-            mRouteTitle = itemView.findViewById(R.id.route_express_title);
+            mRouteNumber = itemView.findViewById(R.id.route_number);
+            mRouteTitle = itemView.findViewById(R.id.route_title);
             this.adapter = adapter;
             itemView.setOnClickListener(this);
         }

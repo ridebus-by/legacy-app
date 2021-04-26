@@ -20,14 +20,17 @@ import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.activity.StopsActivity;
 import org.xtimms.trackbus.adapter.StopAdapter;
+import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.model.Stop;
 import org.xtimms.trackbus.presenter.StopFragmentPresenter;
+import org.xtimms.trackbus.ui.WrapContentLinearLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StopFragment extends AppBaseFragment implements StopFragmentPresenter.View{
-    //private final String TAG = BusStopFragment.class.getSimpleName();
+
+    private Route mRoute;
     private StopAdapter mStopAdapter;
     private FastScrollRecyclerView mRecyclerView;
 
@@ -36,7 +39,7 @@ public class StopFragment extends AppBaseFragment implements StopFragmentPresent
     }
 
     @Override
-    public void setAdapter(List<Stop> stopList) {
+    public void setAdapter(ArrayList<Stop> stopList) {
         mStopAdapter = new StopAdapter(stopList);
         mRecyclerView.setAdapter(mStopAdapter);
 
@@ -52,7 +55,7 @@ public class StopFragment extends AppBaseFragment implements StopFragmentPresent
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         //mStopList = getStops();
-        List<Stop> stops = new ArrayList<>();
+        ArrayList<Stop> stops = new ArrayList<>();
         mStopAdapter = new StopAdapter(stops);
     }
 
@@ -91,7 +94,7 @@ public class StopFragment extends AppBaseFragment implements StopFragmentPresent
         mRecyclerView = view.findViewById(R.id.recyclerView_stops);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        WrapContentLinearLayoutManager layoutManager = new WrapContentLinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(layoutManager);
 
         StopFragmentPresenter presenter = new StopFragmentPresenter(this);

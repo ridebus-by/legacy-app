@@ -1,6 +1,5 @@
 package org.xtimms.trackbus.activity;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,33 +9,36 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.appbar.SubtitleCollapsingToolbarLayout;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.adapter.StopsActivityAdapter;
+import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.model.Stop;
 import org.xtimms.trackbus.object.StopActivityObject;
 import org.xtimms.trackbus.presenter.StopsActivityPresenter;
 import org.xtimms.trackbus.util.DateTime;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
 public class StopsActivity extends AppBaseActivity implements StopsActivityPresenter.View {
-    private static final String EXTRA_STOP = StopsActivity.class.getSimpleName();
+    private static final String EXTRA_STOP = StopsActivity.class.getSimpleName() + "_stopID";
+    private static final String EXTRA_ROUTE = StopsActivity.class.getSimpleName() + "_routeID";
     private Stop mStop;
+    private Route mRoute;
     private TextView mWeekDay;
     //private TextView mTimeText;
     private RecyclerView mRecyclerView;
@@ -57,10 +59,17 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
         setContentView(R.layout.activity_stops);
 
         mStop = (Stop) getIntent().getSerializableExtra(StopsActivity.EXTRA_STOP);
+        mRoute = (Route) getIntent().getSerializableExtra(StopsActivity.EXTRA_ROUTE);
 
         SubtitleCollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
         collapsingToolbarLayout.setTitle(mStop.getTitle());
         collapsingToolbarLayout.setSubtitle(mStop.getMark());
+
+        TextView title = findViewById(R.id.title);
+        TextView subtitle = findViewById(R.id.subtitle);
+
+        title.setText(mStop.getTitle());
+        subtitle.setText(mStop.getMark());
 
         //mTimeText = findViewById(R.id.text_time_activitystop);
         //mTimeText.setText(DateTime.getCurrentTime());
@@ -225,15 +234,16 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
     }
 
     @Override
-    public void setAdapter(List<StopActivityObject> stopActivityObjectList) {
+    public void setAdapter(ArrayList<StopActivityObject> stopActivityObjectList) {
         if (!mAdapterIsSet) {
             mProgressBar.setVisibility(View.GONE);
             mStopsActivityAdapter = new StopsActivityAdapter(stopActivityObjectList);
             mRecyclerView.setAdapter(mStopsActivityAdapter);
             mAdapterIsSet = true;
+            mStopsActivityAdapter.notifyDataSetChanged();
 
             mStopsActivityAdapter.setOnItemClickListener((parent, v, position, id) -> {
-                //Snackbar.make(v, mStopActivityObjectList.get(position).getRoute().getRouteTitle(), Snackbar.LENGTH_SHORT).show();
+                // Snackbar.make(v, stopActivityObjectList.get(position).getRoute().getRouteTitle(), Snackbar.LENGTH_SHORT).show();
                 Intent intent = ScheduleActivity.newIntent(this,
                         stopActivityObjectList.get(position).getRoute(), mStop);
                 startActivity(intent);

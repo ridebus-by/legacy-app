@@ -130,7 +130,7 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
                 int month = mcurrentDate.get(Calendar.MONTH);
                 int day = mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(ScheduleActivity.this, (view, year1, monthOfYear, dayOfMonth) -> {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(ScheduleActivity.this, R.style.Theme_AlertDialog, (view, year1, monthOfYear, dayOfMonth) -> {
                     Calendar newDate = Calendar.getInstance();
                     newDate.set(year1, monthOfYear, dayOfMonth);
                     SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.getDefault());

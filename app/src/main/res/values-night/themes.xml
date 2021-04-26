@@ -10,13 +10,14 @@
         <item name="colorOnPrimary">@color/textColorPrimaryDark</item>
         <item name="colorAccentOnPrimary">@color/md_blue_A400</item>
         <item name="colorPrimaryVariant">@color/colorDarkPrimary</item>
-        <item name="colorSecondary">@color/md_blue_A200</item>
+        <item name="colorSecondary">@color/md_blue_A100</item>
         <item name="colorOnSecondary">@color/textColorPrimaryDark</item>
         <item name="colorSurface">@color/dialogDark</item>
         <item name="colorOnSurface">@color/textColorPrimaryDark</item>
         <item name="colorOnBackground">@color/textColorPrimaryDark</item>
         <item name="colorAccent">@color/md_blue_A200</item>
         <item name="colorTransparent">@android:color/transparent</item>
+        <item name="colorError">@color/colorErrorDark</item>
 
         <!-- Handles RTL text -->
         <item name="android:textAlignment">gravity</item>

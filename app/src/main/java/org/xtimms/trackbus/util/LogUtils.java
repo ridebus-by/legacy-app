@@ -75,7 +75,7 @@ public class LogUtils implements Thread.UncaughtExceptionHandler {
     }
 
     public static void sendLog(final Context context) {
-        new AlertDialog.Builder(context).setTitle(R.string.bug_report)
+        new AlertDialog.Builder(context, R.style.Theme_AlertDialog).setTitle(R.string.bug_report)
                 .setMessage(R.string.bug_report_message)
                 .setPositiveButton(R.string.send, (dialog, which) -> {
                     File file = getLogFile(context);

@@ -35,8 +35,8 @@ public final class SettingsHeadersActivity extends AppBaseActivity implements Ad
 
         mHeaders = new ArrayList<>();
         mHeaders.add(new SettingsHeader(this, 1, R.string.general, R.drawable.ic_build_24dp));
-        mHeaders.add(new SettingsHeader(this, 2, R.string.appearance, R.drawable.ic_brush_24dp));
-        mHeaders.add(new SettingsHeader(this, 3, R.string.debug, R.drawable.ic_bug_report_black_24dp));
+        //mHeaders.add(new SettingsHeader(this, 2, R.string.appearance, R.drawable.ic_brush_24dp));
+        mHeaders.add(new SettingsHeader(this, 2, R.string.debug, R.drawable.ic_bug_report_black_24dp));
         //mHeaders.add(new SettingsHeader(this, 3, R.string.tabs, R.drawable.ic_tab_white_24dp));
 
         SettingsAdapter mAdapter = new SettingsAdapter(mHeaders, this);
@@ -54,10 +54,6 @@ public final class SettingsHeadersActivity extends AppBaseActivity implements Ad
                 break;
             case 2:
                 intent = new Intent(view.getContext(), SettingsActivity.class)
-                        .setAction(SettingsActivity.ACTION_SETTINGS_APPEARANCE);
-                break;
-            case 3:
-                intent = new Intent(view.getContext(), SettingsActivity.class)
                         .setAction(SettingsActivity.ACTION_SETTINGS_DEBUG);
                 break;
             default:
@@ -70,7 +66,7 @@ public final class SettingsHeadersActivity extends AppBaseActivity implements Ad
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_SETTINGS && resultCode == SettingsActivity.RESULT_RESTART) {
-            new AlertDialog.Builder(this)
+            new AlertDialog.Builder(this, R.style.Theme_AlertDialog)
                     .setMessage(R.string.need_restart)
                     .setNegativeButton(R.string.postpone, null)
                     .setPositiveButton(R.string.restart, (dialog, which) ->

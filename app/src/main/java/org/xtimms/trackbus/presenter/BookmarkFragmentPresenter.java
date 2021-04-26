@@ -28,8 +28,8 @@ public class BookmarkFragmentPresenter {
         mView = view;
     }
 
-    public void saveBookmarks(List<DatabaseObject> databaseObjects) {
-        List<SharePreferenceObject> sharePreferenceObjectList = new ArrayList<>();
+    public void saveBookmarks(ArrayList<DatabaseObject> databaseObjects) {
+        ArrayList<SharePreferenceObject> sharePreferenceObjectList = new ArrayList<>();
 
         for (DatabaseObject object : databaseObjects) {
 
@@ -57,7 +57,7 @@ public class BookmarkFragmentPresenter {
         prefsEditor.apply();
     }
 
-    public List<DatabaseObject> loadBookmarks() {
+    public ArrayList<DatabaseObject> loadBookmarks() {
 
         SharedPreferences appSharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(mView.getContext());
@@ -67,8 +67,8 @@ public class BookmarkFragmentPresenter {
         if (!json.isEmpty()) {
             Type type = new TypeToken<List<SharePreferenceObject>>() {
             }.getType();
-            List<SharePreferenceObject> sharePreferenceObjectList = new Gson().fromJson(json, type);
-            List<DatabaseObject> bookmarks = new ArrayList<>();
+            ArrayList<SharePreferenceObject> sharePreferenceObjectList = new Gson().fromJson(json, type);
+            ArrayList<DatabaseObject> bookmarks = new ArrayList<>();
 
             for (SharePreferenceObject object : sharePreferenceObjectList) {
                 Stop stop = object.getStop();

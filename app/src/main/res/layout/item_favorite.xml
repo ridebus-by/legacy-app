@@ -41,12 +41,14 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/circle">
 
         <TextView
@@ -54,17 +56,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            tools:text="text"
-            android:textAppearance="?attr/textAppearanceSubtitle1" />
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            tools:text="@tools:sample/lorem/random" />
 
         <TextView
             android:id="@+id/text_description_bookmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            tools:text="text"
             android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="@color/mtrl_list_item_tint_secondary"/>
+            android:textColor="@color/mtrl_list_item_tint_secondary"
+            tools:text="@tools:sample/lorem/random" />
 
     </LinearLayout>
 
@@ -86,6 +88,7 @@
             android:textColor="@android:color/white"
             android:gravity="center"
             android:textSize="18sp"
+            android:textStyle="bold"
             cardView:layout_constraintBottom_toBottomOf="parent"
             cardView:layout_constraintStart_toStartOf="parent"
             cardView:layout_constraintTop_toTopOf="parent" />

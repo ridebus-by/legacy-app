@@ -22,15 +22,18 @@ import org.xtimms.trackbus.util.DateTime;
 import org.xtimms.trackbus.util.ThemeUtils;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHolder> {
+
     private AdapterView.OnItemClickListener onItemClickListener;
     private String mCurrentTime;
-    private List<StopsActivityTimeLineObject> mStopsActivityTimeLineObjects;
+    private ArrayList<StopsActivityTimeLineObject> mDataset;
 
-    public TimelineAdapter(List<StopsActivityTimeLineObject> stopsActivityTimeLineObjects, String currentTime) {
-        this.mStopsActivityTimeLineObjects = stopsActivityTimeLineObjects;
+    public TimelineAdapter(ArrayList<StopsActivityTimeLineObject> dataset, String currentTime) {
+        setHasStableIds(true);
+        this.mDataset = dataset;
         this.mCurrentTime = currentTime;
     }
 
@@ -50,10 +53,10 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        StopsActivityTimeLineObject object = mStopsActivityTimeLineObjects.get(position);
-        holder.mMainText.setText(object.getStop().getStopTitle());
+        StopsActivityTimeLineObject item = mDataset.get(position);
+        holder.mMainText.setText(item.getStop().getStopTitle());
 
-        if ((object.getTimeList() == null) || (object.getTimeList().isEmpty())) {
+        if ((item.getTimeList() == null) || (item.getTimeList().isEmpty())) {
             holder.mRemainingTimeText.setText(ConstantUtils.TIME_EMPTY);
             holder.mClosestTime.setText(ConstantUtils.TIME_EMPTY);
         } else {
@@ -61,7 +64,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             DateTime.ResultTime resultTime = null;
 
             try {
-                resultTime = dateTime.getRemainingClosestTime(object.getTimeList(), mCurrentTime);
+                resultTime = dateTime.getRemainingClosestTime(item.getTimeList(), mCurrentTime);
             } catch (ParseException e) {
                 //e.printStackTrace();
                 holder.mRemainingTimeText.setText(ConstantUtils.TIME_EMPTY);
@@ -74,12 +77,17 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             }
 
         }
-
+        holder.itemView.setTag(item);
     }
 
     @Override
     public int getItemCount() {
-        return mStopsActivityTimeLineObjects.size();
+        return mDataset.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
@@ -93,8 +101,8 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         }
     }
 
-    public void dataChange(List<StopsActivityTimeLineObject> stopsActivityTimeLineObjects, String currentTime) {
-        mStopsActivityTimeLineObjects = stopsActivityTimeLineObjects;
+    public void dataChange(ArrayList<StopsActivityTimeLineObject> dataset, String currentTime) {
+        mDataset = dataset;
         mCurrentTime = currentTime;
         notifyDataSetChanged();
     }
@@ -136,7 +144,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
             if (ThemeUtils.isAppThemeDark(itemView.getContext())) {
                 if (remainingStringTime.contains(ConstantUtils.TIME_EMPTY)) {
-                    mRemainingTimeText.setTextColor(Color.RED);
+                    mRemainingTimeText.setTextColor(ThemeUtils.getAttrColor(itemView.getContext(), R.attr.colorError));
                 } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_NO) {
                     mRemainingTimeText.setTextColor(Color.WHITE);
                 } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
@@ -148,7 +156,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
             if (ThemeUtils.isAppThemeNotDark(itemView.getContext())) {
                 if (remainingStringTime.contains(ConstantUtils.TIME_EMPTY)) {
-                    mRemainingTimeText.setTextColor(Color.RED);
+                    mRemainingTimeText.setTextColor(ThemeUtils.getAttrColor(itemView.getContext(), R.attr.colorError));
                 } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
                     mRemainingTimeText.setTextColor(Color.WHITE);
                 } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_NO) {

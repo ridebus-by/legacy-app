@@ -17,6 +17,7 @@ import org.xtimms.trackbus.adapter.ExpressAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.ExpressFragmentPresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExpressFragment extends AppBaseFragment implements ExpressFragmentPresenter.View {
@@ -33,7 +34,7 @@ public class ExpressFragment extends AppBaseFragment implements ExpressFragmentP
     }
 
     @Override
-    public void setAdapter(List<Route> routeList) {
+    public void setAdapter(ArrayList<Route> routeList) {
         ExpressAdapter mExpressAdapter = new ExpressAdapter(routeList);
         mRecyclerView.setAdapter(mExpressAdapter);
         mExpressAdapter.setOnItemClickListener((parent, view, position, id) -> {

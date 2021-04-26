@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import org.xtimms.trackbus.util.ThemeUtils;
+
 public abstract class AppBaseActivity extends AppCompatActivity {
 
 	private boolean mActionBarVisible = false;

@@ -17,6 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="168dp"
             android:fitsSystemWindows="true"
+            app:expandedTitleTextAppearance="@style/TextAppearance.ExpandedTitle"
+            app:expandedSubtitleTextAppearance="@style/TextAppearance.ExpandedSubtitle"
+            app:scrimVisibleHeightTrigger="126dp"
+            app:scrimAnimationDuration="150"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -35,6 +39,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/gradient_reversed"/>
+
+            <LinearLayout
+                android:id="@+id/header_text_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    tools:text="@tools:sample/lorem/random"
+                    android:textAppearance="@style/TextAppearance.Design.SubtitleCollapsingToolbar.ExpandedTitle"/>
+
+                <TextView
+                    android:id="@+id/subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textAppearance="@style/TextAppearance.Design.SubtitleCollapsingToolbar.ExpandedSubtitle"
+                    tools:text="@tools:sample/lorem/random"/>
+
+            </LinearLayout>
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar_timeline_activity"

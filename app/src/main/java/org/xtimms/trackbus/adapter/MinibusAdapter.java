@@ -13,33 +13,43 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.model.Route;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MinibusAdapter extends RecyclerView.Adapter<MinibusAdapter.ViewHolder> {
-    private final List<Route> routes;
+
+    private final ArrayList<Route> mDataset;
     private AdapterView.OnItemClickListener onItemClickListener;
 
-    public MinibusAdapter(List<Route> routes) {
-        this.routes = routes;
+    public MinibusAdapter(ArrayList<Route> dataset) {
+        setHasStableIds(true);
+        this.mDataset = dataset;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ConstraintLayout constraintLayout = (ConstraintLayout) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_route_minibus, parent, false);
+                .inflate(R.layout.item_route, parent, false);
         return new ViewHolder(constraintLayout, this);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.mRouteNumber.setText(routes.get(position).getRouteNumber());
-        holder.mRouteTitle.setText(routes.get(position).getRouteTitle());
+        Route item = mDataset.get(position);
+        holder.mRouteNumber.setText(item.getRouteNumber());
+        holder.mRouteTitle.setText(item.getRouteTitle());
+        holder.itemView.setTag(item);
     }
 
     @Override
     public int getItemCount() {
-        return routes.size();
+        return mDataset.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return mDataset.get(position).getId();
     }
 
     public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
@@ -61,8 +71,8 @@ public class MinibusAdapter extends RecyclerView.Adapter<MinibusAdapter.ViewHold
 
         ViewHolder(View itemView, MinibusAdapter adapter) {
             super(itemView);
-            mRouteNumber = itemView.findViewById(R.id.route_minibus_number);
-            mRouteTitle = itemView.findViewById(R.id.route_minibus_title);
+            mRouteNumber = itemView.findViewById(R.id.route_number);
+            mRouteTitle = itemView.findViewById(R.id.route_title);
             this.adapter = adapter;
             itemView.setOnClickListener(this);
         }

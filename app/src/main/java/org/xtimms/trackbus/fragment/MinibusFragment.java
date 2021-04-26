@@ -17,6 +17,7 @@ import org.xtimms.trackbus.adapter.MinibusAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.MinibusFragmentPresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MinibusFragment extends AppBaseFragment implements MinibusFragmentPresenter.View {
@@ -28,7 +29,7 @@ public class MinibusFragment extends AppBaseFragment implements MinibusFragmentP
     }
 
     @Override
-    public void setAdapter(List<Route> routeList) {
+    public void setAdapter(ArrayList<Route> routeList) {
         MinibusAdapter mMinibusAdapter = new MinibusAdapter(routeList);
         mRecyclerView.setAdapter(mMinibusAdapter);
         mMinibusAdapter.setOnItemClickListener((parent, view, position, id) -> {

@@ -7,6 +7,7 @@ import org.xtimms.trackbus.model.ModelFactory;
 import org.xtimms.trackbus.model.Stop;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StopFragmentPresenter {
@@ -21,7 +22,7 @@ public class StopFragmentPresenter {
     }
 
     public interface View {
-        void setAdapter(List<Stop> stopList);
+        void setAdapter(ArrayList<Stop> stopList);
     }
 
 
@@ -46,7 +47,7 @@ public class StopFragmentPresenter {
                 Log.d("ERROR", "OnPostExecute not working...");
                 return;
             } else {
-                mFragmentWeakReference.get().setAdapter(mStopList);
+                mFragmentWeakReference.get().setAdapter((ArrayList<Stop>) mStopList);
                 Log.d("SUCCESS", "Yay! Adapter working!");
             }
         }

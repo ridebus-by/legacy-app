@@ -23,16 +23,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> implements Filterable, FastScrollRecyclerView.SectionedAdapter {
-    private final List<Stop> stops;
-    private AdapterView.OnItemClickListener onItemClickListener;
-    private List<Stop> stopsListFiltered;
 
-    public StopAdapter(List<Stop> stops) {
+    private final ArrayList<Stop> stops;
+    private AdapterView.OnItemClickListener onItemClickListener;
+    private ArrayList<Stop> stopsListFiltered;
+
+    public StopAdapter(ArrayList<Stop> stops) {
+        setHasStableIds(true);
         this.stops = stops;
         this.stopsListFiltered = stops;
     }
 
-    public List<Stop> getStopsListFiltered() {
+    public ArrayList<Stop> getStopsListFiltered() {
         return stopsListFiltered;
     }
 
@@ -46,17 +48,24 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> im
 
     @Override
     public void onBindViewHolder(@NonNull StopAdapter.ViewHolder holder, int position) {
-        holder.mMainText.setText(stopsListFiltered.get(position).getStopTitle());
-        holder.mMarkText.setText(stopsListFiltered.get(position).getMark());
+        Stop item = stopsListFiltered.get(position);
+        holder.mMainText.setText(item.getStopTitle());
+        holder.mMarkText.setText(item.getMark());
 
         if (stopsListFiltered.get(position).getTransportId() == TransportId.TRAM.getIdInDatabase()) {
             holder.mTramImage.setVisibility(View.VISIBLE);
         } else holder.mTramImage.setVisibility(View.GONE);
+        holder.itemView.setTag(item);
     }
 
     @Override
     public int getItemCount() {
         return stopsListFiltered.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return stopsListFiltered.get(position).getId();
     }
 
     public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
@@ -79,7 +88,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> im
                 if (charString.isEmpty()) {
                     stopsListFiltered = stops;
                 } else {
-                    List<Stop> filteredList = new ArrayList<>();
+                    ArrayList<Stop> filteredList = new ArrayList<>();
                     for (Stop row : stops) {
 
                         if (row.getStopTitle().toLowerCase().contains(charString.toLowerCase())) {
@@ -98,8 +107,8 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> im
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
 
-                List<Stop> stopList = new ArrayList<>();
-                List<?> result = (List<?>) filterResults.values;
+                ArrayList<Stop> stopList = new ArrayList<>();
+                ArrayList<?> result = (ArrayList<?>) filterResults.values;
 
                 for (Object object : result) {
                     if (object instanceof Stop) {

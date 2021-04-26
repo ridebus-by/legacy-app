@@ -16,6 +16,7 @@ import org.xtimms.trackbus.adapter.BookmarksSearchAdapter;
 import org.xtimms.trackbus.model.DatabaseObject;
 import org.xtimms.trackbus.presenter.BookmarksActivityPresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookmarksActivity extends AppBaseActivity implements BookmarksActivityPresenter.View {
@@ -33,7 +34,7 @@ public class BookmarksActivity extends AppBaseActivity implements BookmarksActiv
     }
 
     @Override
-    public void setAdapter(List<DatabaseObject> databaseObjects) {
+    public void setAdapter(ArrayList<DatabaseObject> databaseObjects) {
         mBookmarksSearchAdapter = new BookmarksSearchAdapter(databaseObjects);
         mRecyclerView.setAdapter(mBookmarksSearchAdapter);
         mBookmarksSearchAdapter.setOnItemClickListener((parent, v, position, id) -> {

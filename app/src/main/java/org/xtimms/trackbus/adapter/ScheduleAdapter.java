@@ -36,6 +36,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     private int mColor;
 
     public ScheduleAdapter(Map<String, List<String>> map, String closestTime) {
+        setHasStableIds(true);
         this.mMap = map;
         mKeys = map.keySet().toArray();
         setClosestTime(closestTime);
@@ -55,16 +56,13 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ConstraintLayout constraintLayout = (ConstraintLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_schedule, parent, false);
-        mColor = ThemeUtils.getThemeAttrColor(parent.getContext(), R.attr.colorAccent);
+        mColor = ThemeUtils.getAttrColor(parent.getContext(), R.attr.colorAccent);
         return new ViewHolder(constraintLayout, this);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         boolean flag = false;
-
-
-
         if (mKeys != null) {
             String key = (String) mKeys[position];
             List<String> minutes = mMap.get(key);
@@ -93,7 +91,6 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
                 }
             }
         }
-
     }
 
     private Spannable getMinutesColor(Spanned closestMinutes) {
@@ -107,6 +104,11 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     @Override
     public int getItemCount() {
         return mMap.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {

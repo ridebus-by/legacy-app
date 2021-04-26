@@ -45,7 +45,7 @@
 		android:layout_marginBottom="@dimen/activity_vertical_margin"
 		android:layout_marginLeft="@dimen/activity_horizontal_margin"
 		android:layout_marginRight="@dimen/activity_horizontal_margin"
-		app:strokeWidth="1dp"
+		app:strokeWidth="1.3dp"
 		app:strokeColor="@color/stroke_color"
 		app:cardElevation="0dp"
 		app:behavior_overlapTop="64dp"

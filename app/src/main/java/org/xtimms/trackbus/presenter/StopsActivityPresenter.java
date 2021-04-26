@@ -33,12 +33,12 @@ public class StopsActivityPresenter {
     }
 
     public interface View {
-        void setAdapter(List<StopActivityObject> stopActivityObjectList);
+        void setAdapter(ArrayList<StopActivityObject> stopActivityObjectList);
     }
 
     private static class ActivityObjectsListAsyncTask extends AsyncTask<Integer, Void, Boolean> {
         private final WeakReference<View> activityWeakReference;
-        private final List<StopActivityObject> mStopActivityObjectList = new ArrayList<>();
+        private final ArrayList<StopActivityObject> mStopActivityObjectList = new ArrayList<>();
         private final String mCurrentTime;
         private final String mCurrentDate;
         private final int mStopId;
@@ -60,6 +60,7 @@ public class StopsActivityPresenter {
             for (Route route : routeList) {
 
                 int routeId = route.getId();
+
                 List<Integer> typeDayList = ModelFactory.getModel().getTypeDay(routeId, mStopId);
                 List<String> timeList = null;
 
@@ -71,7 +72,7 @@ public class StopsActivityPresenter {
                 }
 
                 if ((timeList == null) || (timeList.isEmpty())) {
-                    mStopActivityObjectList.add(new StopActivityObject(route, ConstantUtils.TIME_EMPTY, ConstantUtils.TIME_EMPTY));
+                    mStopActivityObjectList.add(new StopActivityObject(routeId, route, ConstantUtils.TIME_EMPTY, ConstantUtils.TIME_EMPTY));
                     continue;
                 }
 
@@ -85,8 +86,7 @@ public class StopsActivityPresenter {
 
                 if (resultTime == null) continue;
 
-                mStopActivityObjectList.add(new StopActivityObject(
-                        route, resultTime.getClosestTime(), resultTime.getRemainingTime()));
+                mStopActivityObjectList.add(new StopActivityObject(routeId, route, resultTime.getClosestTime(), resultTime.getRemainingTime()));
 
                 Collections.sort(mStopActivityObjectList, (o1, o2) -> {
 

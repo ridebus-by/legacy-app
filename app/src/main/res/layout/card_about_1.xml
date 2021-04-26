@@ -8,7 +8,7 @@
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:layout_marginTop="4dp"
-    app:strokeWidth="1dp"
+    app:strokeWidth="1.3dp"
     app:strokeColor="@color/stroke_color"
     app:cardElevation="0dp">
 
@@ -53,6 +53,16 @@
                 android:lineSpacingExtra="8dp"
                 android:textStyle="italic"
                 tools:text="App version: 1.1"/>
+
+            <TextView
+                android:id="@+id/tv_db_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_about_version"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="8dp"
+                android:textStyle="italic"
+                tools:text="Database version: 66"/>
 
         </RelativeLayout>
 

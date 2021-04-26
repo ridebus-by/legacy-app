@@ -23,6 +23,7 @@ import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.model.Stop;
 import org.xtimms.trackbus.presenter.BookmarkFragmentPresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -30,7 +31,7 @@ import static android.app.Activity.RESULT_OK;
 public class BookmarkFragment extends AppBaseFragment {
     private final static int SEARCH_ACTIVITY_REQUEST = 1;
     private final static String BOOKMARKS_PREFERENCES = "bookmarksPreferences";
-    private List<DatabaseObject> mBookmarks;
+    private ArrayList<DatabaseObject> mBookmarks;
     private BookmarkAdapter mBookmarkAdapter;
     private int mPosition;
     private BookmarkFragmentPresenter mPresenter;

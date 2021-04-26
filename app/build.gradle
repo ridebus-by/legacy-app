@@ -59,14 +59,14 @@ dependencies {
     implementation 'com.github.vipulasri:timelineview:1.1.5'
     implementation 'com.github.kabouzeid:RecyclerView-FastScroll:1.0.16-kmod'
     implementation 'com.lucasurbas:listitemview:1.1.1'
-    implementation "com.hendraanggrian.material:collapsingtoolbarlayout-subtitle:1.0.0"
+    implementation "com.hendraanggrian.material:collapsingtoolbarlayout-subtitle:1.1.0"
     implementation "com.dmitrymalkovich.android:material-design-dimens:1.4"
     implementation "com.afollestad.material-dialogs:core:0.9.6.0"
 
-    implementation 'androidx.room:room-runtime:2.2.6'
+    implementation 'androidx.room:room-runtime:2.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'org.jetbrains:annotations:15.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'junit:junit:4.12'
-    annotationProcessor 'androidx.room:room-compiler:2.2.6'
+    annotationProcessor 'androidx.room:room-compiler:2.0.0'
 }

@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <Preference
-        android:key="bugreport"
-        android:summary="@string/bug_report_summ"
-        android:title="@string/bug_report" />
+    <PreferenceCategory
+        android:title="@string/log">
+
+        <Preference
+            android:key="bugreport"
+            android:summary="@string/bug_report_summ"
+            android:title="@string/bug_report" />
+
+        <Preference
+            android:key="viewlog"
+            android:title="@string/view_log" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/server_and_db">
+
+        <Preference
+            android:key="checkdb"
+            android:title="@string/check_db"
+            android:summary="@string/check_db_summary"/>
+        <Preference
+            android:key="checkserver"
+            android:title="@string/check_server"
+            android:summary="@string/check_server_summary"/>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

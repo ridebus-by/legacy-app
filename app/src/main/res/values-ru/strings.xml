@@ -14,7 +14,7 @@
     <string name="nav_action_about">О приложении</string>
     <string name="about_card1_message">Привет!</string>
     <string name="about_google_play">Оценить приложение в Google Play</string>
-    <string name="about_version">"Версия приложения: "</string>
+    <string name="about_version">"Версия приложения:"</string>
     <string name="about_email_intent">О приложении: RideBus</string>
     <string name="about_not_found_email">Не найдено приложение электронной почты :(</string>
     <string name="about_report_a_problem">Сообщить об ошибке</string>
@@ -35,7 +35,7 @@
     <string name="about_report_intent">Сообщение об ошибке: RideBus</string>
     <string name="about_email">Связаться по электронной почте</string>
     <string name="change_day">Сменить день недели</string>
-    <string name="db_version">Версия расписания:</string>
+    <string name="db_version">"Версия расписания:"</string>
     <string name="drawer_close">Закрыть</string>
     <string name="drawer_open">Открыть</string>
     <string name="select_image">Выбрать изображение</string>
@@ -65,4 +65,12 @@
     <string name="log_not_found">Отладочный лог не найден</string>
     <string name="gratitide">Выражаю благодарность команде проекта Rumblur за предоставление сервера (на котором, кстати, размещается одноименный сервер Minecraft) для хранения базы данных расписания</string>
     <string name="disclaimer">Вся информация, предоставленная в приложении, взята из открытых интернет-источников и предоставляется в исходном виде.</string>
+    <string name="about_telegram">Канал в Telegram</string>
+    <string name="check_db">Проверить целостность базы данных</string>
+    <string name="check_server">Проверить соединение с сервером расписания</string>
+    <string name="log">Лог</string>
+    <string name="server_and_db">Сервер и БД</string>
+    <string name="check_db_summary">Проверка на случай, если приложение нестабильно при загрузке базы данных с диска.</string>
+    <string name="check_server_summary">Если приложение не может обновить расписание с сервера.</string>
+    <string name="view_log">Просмотреть логи</string>
 </resources>

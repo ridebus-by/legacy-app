@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.xtimms.trackbus.App;
+import org.xtimms.trackbus.model.Stop;
+import org.xtimms.trackbus.ui.DataViewHolder;
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.object.StopActivityObject;
@@ -20,15 +23,17 @@ import org.xtimms.trackbus.util.ColorUtils;
 import org.xtimms.trackbus.util.DateTime;
 import org.xtimms.trackbus.util.ThemeUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdapter.ViewHolder> {
 
-    private List<StopActivityObject> mStopActivityObjectList;
+    private ArrayList<StopActivityObject> mDataset;
     private AdapterView.OnItemClickListener onItemClickListener;
 
-    public StopsActivityAdapter(List<StopActivityObject> stopActivityObjectList) {
-        this.mStopActivityObjectList = stopActivityObjectList;
+    public StopsActivityAdapter(ArrayList<StopActivityObject> dataset) {
+        setHasStableIds(true);
+        this.mDataset = dataset;
     }
 
     @NonNull
@@ -41,16 +46,16 @@ public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.mRouteNumberText.setText(mStopActivityObjectList.get(holder.getAdapterPosition()).getRoute().getRouteNumber());
-        holder.mRouteTitleText.setText(mStopActivityObjectList.get(holder.getAdapterPosition()).getRoute().getRouteTitle());
-        holder.mClosestTime.setText(mStopActivityObjectList.get(holder.getAdapterPosition()).getClosestTime());
-        holder.setRemainingTime(mStopActivityObjectList.get(holder.getAdapterPosition()).getRemainingTime());
+        StopActivityObject item = mDataset.get(holder.getAdapterPosition());
+        holder.mRouteNumberText.setText(item.getRoute().getRouteNumber());
+        holder.mRouteTitleText.setText(item.getRoute().getRouteTitle());
+        holder.mClosestTime.setText(item.getClosestTime());
+        holder.setRemainingTime(item.getRemainingTime());
 
-        ColorUtils.setBackgroundColor(mStopActivityObjectList
-                .get(holder.getAdapterPosition()).getRoute().getTransportId(), holder.mColor);
+        ColorUtils.setBackgroundColor(item.getRoute().getTransportId(), holder.mColor);
 
-        holder.setIsRecyclable(false);
-
+        holder.itemView.setTag(item);
+        holder.bind(item);
     }
 
     @Override
@@ -64,8 +69,13 @@ public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdap
     }
 
     @Override
+    public void onViewRecycled(@NonNull ViewHolder holder) {
+        holder.recycle();
+    }
+
+    @Override
     public int getItemCount() {
-        return mStopActivityObjectList.size();
+        return mDataset.size();
     }
 
     public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
@@ -79,12 +89,12 @@ public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdap
         }
     }
 
-    public void dataChange(List<StopActivityObject> stopActivityObjectList) {
-        mStopActivityObjectList = stopActivityObjectList;
+    public void dataChange(ArrayList<StopActivityObject> stopActivityObjectList) {
+        mDataset = stopActivityObjectList;
         notifyDataSetChanged();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends DataViewHolder<StopActivityObject> implements View.OnClickListener {
         private final StopsActivityAdapter adapter;
         private final ImageView mColor;
         private final TextView mRouteNumberText;
@@ -108,6 +118,16 @@ public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdap
             adapter.onItemHolderClick(this);
         }
 
+        @Override
+        public void recycle() {
+            super.recycle();
+        }
+
+        @Override
+        public void bind(StopActivityObject stopActivityObject) {
+            super.bind(stopActivityObject);
+        }
+
         private void setRemainingTime(String remainingTime) {
 
             int nightModeFlags = itemView.getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
@@ -121,7 +141,7 @@ public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdap
 
             if (ThemeUtils.isAppThemeDark(itemView.getContext())) {
                 if (remainingStringTime.contains(ConstantUtils.TIME_EMPTY)) {
-                    mRemainingTimeText.setTextColor(Color.RED);
+                    mRemainingTimeText.setTextColor(ThemeUtils.getAttrColor(itemView.getContext(), R.attr.colorError));
                 } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_NO) {
                     mRemainingTimeText.setTextColor(Color.WHITE);
                 } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
@@ -133,7 +153,7 @@ public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdap
 
             if (ThemeUtils.isAppThemeNotDark(itemView.getContext())) {
                 if (remainingStringTime.contains(ConstantUtils.TIME_EMPTY)) {
-                    mRemainingTimeText.setTextColor(Color.RED);
+                    mRemainingTimeText.setTextColor(ThemeUtils.getAttrColor(itemView.getContext(), R.attr.colorError));
                 } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
                     mRemainingTimeText.setTextColor(Color.WHITE);
                 } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_NO) {

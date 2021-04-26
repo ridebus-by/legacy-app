@@ -21,24 +21,25 @@ import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.model.Stop;
 import org.xtimms.trackbus.util.ColorUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHolder> {
 
-    private final List<DatabaseObject> mBookmarks;
+    private final ArrayList<DatabaseObject> mDataset;
     private AdapterView.OnItemClickListener onItemClickListener;
     private int mPosition;
 
-    public BookmarkAdapter(List<DatabaseObject> databaseObjects) {
-        this.mBookmarks = databaseObjects;
+    public BookmarkAdapter(ArrayList<DatabaseObject> dataset) {
+        this.mDataset = dataset;
     }
 
-    public List<DatabaseObject> getBookmarks() {
-        return mBookmarks;
+    public ArrayList<DatabaseObject> getBookmarks() {
+        return mDataset;
     }
 
     public void changeBookmarks(int position, DatabaseObject object) {
-        mBookmarks.set(position, object);
+        mDataset.set(position, object);
         this.notifyItemChanged(position);
     }
 
@@ -66,7 +67,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
             return false;
         });
 
-        DatabaseObject object = mBookmarks.get(position);
+        DatabaseObject object = mDataset.get(position);
 
         if (object.isEmpty()) {
             holder.mTextTitleBtn.setVisibility(View.GONE);
@@ -111,7 +112,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
             holder.mTextTitleBtn.setText(stop.getStopTitle());
             holder.mTextDescriptionBtn.setText(stop.getMark());
         }
-
+        holder.itemView.setTag(object);
     }
 
     @Override
@@ -122,7 +123,12 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return mBookmarks.size();
+        return mDataset.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {

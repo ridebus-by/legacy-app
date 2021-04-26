@@ -8,27 +8,16 @@ import android.util.TypedValue;
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.StyleRes;
+import androidx.core.content.ContextCompat;
 
 import org.xtimms.trackbus.R;
 
 public abstract class ThemeUtils {
 
-	private static final int[] APP_THEMES = new int[]{
-			R.style.Theme_RideBus,
-			R.style.Theme_RideBus_LightBlue,
-			R.style.Theme_RideBus_DarkBlue
-	};
-
-	@ColorInt
-	public static int getThemeAttrColor(Context context, @AttrRes int resId) {
-		TypedArray a = context.getTheme().obtainStyledAttributes(getAppThemeRes(context), new int[] { resId });
-		int color = a.getColor(0, 0);
-		a.recycle();
-		return color;
-	}
-
-	public static int getAppThemeRes(Context context) {
-		return APP_THEMES[getAppTheme(context)];
+	public static int getAttrColor(Context context, @ColorInt int colorAttrId) {
+		TypedValue typedValue = new  TypedValue();
+		context.getTheme().resolveAttribute(colorAttrId, typedValue, true);
+		return typedValue.data;
 	}
 
 	public static int getAppTheme(Context context) {

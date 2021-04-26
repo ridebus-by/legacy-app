@@ -30,53 +30,59 @@
             tools:text="14" />
 
         <View
+            android:id="@+id/view2"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:alpha="0.25"
             android:background="?android:attr/textColorHint"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@+id/text_routenumber_stopactivity_card" />
+            app:layout_constraintStart_toEndOf="@+id/text_routenumber_stopactivity_card"
+            tools:layout_editor_absoluteY="8dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_routetitle_stopactivity_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="2"
             android:singleLine="false"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/text_remainingtime_stopactivity_card"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
             app:layout_constraintStart_toEndOf="@+id/text_routenumber_stopactivity_card"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="пл. Примостовая - по кольцу" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_remainingtime_stopactivity_card"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_height="match_parent"
             android:layout_marginEnd="16dp"
-            android:textSize="14sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:gravity="center"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="12h 12m" />
+            app:layout_constraintStart_toEndOf="@+id/text_routetitle_stopactivity_card">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_closesttime_stopactivity_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/text_remainingtime_stopactivity_card"
-            app:layout_constraintStart_toStartOf="@+id/text_remainingtime_stopactivity_card"
-            app:layout_constraintTop_toBottomOf="@+id/text_remainingtime_stopactivity_card"
-            tools:text="16:50" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_remainingtime_stopactivity_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="14sp"
+                    tools:text="-" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_closesttime_stopactivity_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    tools:text="-" />
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"

@@ -25,20 +25,10 @@
     <!--===========-->
     <!--AlertDialog-->
     <!--===========-->
-    <style name="Theme.AlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
-        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
-        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
-
-        <item name="android:background">?attr/colorSurface</item>
-        <item name="shapeAppearanceOverlay">@style/Theme.MaterialAlertDialog.Style.ShapeAppearance</item>
-
-        <item name="materialAlertDialogTitleTextStyle">@style/Theme.MaterialAlertDialog.Style.Title</item>
-        <item name="android:textColorPrimary">?attr/colorOnSurface</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
-
-        <item name="buttonBarPositiveButtonStyle">@style/Theme.Widget.Button</item>
-        <item name="buttonBarNegativeButtonStyle">@style/Theme.Widget.Button</item>
-        <item name="buttonBarNeutralButtonStyle">@style/Theme.Widget.Button</item>
+    <style name="Theme.AlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="colorPrimary">@color/colorAccentLight</item>
+        <item name="colorPrimaryDark">@color/colorAccentLight</item>
+        <item name="colorAccent">@color/colorAccentLight</item>
     </style>
 
     <style name="Theme.MaterialAlertDialog.Style.ShapeAppearance" parent="">
@@ -46,7 +36,7 @@
     </style>
 
     <style name="Theme.MaterialAlertDialog.Style.Title" parent="@style/MaterialAlertDialog.MaterialComponents.Title.Text">
-        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textColor">@color/colorAccentLight</item>
         <item name="android:textSize">@dimen/material_typography_title</item>
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
@@ -154,6 +144,15 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.ExpandedTitle">
+        <item name="android:textColor">@android:color/transparent</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Widget.ActionBar.Title</item>
+    </style>
+
+    <style name="TextAppearance.ExpandedSubtitle">
+        <item name="android:textColor">@android:color/transparent</item>
     </style>
 
 
@@ -288,9 +287,9 @@
     <!--==============-->
     <!--Widgets.Button-->
     <!--==============-->
-    <style name="Theme.Widget.Button" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:textColor">?attr/colorAccent</item>
-        <item name="rippleColor">?attr/colorAccent</item>
+    <style name="Theme.Widget.Button">
+        <item name="colorPrimary">@color/colorPrimary_70</item>
+        <item name="rippleColor">?attr/colorAccentOnPrimary</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
@@ -341,7 +340,6 @@
         <item name="tabIndicatorFullWidth">false</item>
         <item name="tabIndicatorHeight">3dp</item>
         <item name="tabInlineLabel">false</item>
-        <item name="tabIndicatorAnimationMode">elastic</item>
         <item name="tabMode">fixed</item>
         <item name="tabTextAppearance">@style/TextAppearance.Widget.Tab</item>
     </style>

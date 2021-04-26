@@ -28,6 +28,7 @@ import org.xtimms.trackbus.presenter.TimeLineActivityPresenter;
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.util.DateTime;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TimelineActivity extends AppBaseActivity implements TimeLineActivityPresenter.View {
@@ -64,6 +65,12 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
         SubtitleCollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
         collapsingToolbarLayout.setTitle(getResources().getString(R.string.number) + mRoute.getRouteNumber());
         collapsingToolbarLayout.setSubtitle(mRoute.getRouteTitle());
+
+        TextView title = findViewById(R.id.title);
+        TextView subtitle = findViewById(R.id.subtitle);
+
+        title.setText(getResources().getString(R.string.number) + mRoute.getRouteNumber());
+        subtitle.setText(mRoute.getRouteTitle());
 
         mRecyclerView = findViewById(R.id.recyclerview_timeline);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -163,7 +170,7 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
     }
 
     @Override
-    public void setAdapter(List<StopsActivityTimeLineObject> stopsActivityTimeLineObjects, String currentTime) {
+    public void setAdapter(ArrayList<StopsActivityTimeLineObject> stopsActivityTimeLineObjects, String currentTime) {
 
         if (!mAdapterIsSet) {
             mProgressBar.setVisibility(View.GONE);

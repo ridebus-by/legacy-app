@@ -6,6 +6,7 @@ import org.xtimms.trackbus.model.ModelFactory;
 import org.xtimms.trackbus.model.Route;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TramsFragmentPresenter {
@@ -20,7 +21,7 @@ public class TramsFragmentPresenter {
     }
 
     public interface View {
-        void setAdapter(List<Route> routeList);
+        void setAdapter(ArrayList<Route> routeList);
     }
 
     public static class GetTramsAsyncTask extends AsyncTask<Void, Void, Void> {
@@ -41,7 +42,7 @@ public class TramsFragmentPresenter {
         @Override
         protected void onPostExecute(Void v) {
             super.onPostExecute(v);
-            mFragmentWeakReference.get().setAdapter(mRouteList);
+            mFragmentWeakReference.get().setAdapter((ArrayList<Route>) mRouteList);
         }
     }
 }
