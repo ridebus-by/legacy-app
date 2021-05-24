@@ -1,7 +1,6 @@
 package org.xtimms.trackbus.presenter;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.xtimms.trackbus.App;
 import org.xtimms.trackbus.model.ModelFactory;
@@ -42,6 +41,7 @@ public class TimeLineActivityPresenter {
         private final String mCurrentDate;
         private final int mRouteId;
         private final DateTime mDateTime = new DateTime();
+        private Exception mException;
 
         ActivityObjectsListAsyncTask(View context, String currentTime, String currentDate, int routeId) {
             super();
@@ -66,6 +66,7 @@ public class TimeLineActivityPresenter {
                     timeList = ModelFactory.getModel().getTimeOnStop(mDateTime
                             .getTypeDay(mCurrentDate, typeDayList), mRouteId, stopId);
                 } catch (ParseException e) {
+                    mException = e;
                     e.printStackTrace();
                 }
 
@@ -76,12 +77,10 @@ public class TimeLineActivityPresenter {
 
         @Override
         protected void onPostExecute(Boolean result) {
-            if (result == null) {
-                Log.d("ERROR", "OnPostExecute not working...");
-                return;
-            } else {
+            if (mException == null) {
                 activityWeakReference.get().setAdapter((ArrayList<StopsActivityTimeLineObject>) mStopsActivityTimeLineObjects, mCurrentTime);
-                Log.d("SUCCESS", "Yay! Adapter working!");
+            } else {
+                return;
             }
         }
     }

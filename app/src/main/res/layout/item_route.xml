@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:cardView="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="?android:selectableItemBackground"
+    android:background="@drawable/selectable_item_background"
     android:layout_width="match_parent"
     android:layout_height="72dp"
     tools:ignore="Overdraw">
@@ -44,7 +44,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            cardView:layout_constraintStart_toEndOf="@+id/route_bus_number"
+            cardView:layout_constraintStart_toEndOf="@+id/route_number"
             cardView:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/lorem/random" />
 

@@ -29,7 +29,11 @@ import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.util.DateTime;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import static org.xtimms.trackbus.R.id;
+import static org.xtimms.trackbus.R.layout;
+import static org.xtimms.trackbus.R.menu;
+import static org.xtimms.trackbus.R.string;
 
 public class TimelineActivity extends AppBaseActivity implements TimeLineActivityPresenter.View {
 
@@ -52,40 +56,40 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timeline);
+        setContentView(layout.activity_timeline);
 
         mRoute = (Route) getIntent().getSerializableExtra(TimelineActivity.EXTRA_ROUTE);
 
-        mWeekDay = findViewById(R.id.text_date_timeline);
+        mWeekDay = findViewById(id.text_date_timeline);
         mWeekDay.setText(DateTime.getCurrentDate());
 
-        mProgressBar = findViewById(R.id.progressBar_activityTimeline);
+        mProgressBar = findViewById(id.progressBar_activityTimeline);
         mProgressBar.setVisibility(View.VISIBLE);
 
-        SubtitleCollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
-        collapsingToolbarLayout.setTitle(getResources().getString(R.string.number) + mRoute.getRouteNumber());
+        SubtitleCollapsingToolbarLayout collapsingToolbarLayout = findViewById(id.toolbar_layout);
+        collapsingToolbarLayout.setTitle(getResources().getString(string.number) + mRoute.getRouteNumber());
         collapsingToolbarLayout.setSubtitle(mRoute.getRouteTitle());
 
-        TextView title = findViewById(R.id.title);
-        TextView subtitle = findViewById(R.id.subtitle);
+        TextView title = findViewById(id.title);
+        TextView subtitle = findViewById(id.subtitle);
 
-        title.setText(getResources().getString(R.string.number) + mRoute.getRouteNumber());
+        title.setText(getResources().getString(string.number) + mRoute.getRouteNumber());
         subtitle.setText(mRoute.getRouteTitle());
 
-        mRecyclerView = findViewById(R.id.recyclerview_timeline);
+        mRecyclerView = findViewById(id.recyclerview_timeline);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setHasFixedSize(true);
 
         getRecyclerViewData();
 
-        Toolbar toolbar = findViewById(R.id.toolbar_timeline_activity);
-        toolbar.inflateMenu(R.menu.report);
+        Toolbar toolbar = findViewById(id.toolbar_timeline_activity);
+        toolbar.inflateMenu(menu.report);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        TextView textNumber = findViewById(R.id.number);
+        TextView textNumber = findViewById(id.number);
         textNumber.setText(mRoute.getRouteNumber());
     }
 
@@ -95,6 +99,7 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent();
@@ -105,15 +110,15 @@ public class TimelineActivity extends AppBaseActivity implements TimeLineActivit
             case android.R.id.home:
                 onBackPressed();
                 return true;
-            case R.id.report:
+            case id.report:
                 intent.setAction(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse(ConstantUtils.EMAIL));
-                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.about_report_intent));
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(string.about_report_intent));
                 //intent.putExtra(Intent.EXTRA_TEXT, "Hi,");
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    Toast.makeText(TimelineActivity.this, getString(R.string.about_not_found_email), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TimelineActivity.this, getString(string.about_not_found_email), Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

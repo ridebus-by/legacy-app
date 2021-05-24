@@ -10,7 +10,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.vipulasri.timelineview.TimelineView;
@@ -23,7 +22,6 @@ import org.xtimms.trackbus.util.ThemeUtils;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHolder> {
 
@@ -109,7 +107,6 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TimelineAdapter mAdapter;
-        private TimelineView mTimelineView;
         private final TextView mMainText;
         private final TextView mRemainingTimeText;
         private final TextView mClosestTime;
@@ -119,7 +116,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             mMainText = itemView.findViewById(R.id.text_stoptitle_timeline);
             mRemainingTimeText = itemView.findViewById(R.id.text_remainingtime_timeline);
             mClosestTime = itemView.findViewById(R.id.text_closesttime_timeline);
-            mTimelineView = itemView.findViewById(R.id.timemarker_timelineview);
+            TimelineView mTimelineView = itemView.findViewById(R.id.timemarker_timelineview);
             mTimelineView.initLine(viewType);
             this.mAdapter = adapter;
 

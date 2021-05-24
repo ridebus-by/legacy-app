@@ -1,11 +1,13 @@
 package org.xtimms.trackbus.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,68 +26,75 @@ import org.xtimms.trackbus.model.Stop;
 import org.xtimms.trackbus.presenter.BookmarkFragmentPresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
+import static org.xtimms.trackbus.R.id;
+import static org.xtimms.trackbus.R.layout;
 
 public class BookmarkFragment extends AppBaseFragment {
     private final static int SEARCH_ACTIVITY_REQUEST = 1;
     private final static String BOOKMARKS_PREFERENCES = "bookmarksPreferences";
     private ArrayList<DatabaseObject> mBookmarks;
     private BookmarkAdapter mBookmarkAdapter;
+    private ProgressBar mProgressBar;
+    private boolean mAdapterIsSet = false;
     private int mPosition;
     private BookmarkFragmentPresenter mPresenter;
-
-    public static BookmarkFragment newInstance() {
-        return new BookmarkFragment();
-    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mPresenter = new BookmarkFragmentPresenter(this, BOOKMARKS_PREFERENCES);
         mBookmarks = mPresenter.loadBookmarks();
-        return inflater.inflate(R.layout.fragment_bookmarks, container, false);
+        View root = inflater.inflate(layout.fragment_bookmarks, container, false);
+        mProgressBar = root.findViewById(R.id.progress);
+        mProgressBar.setVisibility(View.VISIBLE);
+        return root;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView_favorite);
+        RecyclerView recyclerView = view.findViewById(id.recyclerView_favorite);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        mBookmarkAdapter = new BookmarkAdapter(mBookmarks);
-        mBookmarkAdapter.notifyDataSetChanged();
-        recyclerView.setAdapter(mBookmarkAdapter);
-        recyclerView.invalidate();
-        mBookmarkAdapter.setOnItemClickListener((parent, v, position, id) -> {
-            mPosition = position;
-            DatabaseObject object = mBookmarkAdapter.getBookmarks().get(position);
+        if (!mAdapterIsSet) {
+            mProgressBar.setVisibility(View.GONE);
+            mBookmarkAdapter = new BookmarkAdapter(mBookmarks);
+            mBookmarkAdapter.notifyDataSetChanged();
+            recyclerView.setAdapter(mBookmarkAdapter);
+            recyclerView.invalidate();
+            mBookmarkAdapter.setOnItemClickListener((parent, v, position, id) -> {
+                mPosition = position;
+                DatabaseObject object = mBookmarkAdapter.getBookmarks().get(position);
 
-            if (object.isEmpty()) {
-                Intent intent = BookmarksActivity.newIntent(App.getInstance().getAppContext());
-                startActivityForResult(intent, SEARCH_ACTIVITY_REQUEST);
-            } else {
-                if (object instanceof Route) {
-                    Route route = (Route) object;
-                    Intent intent = TimelineActivity.newIntent(getActivity(), route);
-                    startActivity(intent);
+                if (object.isEmpty()) {
+                    Intent intent = BookmarksActivity.newIntent(App.getInstance().getAppContext());
+                    startActivityForResult(intent, SEARCH_ACTIVITY_REQUEST);
+                } else {
+                    if (object instanceof Route) {
+                        Route route = (Route) object;
+                        Intent intent = TimelineActivity.newIntent(getActivity(), route);
+                        startActivity(intent);
+                    }
+
+                    if (object instanceof Stop) {
+                        Stop stop = (Stop) object;
+                        Intent intent = StopsActivity.newIntent(getActivity(), stop);
+                        startActivity(intent);
+                    }
                 }
 
-                if (object instanceof Stop) {
-                    Stop stop = (Stop) object;
-                    Intent intent = StopsActivity.newIntent(getActivity(), stop);
-                    startActivity(intent);
-                }
-            }
-
-        });
-
+            });
+        } else {
+            mBookmarkAdapter.dataChange(mBookmarks);
+        }
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
         //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int position = mBookmarkAdapter.getPosition();
 
@@ -94,12 +103,12 @@ public class BookmarkFragment extends AppBaseFragment {
         if (object.isEmpty()) return false;
 
         switch (item.getItemId()) {
-            case R.id.bookmarks_context_menu_change:
+            case id.bookmarks_context_menu_change:
                 mPosition = position;
                 Intent intent = BookmarksActivity.newIntent(App.getInstance().getAppContext());
                 startActivityForResult(intent, SEARCH_ACTIVITY_REQUEST);
                 return true;
-            case R.id.bookmarks_context_menu_delete:
+            case id.bookmarks_context_menu_delete:
                 mBookmarkAdapter.changeBookmarks(position, new Stop());
                 return true;
             default:

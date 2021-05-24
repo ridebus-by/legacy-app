@@ -27,6 +27,7 @@ public class MinibusFragmentPresenter {
     public static class GetTramsAsyncTask extends AsyncTask<Void, Void, Void> {
         private final WeakReference<View> mFragmentWeakReference;
         private List<Route> mRouteList;
+        private Exception mException;
 
         private GetTramsAsyncTask(View context) {
             super();
@@ -35,14 +36,23 @@ public class MinibusFragmentPresenter {
 
         @Override
         protected Void doInBackground(Void... params) {
-            mRouteList = ModelFactory.getModel().getAllRoutesMinibus();
+            try {
+                mRouteList = ModelFactory.getModel().getAllRoutesMinibus();
+            } catch (Exception e) {
+                mException = e;
+                e.printStackTrace();
+            }
             return null;
         }
 
         @Override
         protected void onPostExecute(Void v) {
             super.onPostExecute(v);
-            mFragmentWeakReference.get().setAdapter((ArrayList<Route>) mRouteList);
+            if (mException == null) {
+                mFragmentWeakReference.get().setAdapter((ArrayList<Route>) mRouteList);
+            } else {
+                return;
+            }
         }
     }
 }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:cardView="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="?android:selectableItemBackground"
+    android:background="@drawable/selectable_item_background"
     android:layout_width="match_parent"
     android:layout_height="72dp"
     tools:ignore="Overdraw">
@@ -22,7 +22,6 @@
         tools:ignore="ContentDescription,HardcodedText" />
 
     <View
-        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:alpha="0.25"

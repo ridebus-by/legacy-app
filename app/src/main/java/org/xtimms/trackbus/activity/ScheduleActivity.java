@@ -1,5 +1,6 @@
 package org.xtimms.trackbus.activity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,8 +14,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.adapter.ScheduleAdapter;
@@ -29,14 +34,16 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import static org.xtimms.trackbus.R.*;
+
 public class ScheduleActivity extends AppBaseActivity implements ScheduleActivityPresenter.View {
     public static final String EXTRA_SCHEDULE_STOP = ScheduleActivity.class.getSimpleName() + "stop_id";
     private static final String EXTRA_SCHEDULE_ROUTE = ScheduleActivity.class.getSimpleName() + "route_id";
     private Route mRoute;
     private Stop mStop;
 
-    private TextView mTextDate;
     private RecyclerView mRecyclerView;
+    private TextView mTextDate;
     private ProgressBar mProgressBar;
     private BroadcastReceiver mBroadcastReceiver;
 
@@ -59,22 +66,22 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
             mRoute = (Route) bundle.getSerializable(ScheduleActivity.EXTRA_SCHEDULE_ROUTE);
         }
 
-        setContentView(R.layout.activity_schedule);
-        Toolbar toolbar = findViewById(R.id.toolbar_schedule_activity);
+        setContentView(layout.activity_schedule);
+        Toolbar toolbar = findViewById(id.toolbar_schedule_activity);
         setSupportActionBar(toolbar);
 
-        mProgressBar = findViewById(R.id.progress);
+        mProgressBar = findViewById(id.progress);
         mProgressBar.setVisibility(View.VISIBLE);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        TextView routeNumber = findViewById(R.id.text_routenumber_scheduleactivity);
-        TextView routeTitle = findViewById(R.id.text_routetitle_scheduleactivity);
-        TextView stopTitle = findViewById(R.id.text_stoptitle_scheduleactivity);
-        TextView stopMark = findViewById(R.id.text_stopmark_scheduleactivity);
-        mTextDate = findViewById(R.id.text_date_scheduleactivity);
+        TextView routeNumber = findViewById(id.text_route_number_schedule_activity);
+        TextView routeTitle = findViewById(id.text_route_title_schedule_activity);
+        TextView stopTitle = findViewById(id.text_stop_title_schedule_activity);
+        TextView stopMark = findViewById(id.text_stop_mark_schedule_activity);
+        mTextDate = findViewById(id.text_date_schedule_activity);
 
         routeNumber.setText(mRoute.getRouteNumber());
         routeTitle.setText(mRoute.getRouteTitle());
@@ -82,27 +89,7 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
         stopMark.setText(mStop.getMark());
         mTextDate.setText(DateTime.getCurrentDate());
 
-        //mTextDate.setOnClickListener(v -> {
-        //    Calendar mcurrentDate = Calendar.getInstance();
-        //    int year = mcurrentDate.get(Calendar.YEAR);
-        //    int month = mcurrentDate.get(Calendar.MONTH);
-        //    int day = mcurrentDate.get(Calendar.DAY_OF_MONTH);
-
-        //    DatePickerDialog datePickerDialog = new DatePickerDialog(ScheduleActivity.this, (view, year1, monthOfYear, dayOfMonth) -> {
-        //        Calendar newDate = Calendar.getInstance();
-        //        newDate.set(year1, monthOfYear, dayOfMonth);
-        //        SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.getDefault());
-        //        //SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault());
-        //        mTextDate.setText(sdf.format(newDate.getTime()));
-
-        //        String currentDate = mTextDate.getText().toString();
-        //        ScheduleActivityPresenter presenter = new ScheduleActivityPresenter(this, mStop.getId(), mRoute.getId(), currentDate);
-        //        presenter.dateChange();
-        //    }, year, month, day);
-        //    datePickerDialog.show();
-        //});
-
-        mRecyclerView = findViewById(R.id.recyclerview_schedule_activity);
+        mRecyclerView = findViewById(id.recyclerview_schedule_activity);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
 
@@ -117,6 +104,7 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int x = item.getItemId();
@@ -124,13 +112,13 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
             case android.R.id.home:
                 onBackPressed();
                 return true;
-            case R.id.calendar:
+            case id.calendar:
                 Calendar mcurrentDate = Calendar.getInstance();
                 int year = mcurrentDate.get(Calendar.YEAR);
                 int month = mcurrentDate.get(Calendar.MONTH);
                 int day = mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(ScheduleActivity.this, R.style.Theme_AlertDialog, (view, year1, monthOfYear, dayOfMonth) -> {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(ScheduleActivity.this, style.Theme_AlertDialog, (view, year1, monthOfYear, dayOfMonth) -> {
                     Calendar newDate = Calendar.getInstance();
                     newDate.set(year1, monthOfYear, dayOfMonth);
                     SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.getDefault());
@@ -170,13 +158,6 @@ public class ScheduleActivity extends AppBaseActivity implements ScheduleActivit
         ScheduleAdapter scheduleAdapter = new ScheduleAdapter(scheduleMap, closestTime);
         mProgressBar.setVisibility(View.GONE);
         mRecyclerView.setAdapter(scheduleAdapter);
-        scheduleAdapter.setOnItemClickListener((parent, v, position, id) -> {
-            //Snackbar.make(v, "click", Snackbar.LENGTH_SHORT).show();
-//            Intent intent = ScheduleActivity.newIntent(this,
-//                    mStopActivityObjectList.get(position).getRoute(), mStop);
-//            startActivity(intent);
-        });
-
     }
 
     private void runTimer() {

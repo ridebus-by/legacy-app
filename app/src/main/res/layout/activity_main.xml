@@ -10,9 +10,10 @@
         android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@drawable/tabs_background"
         android:theme="?attr/actionBarTheme"
         android:fitsSystemWindows="true"
+        app:tabRippleColor="?attr/rippleColor"
         app:layout_scrollFlags="scroll|enterAlways"/>
 
     <FrameLayout
@@ -32,6 +33,7 @@
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         app:itemIconTint="@color/bottom_nav_selector"
         app:itemTextColor="@color/bottom_nav_selector"
+        app:itemRippleColor="?attr/rippleSecondaryColor"
         app:labelVisibilityMode="labeled"
         app:layout_insetEdge="bottom"
         app:menu="@menu/navigation_view_items" />

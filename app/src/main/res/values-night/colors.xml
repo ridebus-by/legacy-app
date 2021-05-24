@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="navigation_bar_height">56dp</dimen>
+    <color name="tabs_line">#1FFFFFFF</color>
 </resources>

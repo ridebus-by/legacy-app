@@ -3,9 +3,6 @@
     <string name="menu_item_1">Routes</string>
     <string name="menu_item_2">Stops</string>
     <string name="menu_item_3">Bookmarks</string>
-    <string name="route_tab_title_buses">Buses</string>
-    <string name="route_tab_title_minibuses">Route taxis</string>
-    <string name="route_tab_title_express">Express</string>
     <string name="hours">h</string>
     <string name="minutes">m</string>
     <string name="bookmarks_context_menu_item_change">Change</string>
@@ -13,7 +10,6 @@
     <string name="search">Search</string>
     <string name="search_query_hint">Stops, routes</string>
     <string name="string_mapError">There is no schedule for this day.</string>
-    <string name="double_back_to_exit_message">Please click BACK again to exit</string>
     <string name="nav_action_about">About</string>
     <string name="about_card1_message">Hey, glad to see you!</string>
     <string name="about_google_play">Rate on Google Play</string>
@@ -38,16 +34,11 @@
     <string name="general">General</string>
     <string name="about_email">Feedback by E-mail</string>
     <string name="change_day">Change day of the week</string>
-    <string name="more_apps">More apps</string>
-    <string name="drawer_open">Open</string>
-    <string name="drawer_close">Close</string>
     <string name="db_version">"Schedule version:"</string>
-    <string name="error">Error</string>
-    <string name="select_image">Select image</string>
     <string name="route_info">Route information</string>
     <string name="number">Route №</string>
     <string name="special_thanks">Special thanks</string>
-    <string name="gratitide">I express my gratitude to the team of the Rumblur project for providing a server (which, by the way, hosts the Minecraft server of the same name) for storing the schedule database</string>
+    <string name="gratitude">I express my gratitude to the team of the Rumblur project for providing a server (which, by the way, hosts the Minecraft server of the same name) for storing the schedule database</string>
     <string name="minecraft_rumblur">Link to the server group on VK</string>
     <string name="built_with_material_components">Build with Material Components</string>
     <string name="bug_report_summ">Send debug log to developer</string>
@@ -65,9 +56,7 @@
     <string name="send">Send</string>
     <string name="log_not_found">Error log not found!</string>
     <string name="disclaimer">All information provided in the application is taken from open Internet sources and is provided in its original form.</string>
-    <string name="open_on_start">Open on start</string>
     <string name="about_telegram">Telegram channel</string>
-    <string name="schedule">Schedule</string>
     <string name="check_db">Check database integrity</string>
     <string name="check_server">Check the connection to the server</string>
     <string name="log">Log</string>

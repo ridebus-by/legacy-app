@@ -16,6 +16,7 @@
             android:id="@+id/sliding_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:tabRippleColor="?attr/rippleSecondaryColor"
             style="@style/Theme.Widget.Tabs"/>
 
     </com.google.android.material.appbar.AppBarLayout>

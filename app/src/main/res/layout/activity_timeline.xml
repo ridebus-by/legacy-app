@@ -31,6 +31,7 @@
                 android:textSize="102sp"
                 android:paddingTop="60dp"
                 android:paddingEnd="16dp"
+                android:paddingStart="16dp"
                 android:layout_gravity="end"
                 android:textAppearance="@style/TextAppearance.Widget.Button"
                 tools:text="22"/>
@@ -41,7 +42,6 @@
                 android:background="@drawable/gradient_reversed"/>
 
             <LinearLayout
-                android:id="@+id/header_text_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"

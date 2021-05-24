@@ -44,12 +44,11 @@ public class HolidayAdapter extends RecyclerView.Adapter<HolidayAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView mHolidayDate;
-        private final TextView mWeekday;
 
         ViewHolder(View itemView, HolidayAdapter adapter) {
             super(itemView);
             mHolidayDate = itemView.findViewById(R.id.holiday_date);
-            mWeekday = itemView.findViewById(R.id.weekday);
+            TextView mWeekday = itemView.findViewById(R.id.weekday);
         }
     }
 

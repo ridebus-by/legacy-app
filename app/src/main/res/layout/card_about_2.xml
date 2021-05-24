@@ -33,7 +33,7 @@
             android:id="@+id/ll_card_about_2_google_play"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
+            android:background="@drawable/selectable_item_background"
             android:clickable="true"
             android:orientation="horizontal"
             android:focusable="true">
@@ -62,7 +62,7 @@
             android:id="@+id/ll_card_about_2_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
+            android:background="@drawable/selectable_item_background"
             android:clickable="true"
             android:orientation="horizontal"
             android:focusable="true">
@@ -91,7 +91,7 @@
             android:id="@+id/ll_card_about_2_report"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
+            android:background="@drawable/selectable_item_background"
             android:clickable="true"
             android:orientation="horizontal"
             android:focusable="true">
@@ -120,7 +120,7 @@
             android:id="@+id/ll_card_about_2_telegram"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
+            android:background="@drawable/selectable_item_background"
             android:clickable="true"
             android:orientation="horizontal"
             android:focusable="true">

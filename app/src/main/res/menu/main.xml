@@ -3,18 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_holidays"
-        android:icon="@drawable/ic_outline_celebration_black_24dp"
-        android:title="action_holidays"
-        app:showAsAction="always"/>
-
-    <item
-        android:id="@+id/action_settings"
-        android:icon="@drawable/ic_settings_black_24dp"
-        android:title="@string/nav_action_settings"
-        app:showAsAction="ifRoom"/>
-
-    <item
         android:id="@+id/action_about"
         android:icon="@drawable/ic_info_black_24dp"
         android:title="@string/nav_action_about"

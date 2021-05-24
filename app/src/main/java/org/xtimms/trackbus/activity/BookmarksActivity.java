@@ -17,7 +17,6 @@ import org.xtimms.trackbus.model.DatabaseObject;
 import org.xtimms.trackbus.presenter.BookmarksActivityPresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class BookmarksActivity extends AppBaseActivity implements BookmarksActivityPresenter.View {
     //private final static String TAG = BookmarksActivity.class.getSimpleName();
@@ -77,7 +76,7 @@ public class BookmarksActivity extends AppBaseActivity implements BookmarksActiv
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        SearchView searchView = findViewById(R.id.search_view_bookmarks_aktivity);
+        SearchView searchView = findViewById(R.id.search_view_bookmarks_activity);
         searchView.setQueryHint(getString(R.string.search_query_hint));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

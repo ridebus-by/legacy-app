@@ -1,5 +1,6 @@
 package org.xtimms.trackbus.task;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -12,7 +13,6 @@ import androidx.core.app.NotificationCompat;
 
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.util.ConstantUtils;
-import org.xtimms.trackbus.util.ThemeUtils;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,6 +25,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, String> {
 
+    @SuppressLint("StaticFieldLeak")
     private final Context mContext;
     private PowerManager.WakeLock mWakeLock;
 

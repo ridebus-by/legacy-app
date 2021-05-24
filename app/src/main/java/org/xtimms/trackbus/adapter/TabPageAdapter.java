@@ -1,5 +1,6 @@
 package org.xtimms.trackbus.adapter;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -21,6 +22,7 @@ public class TabPageAdapter extends FragmentPagerAdapter {
         tabTitles = ConstantUtils.ROUTE_TABS;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int i) {
         switch (i) {

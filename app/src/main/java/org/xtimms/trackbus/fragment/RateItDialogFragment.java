@@ -14,6 +14,8 @@ import androidx.fragment.app.FragmentManager;
 
 import org.xtimms.trackbus.R;
 
+import java.util.Objects;
+
 public class RateItDialogFragment extends DialogFragment {
     private static final int LAUNCHES_UNTIL_PROMPT = 10;
     private static final int DAYS_UNTIL_PROMPT = 3;
@@ -59,7 +61,7 @@ public class RateItDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return new AlertDialog.Builder(getActivity(), R.style.Theme_AlertDialog)
+        return new AlertDialog.Builder(requireActivity(), R.style.Theme_AlertDialog)
                 .setTitle(R.string.rate_title)
                 .setMessage(R.string.rate_message)
                 .setPositiveButton(R.string.rate_positive, (dialog, which) -> {
@@ -69,7 +71,7 @@ public class RateItDialogFragment extends DialogFragment {
                 })
                 .setNeutralButton(R.string.rate_remind_later, (dialog, which) -> dismiss())
                 .setNegativeButton(R.string.rate_never, (dialog, which) -> {
-                    getSharedPreferences(getActivity()).edit().putBoolean(DISABLED, true).apply();
+                    getSharedPreferences(requireActivity()).edit().putBoolean(DISABLED, true).apply();
                     dismiss();
                 }).create();
     }

@@ -49,7 +49,6 @@ public class BookmarksActivityPresenter {
         protected void onPostExecute(Boolean result) {
             if (result == null) {
                 Log.d("ERROR", "OnPostExecute not working...");
-                return;
             } else {
                 activityWeakReference.get().setAdapter((ArrayList<DatabaseObject>) mDatabaseObjects);
                 Log.d("SUCCESS", "Yay! Adapter working!");

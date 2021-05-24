@@ -36,10 +36,14 @@
         <item name="android:textColorPrimaryInverse">@color/textColorPrimaryDark</item>
         <item name="android:textColorSecondaryInverse">@color/textColorSecondaryDark</item>
         <item name="android:textColorHintInverse">@color/textColorHintDark</item>
-        <item name="rippleColor">@color/rippleColorLight</item>
 
         <item name="android:divider">@color/dividerLight</item>
         <item name="android:listDivider">@drawable/line_divider</item>
+
+        <!-- Ripples -->
+        <item name="rippleColor">@color/rippleColorLight</item>
+        <item name="rippleSecondaryColor">@color/rippleSecondaryColorLight</item>
+        <item name="rippleToolbarColor">@color/rippleToolbarColorLight</item>
 
         <!-- Handles RTL text -->
         <item name="android:textAlignment">gravity</item>
@@ -139,28 +143,6 @@
         <item name="android:statusBarColor">@color/grey</item>
         <item name="android:navigationBarColor">@color/md_black_1000_54</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
-    </style>
-
-    <style name="Theme.RideBus.DarkBlue" parent="Theme.Base.Dark">
-        <item name="colorPrimary">@color/colorAmoledPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorAmoledPrimary</item>
-        <item name="colorSurface">@color/colorAmoledPrimary</item>
-
-        <item name="android:colorBackground">@color/colorAmoledPrimary</item>
-
-        <!-- Some ROMs make black navbars white (e.g. OxygenOS) -->
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-    </style>
-
-    <style name="Theme.RideBus.LightBlue" parent="Theme.Base">
-        <item name="colorPrimary">@color/md_blue_A400</item>
-        <item name="colorOnPrimary">@color/textColorPrimaryDark</item>
-        <item name="colorAccentOnPrimary">@color/textColorPrimaryDark</item>
-        <item name="colorPrimaryVariant">@color/md_blue_A200</item>
-
-        <item name="actionBarTheme">@style/Theme.Toolbar.Light</item>
-
-        <item name="android:navigationBarColor">@color/md_blue_A400</item>
     </style>
 
     <!--===============-->

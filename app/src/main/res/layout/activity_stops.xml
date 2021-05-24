@@ -24,7 +24,6 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -37,7 +36,6 @@
                 android:background="@drawable/gradient_both_sides"/>
 
             <LinearLayout
-                android:id="@+id/header_text_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -69,7 +67,7 @@
             </LinearLayout>
 
             <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar_stopactivity"
+                android:id="@+id/toolbar_stop_activity"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
@@ -82,7 +80,7 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_weekday_activitystop"
+                android:id="@+id/text_weekday_activity_stop"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:padding="8dp"

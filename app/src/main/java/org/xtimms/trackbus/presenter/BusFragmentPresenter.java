@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BusFragmentPresenter {
+
     private final View mView;
 
     public BusFragmentPresenter(View view) {
@@ -27,6 +28,7 @@ public class BusFragmentPresenter {
     public static class GetRoutesAsyncTask extends AsyncTask<Void, Void, Void> {
         private final WeakReference<View> mFragmentWeakReference;
         private List<Route> mRouteList;
+        private Exception mException;
 
         private GetRoutesAsyncTask(View context) {
             super();
@@ -35,14 +37,23 @@ public class BusFragmentPresenter {
 
         @Override
         protected Void doInBackground(Void... params) {
-            mRouteList = ModelFactory.getModel().getAllRoutesBus();
+            try {
+                mRouteList = ModelFactory.getModel().getAllRoutesBus();
+            } catch (Exception e) {
+                mException = e;
+                e.printStackTrace();
+            }
             return null;
         }
 
         @Override
         protected void onPostExecute(Void v) {
             super.onPostExecute(v);
-            mFragmentWeakReference.get().setAdapter((ArrayList<Route>) mRouteList);
+            if (mException == null) {
+                mFragmentWeakReference.get().setAdapter((ArrayList<Route>) mRouteList);
+            } else {
+                return;
+            }
         }
     }
 }

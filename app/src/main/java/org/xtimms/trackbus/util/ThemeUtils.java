@@ -1,16 +1,9 @@
 package org.xtimms.trackbus.util;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.util.TypedValue;
 
-import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
-import androidx.annotation.StyleRes;
-import androidx.core.content.ContextCompat;
-
-import org.xtimms.trackbus.R;
 
 public abstract class ThemeUtils {
 

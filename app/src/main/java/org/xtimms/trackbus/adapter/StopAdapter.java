@@ -16,15 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 
 import org.xtimms.trackbus.R;
+import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.model.Stop;
 import org.xtimms.trackbus.util.TransportId;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> implements Filterable, FastScrollRecyclerView.SectionedAdapter {
 
-    private final ArrayList<Stop> stops;
+    private ArrayList<Stop> stops;
     private AdapterView.OnItemClickListener onItemClickListener;
     private ArrayList<Stop> stopsListFiltered;
 
@@ -127,6 +127,11 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.ViewHolder> im
     @Override
     public String getSectionName(int position) {
         return Character.toString(stops.get(position).getTitle().charAt(0));
+    }
+
+    public void dataChange(ArrayList<Stop> stopArrayList) {
+        stops = stopArrayList;
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

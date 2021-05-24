@@ -15,7 +15,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:selectableItemBackgroundBorderless"
+        android:background="@drawable/selectable_item_background"
         android:clickable="true"
         android:focusable="true">
 
@@ -25,8 +25,7 @@
             android:layout_height="128dp"
             android:padding="8dp"
             android:scaleType="centerInside"
-            android:src="@mipmap/ic_launcher"
-            android:contentDescription="TODO" />
+            android:src="@mipmap/ic_launcher" />
 
         <RelativeLayout
             android:layout_width="wrap_content"

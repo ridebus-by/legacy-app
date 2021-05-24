@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.util.Objects;
 
 public class AppSettings {
 
@@ -30,7 +31,7 @@ public class AppSettings {
 
 	public int getAppTheme() {
 		try {
-			return Integer.parseInt(mPreferences.getString("theme", "0"));
+			return Integer.parseInt(Objects.requireNonNull(mPreferences.getString("theme", "0")));
 		} catch (Exception e) {
 			return 0;
 		}

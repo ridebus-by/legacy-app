@@ -31,10 +31,14 @@
         <item name="android:textColorPrimaryInverse">@color/textColorPrimaryLight</item>
         <item name="android:textColorSecondaryInverse">@color/textColorSecondaryLight</item>
         <item name="android:textColorHintInverse">@color/textColorHintLight</item>
-        <item name="rippleColor">@color/rippleColorDark</item>
 
         <item name="android:divider">@color/dividerDark</item>
         <item name="android:listDivider">@drawable/line_divider</item>
+
+        <!-- Ripples -->
+        <item name="rippleColor">@color/rippleColorDark</item>
+        <item name="rippleSecondaryColor">@color/rippleSecondaryColorDark</item>
+        <item name="rippleToolbarColor">@color/rippleToolbarColorDark</item>
 
         <!-- Themes -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>
@@ -63,31 +67,25 @@
     </style>
 
     <style name="Theme.RideBus" parent="Theme.Base.Dark">
-        <item name="colorPrimary">@color/colorAmoledPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorAmoledPrimary</item>
-        <item name="colorSurface">@color/colorAmoledPrimary</item>
+        <item name="colorPrimary">@color/colorDarkPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorDarkPrimary</item>
+        <item name="colorSurface">@color/colorDarkPrimary</item>
 
-        <item name="android:colorBackground">@color/colorAmoledPrimary</item>
+        <item name="android:colorBackground">@color/backgroundDark</item>
 
         <!-- Some ROMs make black navbars white (e.g. OxygenOS) -->
         <item name="android:navigationBarColor">@android:color/transparent</item>
-    </style>
-
-    <style name="Theme.RideBus.DarkBlue" parent="Theme.Base.Dark">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorAccentOnPrimary">@color/textColorPrimaryDark</item>
-        <item name="colorPrimaryVariant">@color/colorPrimary</item>
     </style>
 
     <!--===============-->
     <!-- Launch Screen -->
     <!--===============-->
     <style name="Theme.Splash" parent="Theme.RideBus">
-        <item name="colorBackgroundSplash">@color/colorAmoledPrimary</item>
+        <item name="colorBackgroundSplash">@color/colorDarkPrimary</item>
 
         <item name="android:windowBackground">@drawable/onboarding_dark</item>
-        <item name="android:statusBarColor">@color/colorAmoledPrimary</item>
-        <item name="android:navigationBarColor">@color/colorAmoledPrimary</item>
+        <item name="android:statusBarColor">@color/colorDarkPrimary</item>
+        <item name="android:navigationBarColor">@color/colorDarkPrimary</item>
     </style>
 
 </resources>

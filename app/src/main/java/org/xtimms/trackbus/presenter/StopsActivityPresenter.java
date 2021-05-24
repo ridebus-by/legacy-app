@@ -1,7 +1,6 @@
 package org.xtimms.trackbus.presenter;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.model.ModelFactory;
@@ -43,6 +42,7 @@ public class StopsActivityPresenter {
         private final String mCurrentDate;
         private final int mStopId;
         private final DateTime mDateTime = new DateTime();
+        private Exception mException;
 
         ActivityObjectsListAsyncTask(View context, String currentTime, String currentDate, int stopId) {
             super();
@@ -62,13 +62,15 @@ public class StopsActivityPresenter {
                 int routeId = route.getId();
 
                 List<Integer> typeDayList = ModelFactory.getModel().getTypeDay(routeId, mStopId);
-                List<String> timeList = null;
+                List<String> timeList;
 
                 try {
                     timeList = ModelFactory.getModel().getTimeOnStop(mDateTime
                             .getTypeDay(mCurrentDate, typeDayList), routeId, mStopId);
                 } catch (ParseException e) {
+                    mException = e;
                     e.printStackTrace();
+                    return true;
                 }
 
                 if ((timeList == null) || (timeList.isEmpty())) {
@@ -76,12 +78,14 @@ public class StopsActivityPresenter {
                     continue;
                 }
 
-                DateTime.ResultTime resultTime = null;
+                DateTime.ResultTime resultTime;
 
                 try {
                     resultTime = mDateTime.getRemainingClosestTime(timeList, mCurrentTime);
                 } catch (ParseException e) {
+                    mException = e;
                     e.printStackTrace();
+                    return true;
                 }
 
                 if (resultTime == null) continue;
@@ -115,12 +119,11 @@ public class StopsActivityPresenter {
 
         @Override
         protected void onPostExecute(Boolean result) {
-            if (result == null) {
-                Log.d("ERROR", "OnPostExecute not working...");
-                return;
-            } else {
+            super.onPostExecute(result);
+            if (mException == null) {
                 activityWeakReference.get().setAdapter(mStopActivityObjectList);
-                Log.d("SUCCESS", "Yay! Adapter working!");
+            } else {
+                return;
             }
         }
     }

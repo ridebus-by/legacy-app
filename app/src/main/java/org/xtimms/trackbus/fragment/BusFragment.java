@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,11 +19,13 @@ import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.BusFragmentPresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class BusFragment extends AppBaseFragment implements BusFragmentPresenter.View {
 
     private RecyclerView mRecyclerView;
+    private ProgressBar mProgressBar;
+    private BusAdapter mBusAdapter;
+    private boolean mAdapterIsSet = false;
 
     public static BusFragment newInstance() {
         return new BusFragment();
@@ -30,12 +33,17 @@ public class BusFragment extends AppBaseFragment implements BusFragmentPresenter
 
     @Override
     public void setAdapter(ArrayList<Route> routeList) {
-        BusAdapter mBusAdapter = new BusAdapter(routeList);
-        mRecyclerView.setAdapter(mBusAdapter);
-        mBusAdapter.setOnItemClickListener((parent, view, position, id) -> {
-            Intent intent = TimelineActivity.newIntent(getActivity(), routeList.get(position));
-            startActivity(intent);
-        });
+        if (!mAdapterIsSet) {
+            mProgressBar.setVisibility(View.GONE);
+            mBusAdapter = new BusAdapter(routeList);
+            mRecyclerView.setAdapter(mBusAdapter);
+            mBusAdapter.setOnItemClickListener((parent, view, position, id) -> {
+                Intent intent = TimelineActivity.newIntent(getActivity(), routeList.get(position));
+                startActivity(intent);
+            });
+        } else {
+            mBusAdapter.dataChange(routeList);
+        }
     }
 
     @Override
@@ -46,18 +54,20 @@ public class BusFragment extends AppBaseFragment implements BusFragmentPresenter
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_buses, container, false);
+        View root = inflater.inflate(R.layout.fragment_routes, container, false);
+        mProgressBar = root.findViewById(R.id.progress);
+        mProgressBar.setVisibility(View.VISIBLE);
+        return root;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = view.findViewById(R.id.recyclerView_buses);
+        mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
         BusFragmentPresenter presenter = new BusFragmentPresenter(this);
         presenter.setAdapter();
-
     }
 
 }

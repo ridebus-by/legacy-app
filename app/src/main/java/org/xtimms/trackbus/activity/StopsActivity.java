@@ -1,5 +1,6 @@
 package org.xtimms.trackbus.activity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -16,9 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.appbar.SubtitleCollapsingToolbarLayout;
-import com.google.android.material.snackbar.Snackbar;
 
 import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.adapter.StopsActivityAdapter;
@@ -31,14 +30,14 @@ import org.xtimms.trackbus.util.DateTime;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
+
+import static org.xtimms.trackbus.R.*;
 
 public class StopsActivity extends AppBaseActivity implements StopsActivityPresenter.View {
     private static final String EXTRA_STOP = StopsActivity.class.getSimpleName() + "_stopID";
     private static final String EXTRA_ROUTE = StopsActivity.class.getSimpleName() + "_routeID";
     private Stop mStop;
-    private Route mRoute;
     private TextView mWeekDay;
     //private TextView mTimeText;
     private RecyclerView mRecyclerView;
@@ -56,17 +55,17 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stops);
+        setContentView(layout.activity_stops);
 
         mStop = (Stop) getIntent().getSerializableExtra(StopsActivity.EXTRA_STOP);
-        mRoute = (Route) getIntent().getSerializableExtra(StopsActivity.EXTRA_ROUTE);
+        Route mRoute = (Route) getIntent().getSerializableExtra(StopsActivity.EXTRA_ROUTE);
 
-        SubtitleCollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
+        SubtitleCollapsingToolbarLayout collapsingToolbarLayout = findViewById(id.toolbar_layout);
         collapsingToolbarLayout.setTitle(mStop.getTitle());
         collapsingToolbarLayout.setSubtitle(mStop.getMark());
 
-        TextView title = findViewById(R.id.title);
-        TextView subtitle = findViewById(R.id.subtitle);
+        TextView title = findViewById(id.title);
+        TextView subtitle = findViewById(id.subtitle);
 
         title.setText(mStop.getTitle());
         subtitle.setText(mStop.getMark());
@@ -74,18 +73,18 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
         //mTimeText = findViewById(R.id.text_time_activitystop);
         //mTimeText.setText(DateTime.getCurrentTime());
 
-        mProgressBar = findViewById(R.id.progress);
+        mProgressBar = findViewById(id.progress);
         mProgressBar.setVisibility(View.VISIBLE);
 
-        mWeekDay = findViewById(R.id.text_weekday_activitystop);
+        mWeekDay = findViewById(id.text_weekday_activity_stop);
         mWeekDay.setText(DateTime.getCurrentDate());
 
-        mRecyclerView = findViewById(R.id.recyclerview_stops_activity);
+        mRecyclerView = findViewById(id.recyclerview_stops_activity);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         getRecyclerViewData();
 
-        Toolbar toolbar = findViewById(R.id.toolbar_stopactivity);
+        Toolbar toolbar = findViewById(id.toolbar_stop_activity);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null) {
@@ -156,6 +155,7 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //Menu
@@ -165,7 +165,7 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
             case android.R.id.home:
                 onBackPressed();
                 return true;
-            case R.id.calendar:
+            case id.calendar:
                 Calendar mcurrentDate = Calendar.getInstance();
                 int year = mcurrentDate.get(Calendar.YEAR);
                 int month = mcurrentDate.get(Calendar.MONTH);

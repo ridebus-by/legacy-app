@@ -14,11 +14,10 @@ import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.model.Route;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ExpressAdapter extends RecyclerView.Adapter<ExpressAdapter.ViewHolder> {
 
-    private final ArrayList<Route> mDataset;
+    private ArrayList<Route> mDataset;
     private AdapterView.OnItemClickListener onItemClickListener;
 
     public ExpressAdapter(ArrayList<Route> dataset) {
@@ -61,6 +60,11 @@ public class ExpressAdapter extends RecyclerView.Adapter<ExpressAdapter.ViewHold
     @Override
     public long getItemId(int position) {
         return mDataset.get(position).getId();
+    }
+
+    public void dataChange(ArrayList<Route> routeArrayList) {
+        mDataset = routeArrayList;
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

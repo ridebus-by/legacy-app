@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="72dp"
-    android:background="?android:selectableItemBackground"
+    android:background="@drawable/selectable_item_background"
     tools:ignore="Overdraw">
 
         <ImageView
@@ -30,7 +30,6 @@
             tools:text="14" />
 
         <View
-            android:id="@+id/view2"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:alpha="0.25"

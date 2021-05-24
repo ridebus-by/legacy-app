@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,11 +19,13 @@ import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.TramsFragmentPresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TramsFragment extends AppBaseFragment implements TramsFragmentPresenter.View {
 
     private RecyclerView mRecyclerView;
+    private TramsAdapter mTramsAdapter;
+    private ProgressBar mProgressBar;
+    private boolean mAdapterIsSet = false;
 
     public static TramsFragment newInstance() {
         return new TramsFragment();
@@ -30,12 +33,17 @@ public class TramsFragment extends AppBaseFragment implements TramsFragmentPrese
 
     @Override
     public void setAdapter(ArrayList<Route> routeList) {
-        TramsAdapter mTramsAdapter = new TramsAdapter(routeList);
-        mRecyclerView.setAdapter(mTramsAdapter);
-        mTramsAdapter.setOnItemClickListener((parent, v, position, id) -> {
-            Intent intent = TimelineActivity.newIntent(getActivity(), routeList.get(position));
-            startActivity(intent);
-        });
+        if (!mAdapterIsSet) {
+            mProgressBar.setVisibility(View.GONE);
+            mTramsAdapter = new TramsAdapter(routeList);
+            mRecyclerView.setAdapter(mTramsAdapter);
+            mTramsAdapter.setOnItemClickListener((parent, v, position, id) -> {
+                Intent intent = TimelineActivity.newIntent(getActivity(), routeList.get(position));
+                startActivity(intent);
+            });
+        } else {
+            mTramsAdapter.dataChange(routeList);
+        }
     }
 
     @Override
@@ -46,13 +54,16 @@ public class TramsFragment extends AppBaseFragment implements TramsFragmentPrese
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_trams, container, false);
+        View root = inflater.inflate(R.layout.fragment_routes, container, false);
+        mProgressBar = root.findViewById(R.id.progress);
+        mProgressBar.setVisibility(View.VISIBLE);
+        return root;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = view.findViewById(R.id.recyclerView_trams);
+        mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
         TramsFragmentPresenter presenter = new TramsFragmentPresenter(this);

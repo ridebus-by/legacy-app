@@ -64,6 +64,7 @@ public class BookmarkFragmentPresenter {
 
         String json = appSharedPrefs.getString(BOOKMARKS_PREFERENCES, ConstantUtils.EMPTY_STRING);
 
+        assert json != null;
         if (!json.isEmpty()) {
             Type type = new TypeToken<List<SharePreferenceObject>>() {
             }.getType();

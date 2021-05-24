@@ -2,7 +2,6 @@ package org.xtimms.trackbus.presenter;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.xtimms.trackbus.App;
 import org.xtimms.trackbus.util.ConstantUtils;
@@ -44,11 +43,12 @@ public class ScheduleActivityPresenter {
         void setAdapter(Map<String, List<String>> scheduleMap, String closestTime);
     }
 
-    public static class GetScheduleAsyncTask extends AsyncTask<String, Void, String> {
+    public static class GetScheduleAsyncTask extends AsyncTask<String, Void, Void> {
         private final WeakReference<View> mViewWeakReference;
         private List<String> mTimeList;
         private final List<String> mErrorMessage = new ArrayList<>();
         private String mClosestTime;
+        private Exception mException;
         private final Map<String, List<String>> mMap = new TreeMap<>((o1, o2) -> {
 
             if (o1.equals("00"))
@@ -66,7 +66,7 @@ public class ScheduleActivityPresenter {
         }
 
         @Override
-        protected String doInBackground(String... params) {
+        protected Void doInBackground(String... params) {
             int stopId = Integer.parseInt(params[0]);
             int routeId = Integer.parseInt(params[1]);
             String currentDate = params[2];
@@ -88,6 +88,7 @@ public class ScheduleActivityPresenter {
                 DateTime.ResultTime resultTime = dateTime.getRemainingClosestTime(mTimeList, currentTime);
                 mClosestTime = resultTime.getClosestTime();
             } catch (ParseException e) {
+                mException = e;
                 e.printStackTrace();
             }
 
@@ -118,13 +119,12 @@ public class ScheduleActivityPresenter {
         }
 
         @Override
-        protected void onPostExecute(String result) {
-            if (result != null) {
-                Log.d("ERROR", "OnPostExecute not working...");
-                return;
-            } else {
+        protected void onPostExecute(Void v) {
+            super.onPostExecute(v);
+            if (mException == null) {
                 mViewWeakReference.get().setAdapter(mMap, mClosestTime);
-                Log.d("SUCCESS", "Yay! Adapter working!");
+            } else {
+                return;
             }
         }
     }

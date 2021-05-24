@@ -27,7 +27,7 @@
                 app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_date_scheduleactivity"
+                android:id="@+id/text_date_schedule_activity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -67,7 +67,7 @@
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/text_routenumber_scheduleactivity"
+                            android:id="@+id/text_route_number_schedule_activity"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
@@ -79,7 +79,7 @@
                     </LinearLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/text_routetitle_scheduleactivity"
+                        android:id="@+id/text_route_title_schedule_activity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -119,7 +119,7 @@
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/text_stoptitle_scheduleactivity"
+                            android:id="@+id/text_stop_title_schedule_activity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
@@ -132,7 +132,7 @@
                             tools:text="ул. Петруся Броуки" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/text_stopmark_scheduleactivity"
+                            android:id="@+id/text_stop_mark_schedule_activity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"

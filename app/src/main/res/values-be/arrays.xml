@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="route_tabs">
+        <item>Аўтобусы</item>
+        <item>Маршруткi</item>
+        <item>Экспрэс</item>
+    </string-array>
+</resources>

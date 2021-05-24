@@ -8,12 +8,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 
@@ -26,13 +26,14 @@ import org.xtimms.trackbus.presenter.StopFragmentPresenter;
 import org.xtimms.trackbus.ui.WrapContentLinearLayoutManager;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class StopFragment extends AppBaseFragment implements StopFragmentPresenter.View{
 
     private Route mRoute;
     private StopAdapter mStopAdapter;
     private FastScrollRecyclerView mRecyclerView;
+    private ProgressBar mProgressBar;
+    private boolean mAdapterIsSet = false;
 
     public static StopFragment newInstance() {
         return new StopFragment();
@@ -40,14 +41,18 @@ public class StopFragment extends AppBaseFragment implements StopFragmentPresent
 
     @Override
     public void setAdapter(ArrayList<Stop> stopList) {
-        mStopAdapter = new StopAdapter(stopList);
-        mRecyclerView.setAdapter(mStopAdapter);
-
-        mStopAdapter.setOnItemClickListener((parent, v, position, id) -> {
-            //Snackbar.make(v, mStopAdapter.getStopsListFiltered().get(position).getStopTitle(), Snackbar.LENGTH_SHORT).show();
-            Intent intent = StopsActivity.newIntent(getActivity(), mStopAdapter.getStopsListFiltered().get(position));
-            startActivity(intent);
-        });
+        if (!mAdapterIsSet) {
+            mProgressBar.setVisibility(View.GONE);
+            mStopAdapter = new StopAdapter(stopList);
+            mRecyclerView.setAdapter(mStopAdapter);
+            mStopAdapter.setOnItemClickListener((parent, v, position, id) -> {
+                //Snackbar.make(v, mStopAdapter.getStopsListFiltered().get(position).getStopTitle(), Snackbar.LENGTH_SHORT).show();
+                Intent intent = StopsActivity.newIntent(getActivity(), mStopAdapter.getStopsListFiltered().get(position));
+                startActivity(intent);
+            });
+        } else {
+            mStopAdapter.dataChange(stopList);
+        }
     }
 
     @Override
@@ -62,7 +67,10 @@ public class StopFragment extends AppBaseFragment implements StopFragmentPresent
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_stop, container, false);
+        View root = inflater.inflate(R.layout.fragment_stop, container, false);
+        mProgressBar = root.findViewById(R.id.progress);
+        mProgressBar.setVisibility(View.VISIBLE);
+        return root;
     }
 
     @Override

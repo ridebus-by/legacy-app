@@ -1,6 +1,5 @@
 package org.xtimms.trackbus.adapter;
 
-import android.os.Build;
 import android.view.ContextMenu;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -22,11 +21,10 @@ import org.xtimms.trackbus.model.Stop;
 import org.xtimms.trackbus.util.ColorUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHolder> {
 
-    private final ArrayList<DatabaseObject> mDataset;
+    private ArrayList<DatabaseObject> mDataset;
     private AdapterView.OnItemClickListener onItemClickListener;
     private int mPosition;
 
@@ -100,13 +98,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
             Stop stop = (Stop) object;
             holder.mTextImageBtn.setText("");
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                holder.mTextImageBtn.setBackground(App.getInstance().getAppContext().getResources()
-                        .getDrawable(R.drawable.ic_store_mall_directory_black_24dp));
-            } else {
-                holder.mTextImageBtn.setBackground(App.getInstance().getAppContext().getResources()
-                        .getDrawable(R.drawable.ic_store));
-            }
+            holder.mTextImageBtn.setBackground(App.getInstance().getAppContext().getDrawable(R.drawable.ic_store_mall_directory_black_24dp));
             holder.mTextTitleBtn.setVisibility(View.VISIBLE);
             holder.mTextDescriptionBtn.setVisibility(View.VISIBLE);
             holder.mTextTitleBtn.setText(stop.getStopTitle());
@@ -140,6 +132,11 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
             onItemClickListener.onItemClick(null, itemHolder.itemView,
                     itemHolder.getAdapterPosition(), itemHolder.getItemId());
         }
+    }
+
+    public void dataChange(ArrayList<DatabaseObject> databaseObjects) {
+        mDataset = databaseObjects;
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {

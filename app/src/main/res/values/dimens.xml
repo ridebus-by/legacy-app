@@ -2,18 +2,8 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="bottomsheet_peek_height">220dp</dimen>
-
-    <dimen name="navigation_bar_height">48dp</dimen>
 
     <dimen name="card_radius">4dp</dimen>
     <dimen name="dialog_radius">8dp</dimen>
 
-    <dimen name="fab_size">56dp</dimen>
-    <dimen name="fab_list_padding">88dp</dimen>
-
-    <dimen name="action_toolbar_list_padding">72dp</dimen>
-    <dimen name="space_between_cards">4dp</dimen>
-
-    <dimen name="appbar_height">104dp</dimen>
 </resources>

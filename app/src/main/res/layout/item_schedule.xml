@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="?android:selectableItemBackground"
+    android:background="@drawable/selectable_item_background"
     tools:ignore="Overdraw">
 
     <androidx.appcompat.widget.AppCompatTextView

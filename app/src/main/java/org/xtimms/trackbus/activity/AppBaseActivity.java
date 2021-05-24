@@ -1,26 +1,17 @@
 package org.xtimms.trackbus.activity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.widget.Toast;
 
-import androidx.annotation.ColorRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-
-import org.xtimms.trackbus.util.ThemeUtils;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
 
-	private boolean mActionBarVisible = false;
 	private boolean mHomeAsUpEnabled = false;
 
 	@Override
@@ -41,7 +32,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 	@Override
 	public void setSupportActionBar(@Nullable Toolbar toolbar) {
 		super.setSupportActionBar(toolbar);
-		mActionBarVisible = toolbar != null;
+		boolean mActionBarVisible = toolbar != null;
 	}
 
 	public void setSupportActionBar(@IdRes int toolbarId) {

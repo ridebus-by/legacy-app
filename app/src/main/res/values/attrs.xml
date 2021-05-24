@@ -16,4 +16,6 @@
         <attr name="lineSpacingExtra" format="float"/>
         <attr name="lineSpacingMultiplier" format="float"/>
     </declare-styleable>
+    <attr name="rippleSecondaryColor" format="reference|integer"/>
+    <attr name="rippleToolbarColor" format="reference|integer"/>
 </resources>

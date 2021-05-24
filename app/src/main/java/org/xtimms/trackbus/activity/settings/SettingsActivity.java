@@ -13,10 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import org.xtimms.trackbus.R;
-import org.xtimms.trackbus.activity.AboutActivity;
 import org.xtimms.trackbus.activity.AppBaseActivity;
 import org.xtimms.trackbus.activity.LogsActivity;
-import org.xtimms.trackbus.activity.MainActivity;
 import org.xtimms.trackbus.util.AppUtils;
 import org.xtimms.trackbus.util.LogUtils;
 import org.xtimms.trackbus.util.TextUtils;
@@ -32,7 +30,6 @@ public class SettingsActivity extends AppBaseActivity implements SharedPreferenc
 
     private PreferenceFragment mFragment;
     private SharedPreferences mDefaultPreferences;
-    private LogsActivity mLogFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +52,7 @@ public class SettingsActivity extends AppBaseActivity implements SharedPreferenc
             default:
                 finish();
         }
-        mLogFragment = new LogsActivity();
+        LogsActivity mLogFragment = new LogsActivity();
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content, mFragment)

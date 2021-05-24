@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,11 +19,13 @@ import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.presenter.ExpressFragmentPresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ExpressFragment extends AppBaseFragment implements ExpressFragmentPresenter.View {
 
     private RecyclerView mRecyclerView;
+    private ExpressAdapter mExpressAdapter;
+    private ProgressBar mProgressBar;
+    private boolean mAdapterIsSet = false;
 
     public static ExpressFragment newInstance() {
         return new ExpressFragment();
@@ -30,17 +33,25 @@ public class ExpressFragment extends AppBaseFragment implements ExpressFragmentP
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_express, container, false);
+        View root = inflater.inflate(R.layout.fragment_routes, container, false);
+        mProgressBar = root.findViewById(R.id.progress);
+        mProgressBar.setVisibility(View.VISIBLE);
+        return root;
     }
 
     @Override
     public void setAdapter(ArrayList<Route> routeList) {
-        ExpressAdapter mExpressAdapter = new ExpressAdapter(routeList);
-        mRecyclerView.setAdapter(mExpressAdapter);
-        mExpressAdapter.setOnItemClickListener((parent, view, position, id) -> {
-            Intent intent = TimelineActivity.newIntent(getActivity(), routeList.get(position));
-            startActivity(intent);
-        });
+        if (!mAdapterIsSet) {
+            mProgressBar.setVisibility(View.GONE);
+            mExpressAdapter = new ExpressAdapter(routeList);
+            mRecyclerView.setAdapter(mExpressAdapter);
+            mExpressAdapter.setOnItemClickListener((parent, view, position, id) -> {
+                Intent intent = TimelineActivity.newIntent(getActivity(), routeList.get(position));
+                startActivity(intent);
+            });
+        } else {
+            mExpressAdapter.dataChange(routeList);
+        }
     }
 
     @Override
@@ -51,7 +62,7 @@ public class ExpressFragment extends AppBaseFragment implements ExpressFragmentP
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = view.findViewById(R.id.recyclerView_express);
+        mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
         ExpressFragmentPresenter presenter = new ExpressFragmentPresenter(this);

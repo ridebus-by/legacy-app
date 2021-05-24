@@ -13,9 +13,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -71,18 +69,16 @@ public class AppUtils {
         if (netInfo != null && netInfo.isConnected()) {
             try {
                 URL url = new URL("https://rumblur.hrebeni.uk/ridebus");
-                HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
-                urlc.setConnectTimeout(10 * 1000);          // 10 s.
-                urlc.connect();
-                if (urlc.getResponseCode() == 200) {        // 200 = "OK" code (http connection is fine).
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setConnectTimeout(10 * 1000);          // 10 s.
+                urlConnection.connect();
+                if (urlConnection.getResponseCode() == 200) {        // 200 = "OK" code (http connection is fine).
                     Log.wtf("Connection", "Success !");
                     return true;
                 } else {
                     return false;
                 }
-            } catch (MalformedURLException e1) {
-                return false;
-            } catch (IOException e) {
+            } catch (IOException e1) {
                 return false;
             }
         }

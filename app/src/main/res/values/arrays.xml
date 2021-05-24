@@ -4,13 +4,13 @@
         <item>@string/automatic</item>
         <item>English</item>
         <item>Русский</item>
+        <item>Беларуская</item>
     </string-array>
     <string-array name="app_languages_values">
         <item />
         <item>en</item>
         <item>ru</item>
-        <item>tr</item>
-        <item>uk</item>
+        <item>be</item>
     </string-array>
     <string-array name="themes">
         <item>0</item>

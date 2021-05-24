@@ -27,6 +27,7 @@ public class ExpressFragmentPresenter {
     public static class GetSuburbAsyncTask extends AsyncTask<Void, Void, Void> {
         private final WeakReference<View> mFragmentWeakReference;
         private List<Route> mRouteList;
+        private Exception mException;
 
         private GetSuburbAsyncTask(View context) {
             super();
@@ -35,14 +36,23 @@ public class ExpressFragmentPresenter {
 
         @Override
         protected Void doInBackground(Void... params) {
-            mRouteList = ModelFactory.getModel().getAllRoutesExpress();
+            try {
+                mRouteList = ModelFactory.getModel().getAllRoutesExpress();
+            } catch (Exception e) {
+                mException = e;
+                e.printStackTrace();
+            }
             return null;
         }
 
         @Override
         protected void onPostExecute(Void v) {
             super.onPostExecute(v);
-            mFragmentWeakReference.get().setAdapter((ArrayList<Route>) mRouteList);
+            if (mException == null) {
+                mFragmentWeakReference.get().setAdapter((ArrayList<Route>) mRouteList);
+            } else {
+                return;
+            }
         }
     }
 }

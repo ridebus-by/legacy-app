@@ -13,8 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.xtimms.trackbus.App;
-import org.xtimms.trackbus.model.Stop;
 import org.xtimms.trackbus.ui.DataViewHolder;
 import org.xtimms.trackbus.util.ConstantUtils;
 import org.xtimms.trackbus.R;
@@ -24,7 +22,6 @@ import org.xtimms.trackbus.util.DateTime;
 import org.xtimms.trackbus.util.ThemeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdapter.ViewHolder> {
 
@@ -65,7 +62,7 @@ public class StopsActivityAdapter extends RecyclerView.Adapter<StopsActivityAdap
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return mDataset.get(position).getId();
     }
 
     @Override

@@ -14,11 +14,10 @@ import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.model.Route;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TramsAdapter extends RecyclerView.Adapter<TramsAdapter.ViewHolder> {
 
-    private final ArrayList<Route> mDataset;
+    private ArrayList<Route> mDataset;
     private AdapterView.OnItemClickListener onItemClickListener;
 
     public TramsAdapter(ArrayList<Route> dataset) {
@@ -61,6 +60,11 @@ public class TramsAdapter extends RecyclerView.Adapter<TramsAdapter.ViewHolder> 
             onItemClickListener.onItemClick(null, itemHolder.itemView,
                     itemHolder.getAdapterPosition(), itemHolder.getItemId());
         }
+    }
+
+    public void dataChange(ArrayList<Route> routeArrayList) {
+        mDataset = routeArrayList;
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

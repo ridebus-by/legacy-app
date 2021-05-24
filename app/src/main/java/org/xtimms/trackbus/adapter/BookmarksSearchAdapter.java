@@ -1,7 +1,5 @@
 package org.xtimms.trackbus.adapter;
 
-import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +22,6 @@ import org.xtimms.trackbus.util.ColorUtils;
 import org.xtimms.trackbus.util.TransportId;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.xtimms.trackbus.util.ConstantUtils.EMPTY_STRING;
 
@@ -72,13 +69,8 @@ public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearch
                 holder.mTramImage.setVisibility(View.VISIBLE);
             } else holder.mTramImage.setVisibility(View.GONE);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                holder.mPictureText.setBackground(App.getInstance().getAppContext().getResources()
-                        .getDrawable(R.drawable.ic_store_mall_directory_black_24dp));
-            } else {
-                holder.mPictureText.setBackground(App.getInstance().getAppContext().getResources()
-                        .getDrawable(R.drawable.ic_store));
-            }
+            holder.mPictureText.setBackground(App.getInstance().getAppContext()
+                    .getDrawable(R.drawable.ic_store_mall_directory_black_24dp));
 
             holder.mPictureText.setText(EMPTY_STRING);
         }

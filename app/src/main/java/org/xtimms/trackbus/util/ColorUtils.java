@@ -28,19 +28,19 @@ public class ColorUtils {
 
     public static void setBackgroundCircle(int transportId, View view) {
         if (transportId == TransportId.BUS.getIdInDatabase()) {
-            view.setBackground(App.getInstance().getAppContext().getResources()
+            view.setBackground(App.getInstance().getAppContext()
                     .getDrawable(R.drawable.marker));
         }
         if (transportId == TransportId.TRAM.getIdInDatabase()) {
-            view.setBackground(App.getInstance().getAppContext().getResources()
+            view.setBackground(App.getInstance().getAppContext()
                     .getDrawable(R.drawable.marker));
         }
         if (transportId == TransportId.EXPRESS.getIdInDatabase()) {
-            view.setBackground(App.getInstance().getAppContext().getResources()
+            view.setBackground(App.getInstance().getAppContext()
                     .getDrawable(R.drawable.marker));
         }
         if (transportId == TransportId.MINIBUS.getIdInDatabase()) {
-            view.setBackground(App.getInstance().getAppContext().getResources()
+            view.setBackground(App.getInstance().getAppContext()
                     .getDrawable(R.drawable.marker));
         }
     }
