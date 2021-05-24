@@ -6,9 +6,9 @@ RideBus is a free and open source application to view bus schedule of Polotsk, B
 
 ### Screenshots
 
-| ![Screenshot_1598915621.png](https://raw.githubusercontent.com/SketchUpper/RideBus/master/art/Screenshot_1598915621.png) | ![Screenshot_1598915643.png](https://raw.githubusercontent.com/SketchUpper/RideBus/master/art/Screenshot_1598915643.png) |
+| ![Screenshot_1621838696](https://user-images.githubusercontent.com/61558546/119307894-07069700-bc75-11eb-9732-ae8b653dc37a.png) | ![Screenshot_1621838700](https://user-images.githubusercontent.com/61558546/119307905-0968f100-bc75-11eb-9b69-d347b76098dc.png) |
 |---|---|
-| ![Screenshot_1598915657.png](https://raw.githubusercontent.com/SketchUpper/RideBus/master/art/Screenshot_1598915657.png)  | ![Screenshot_1598915664.png](https://raw.githubusercontent.com/SketchUpper/RideBus/master/art/Screenshot_1598915664.png) |
+| ![Screenshot_1621838702](https://user-images.githubusercontent.com/61558546/119307915-0b32b480-bc75-11eb-8600-f22242268717.png)  | ![Screenshot_1621838709](https://user-images.githubusercontent.com/61558546/119307917-0c63e180-bc75-11eb-899d-db43ec97d9d4.png) |
 
 ### License
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)  
