@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -57,7 +58,7 @@ public class BookmarkFragment extends AppBaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         RecyclerView recyclerView = view.findViewById(id.recyclerView_favorite);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), getResources().getInteger(R.integer.column_count));
         recyclerView.setLayoutManager(layoutManager);
         if (!mAdapterIsSet) {
             mProgressBar.setVisibility(View.GONE);

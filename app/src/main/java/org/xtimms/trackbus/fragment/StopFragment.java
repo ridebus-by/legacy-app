@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 
@@ -102,7 +103,7 @@ public class StopFragment extends AppBaseFragment implements StopFragmentPresent
         mRecyclerView = view.findViewById(R.id.recyclerView_stops);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
 
-        WrapContentLinearLayoutManager layoutManager = new WrapContentLinearLayoutManager(getActivity());
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), getResources().getInteger(R.integer.column_count));
         mRecyclerView.setLayoutManager(layoutManager);
 
         StopFragmentPresenter presenter = new StopFragmentPresenter(this);
