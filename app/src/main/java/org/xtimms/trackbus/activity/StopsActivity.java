@@ -91,62 +91,6 @@ public class StopsActivity extends AppBaseActivity implements StopsActivityPrese
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        /*TextView textTitle = findViewById(R.id.text_title_stopactivity);
-        textTitle.setText(mStop.getStopTitle());
-        TextView subtitle = findViewById(R.id.subtitle_stopactivity);
-        subtitle.setText(mStop.getMark());*/
-
-//        mTimeText.setOnClickListener(v -> {
-//            Calendar mcurrentTime = Calendar.getInstance();
-//            int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-//            int minute = mcurrentTime.get(Calendar.MINUTE);
-//            TimePickerDialog mTimePicker;
-//            mTimePicker = new TimePickerDialog(StopsActivity.this, (timePicker, selectedHour, selectedMinute) -> {
-//                String newHourses = (selectedHour < 10) ? "0" + selectedHour : String.valueOf(selectedHour);
-//                String newMinutes = (selectedMinute < 10) ? "0" + selectedMinute : String.valueOf(selectedMinute);
-//                String newTime = newHourses + ":" + newMinutes;
-//                mTimeText.setText(newTime);
-//                dateTimeChange();
-//            }, hour, minute, true);//Yes 24 hour time
-//            mTimePicker.setTitle(getString(R.string.time_picker_title));
-//            mTimePicker.show();
-//
-//        });
-//
-//        mTimeText.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                dateTimeChange();
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
-
-        //mWeekDay.setOnClickListener(v -> {
-        //    Calendar mcurrentDate = Calendar.getInstance();
-        //    int year = mcurrentDate.get(Calendar.YEAR);
-        //    int month = mcurrentDate.get(Calendar.MONTH);
-        //    int day = mcurrentDate.get(Calendar.DAY_OF_MONTH);
-
-        //    DatePickerDialog datePickerDialog = new DatePickerDialog(StopsActivity.this, (view, year1, monthOfYear, dayOfMonth) -> {
-        //        Calendar newDate = Calendar.getInstance();
-        //        newDate.set(year1, monthOfYear, dayOfMonth);
-        //        SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.getDefault());
-        //        //SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault());
-        //        mWeekDay.setText(sdf.format(newDate.getTime()));
-        //        dateTimeChange();
-        //    }, year, month, day);
-        //    datePickerDialog.show();
-        //});
-
     }
 
     @Override

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -23,10 +25,8 @@ public class BookmarksActivity extends AppBaseActivity implements BookmarksActiv
     public final static String REQUEST_RESULT = "request_result";
     private BookmarksSearchAdapter mBookmarksSearchAdapter;
     private RecyclerView mRecyclerView;
-
-//    {
-//        new DatabaseObjectsListAsyncTask(this).execute();
-//    }
+    private boolean mAdapterIsSet = false;
+    private ProgressBar mProgressBar;
 
     public static Intent newIntent(Context context) {
         return new Intent(context, BookmarksActivity.class);
@@ -34,16 +34,21 @@ public class BookmarksActivity extends AppBaseActivity implements BookmarksActiv
 
     @Override
     public void setAdapter(ArrayList<DatabaseObject> databaseObjects) {
-        mBookmarksSearchAdapter = new BookmarksSearchAdapter(databaseObjects);
-        mRecyclerView.setAdapter(mBookmarksSearchAdapter);
-        mBookmarksSearchAdapter.setOnItemClickListener((parent, v, position, id) -> {
-            Intent intent = new Intent();
-            Bundle bundleData = new Bundle();
-            bundleData.putSerializable(REQUEST_RESULT, mBookmarksSearchAdapter.getStopsListFiltered().get(position));
-            intent.putExtras(bundleData);
-            setResult(RESULT_OK, intent);
-            finish();
-        });
+        if (!mAdapterIsSet) {
+            mProgressBar.setVisibility(View.GONE);
+            mBookmarksSearchAdapter = new BookmarksSearchAdapter(databaseObjects);
+            mRecyclerView.setAdapter(mBookmarksSearchAdapter);
+            mBookmarksSearchAdapter.setOnItemClickListener((parent, v, position, id) -> {
+                Intent intent = new Intent();
+                Bundle bundleData = new Bundle();
+                bundleData.putSerializable(REQUEST_RESULT, mBookmarksSearchAdapter.getStopsListFiltered().get(position));
+                intent.putExtras(bundleData);
+                setResult(RESULT_OK, intent);
+                finish();
+            });
+        } else {
+            mBookmarksSearchAdapter.dataChange(databaseObjects);
+        }
     }
 
     @Override
@@ -57,6 +62,9 @@ public class BookmarksActivity extends AppBaseActivity implements BookmarksActiv
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        mProgressBar = findViewById(R.id.progress);
+        mProgressBar.setVisibility(View.VISIBLE);
 
         mRecyclerView = findViewById(R.id.recyclerview_bookmarks_activity);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

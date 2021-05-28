@@ -33,8 +33,6 @@
 
             <include layout="@layout/card_about_4"/>
 
-            <include layout="@layout/card_about_6"/>
-
         </LinearLayout>
 
     </ScrollView>

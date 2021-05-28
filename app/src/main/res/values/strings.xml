@@ -64,6 +64,17 @@
     <string name="check_db_summary">Check in case the application is unstable when loading the database from disk.</string>
     <string name="check_server_summary">If the application cannot update the schedule from the server.</string>
     <string name="view_log">View log</string>
+    <string name="holiday_title">It seems today is a holiday!</string>
+    <string name="holiday_summary">It is possible that the transport runs with changes in the route or according to the weekend schedule. For more information, please contact the bus fleet.</string>
+    <string name="uh_oh">Uh oh…</string>
+    <string name="database_corrupted">The database is corrupted.</string>
+    <string name="success">Success</string>
+    <string name="db_integrity_check">The database passed the integrity check.</string>
+    <string name="server_unavailable">Connection to the server is unavailable.</string>
+    <string name="succeed_response">Successfully received a response from the server.</string>
+    <string name="notification_updating_description">A notification notifying you of the schedule update if there is a new version on the server.</string>
+    <string name="notification_updated_description">A notification notifying you of a successful schedule update.</string>
+    <string name="click_to_add_bookmark">Click to add to bookmarks</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

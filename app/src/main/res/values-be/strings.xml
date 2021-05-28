@@ -64,4 +64,15 @@
     <string name="check_db_summary">Праверка на выпадак, калі праграма нестабільна пры загрузцы базы дадзеных з дыска.</string>
     <string name="check_server_summary">Калі прыкладанне не можа абнавіць расклад з сервера.</string>
     <string name="view_log">Прагледзець логі</string>
+    <string name="holiday_title">Здаецца, сёння свята!</string>
+    <string name="holiday_summary">Магчыма, што транспарт ходзіць са зменамі ў маршруце або па раскладзе выхадных дзён. Для атрымання дадатковай інфармацыі, калі ласка, звяжыцеся з аўтобусным паркам.</string>
+    <string name="uh_oh">О-о-о…</string>
+    <string name="database_corrupted">База дадзеных пашкоджана.</string>
+    <string name="success">Поспех</string>
+    <string name="db_integrity_check">База дадзеных прайшла праверку цэласнасці.</string>
+    <string name="server_unavailable">Падлучэнне да сервера недаступна.</string>
+    <string name="succeed_response">Паспяхова атрыманы адказ ад сервера.</string>
+    <string name="notification_updating_description">Апавяшчэнне, якое апавяшчае вас аб абнаўленні раскладу, калі на сэрвэры з\'явілася новая версія.</string>
+    <string name="notification_updated_description">Апавяшчэнне аб паспяховым абнаўленні раскладу.</string>
+    <string name="click_to_add_bookmark">Націсніце, каб дадаць у закладкі</string>
 </resources>

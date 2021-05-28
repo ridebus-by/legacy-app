@@ -111,8 +111,8 @@ public class DatabaseUpdateCheckingTask extends AsyncTask<String, Integer, Strin
                 NotificationChannel updatedNotificationChannel = new NotificationChannel(UPDATED_NOTIFICATION_CHANNEL_ID, mContext.getResources().getString(R.string.database_updated_successfully), NotificationManager.IMPORTANCE_LOW);
 
                 // Configure the notification channel.
-                updatingNotificationChannel.setDescription("Уведомление, сообщающее об обновлении расписания, если есть новая версия на сервере.");
-                updatedNotificationChannel.setDescription("Уведомление, сообщающее об успешном обновлении расписания.");
+                updatingNotificationChannel.setDescription(mContext.getResources().getString(R.string.notification_updating_description));
+                updatedNotificationChannel.setDescription(mContext.getResources().getString(R.string.notification_updated_description));
                 mNotifyManager.createNotificationChannel(updatingNotificationChannel);
                 mNotifyManager.createNotificationChannel(updatedNotificationChannel);
 

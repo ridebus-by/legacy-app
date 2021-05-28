@@ -29,13 +29,12 @@
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="2"
-        android:text="Нажмите для добавления в закладки"
+        android:text="@string/click_to_add_bookmark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/circle"
         app:layout_constraintTop_toTopOf="@+id/linearLayout2"
-        tools:ignore="HardcodedText"
-        tools:text="@tools:sample/lorem/random" />
+        tools:ignore="HardcodedText" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -54,8 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:textAppearance="?attr/textAppearanceSubtitle1"
-            tools:text="@tools:sample/lorem/random" />
+            android:textAppearance="?attr/textAppearanceSubtitle1" />
 
         <TextView
             android:id="@+id/text_description_bookmark"
@@ -63,8 +61,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="@color/mtrl_list_item_tint_secondary"
-            tools:text="@tools:sample/lorem/random" />
+            android:textColor="@color/mtrl_list_item_tint_secondary" />
 
     </LinearLayout>
 

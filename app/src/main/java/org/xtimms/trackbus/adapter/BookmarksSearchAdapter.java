@@ -18,6 +18,7 @@ import org.xtimms.trackbus.R;
 import org.xtimms.trackbus.model.DatabaseObject;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.model.Stop;
+import org.xtimms.trackbus.object.StopActivityObject;
 import org.xtimms.trackbus.util.ColorUtils;
 import org.xtimms.trackbus.util.TransportId;
 
@@ -27,7 +28,7 @@ import static org.xtimms.trackbus.util.ConstantUtils.EMPTY_STRING;
 
 public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearchAdapter.ViewHolder> implements Filterable {
 
-    private final ArrayList<DatabaseObject> mDataset;
+    private ArrayList<DatabaseObject> mDataset;
     private ArrayList<DatabaseObject> mDatabaseObjectFiltered;
     private AdapterView.OnItemClickListener onItemClickListener;
 
@@ -151,6 +152,11 @@ public class BookmarksSearchAdapter extends RecyclerView.Adapter<BookmarksSearch
                 notifyDataSetChanged();
             }
         };
+    }
+
+    public void dataChange(ArrayList<DatabaseObject> databaseObjects) {
+        mDataset = databaseObjects;
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

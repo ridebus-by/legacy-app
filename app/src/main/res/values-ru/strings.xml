@@ -64,4 +64,15 @@
     <string name="check_db_summary">Проверка на случай, если приложение нестабильно при загрузке базы данных с диска.</string>
     <string name="check_server_summary">Если приложение не может обновить расписание с сервера.</string>
     <string name="view_log">Просмотреть логи</string>
+    <string name="holiday_title">Кажется, сегодня праздник!</string>
+    <string name="holiday_summary">Возможно, что транспорт ходит с изменениями в маршруте или по расписанию выходных дней. Для получения дополнительной информации, пожалуйста, свяжитесь с автобусным парком.</string>
+    <string name="uh_oh">О-о-о…</string>
+    <string name="database_corrupted">База данных повреждена.</string>
+    <string name="success">Успех</string>
+    <string name="db_integrity_check">База данных прошла проверку целостности.</string>
+    <string name="server_unavailable">Подключение к серверу недоступно.</string>
+    <string name="succeed_response">Успешно получен ответ от сервера.</string>
+    <string name="notification_updating_description">Уведомление, уведомляющее вас об обновлении расписания, если на сервере появилась новая версия.</string>
+    <string name="notification_updated_description">Уведомление об успешном обновлении расписания.</string>
+    <string name="click_to_add_bookmark">Нажмите, чтобы добавить в закладки</string>
 </resources>

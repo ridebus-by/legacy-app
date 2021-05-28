@@ -24,7 +24,6 @@ import org.xtimms.trackbus.adapter.StopAdapter;
 import org.xtimms.trackbus.model.Route;
 import org.xtimms.trackbus.model.Stop;
 import org.xtimms.trackbus.presenter.StopFragmentPresenter;
-import org.xtimms.trackbus.ui.WrapContentLinearLayoutManager;
 
 import java.util.ArrayList;
 

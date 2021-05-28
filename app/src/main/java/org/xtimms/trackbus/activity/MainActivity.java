@@ -18,7 +18,6 @@ import org.xtimms.trackbus.App;
 import org.xtimms.trackbus.fragment.AppBaseFragment;
 import org.xtimms.trackbus.fragment.RateItDialogFragment;
 import org.xtimms.trackbus.R;
-import org.xtimms.trackbus.activity.settings.SettingsHeadersActivity;
 import org.xtimms.trackbus.fragment.BookmarkFragment;
 import org.xtimms.trackbus.fragment.StopFragment;
 import org.xtimms.trackbus.fragment.TabRouteFragment;
@@ -71,10 +70,10 @@ public class MainActivity extends AppBaseActivity implements BottomNavigationVie
         for (Holiday holiday : holidays) {
             if (holiday.getDate().equals(LocalDate.now())) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, style.Theme_AlertDialog);
-                builder.setTitle("Кажется сегодня праздничный день!")
-                        .setMessage("Возможно, транспорт ходит с изменениями в маршруте или по расписанию выходного дня. За подробной информацией обратитесь в автопарк.")
+                builder.setTitle(getString(string.holiday_title))
+                        .setMessage(string.holiday_summary)
                         .setCancelable(false)
-                        .setNegativeButton("Понятно",
+                        .setNegativeButton(android.R.string.ok,
                                 (dialog, id) -> dialog.cancel());
                 AlertDialog alert = builder.create();
                 alert.show();
